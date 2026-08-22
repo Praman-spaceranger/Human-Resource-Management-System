@@ -1,5 +1,5 @@
 {
-  "rev": 53,
+  "rev": 59,
   "company_name": "Dayflow Technologies",
   "employees": [
     {
@@ -3831,6 +3831,70 @@
   ],
   "notifications": [
     {
+      "id": 38,
+      "user": "EMP-007",
+      "text": "Nisha Verma emailed their employee data to nisha.verma@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:11",
+      "read": 0
+    },
+    {
+      "id": 37,
+      "user": "EMP-001",
+      "text": "Nisha Verma emailed their employee data to nisha.verma@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:11",
+      "read": 0
+    },
+    {
+      "id": 36,
+      "user": "EMP-007",
+      "text": "Nisha Verma emailed their employee data to nisha.verma@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:10",
+      "read": 0
+    },
+    {
+      "id": 35,
+      "user": "EMP-001",
+      "text": "Nisha Verma emailed their employee data to nisha.verma@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:10",
+      "read": 0
+    },
+    {
+      "id": 34,
+      "user": "EMP-002",
+      "text": "HR emailed your employee data to nisha@dayflow.local.",
+      "type": "email",
+      "creation": "2026-08-22 16:10",
+      "read": 0
+    },
+    {
+      "id": 33,
+      "user": "EMP-002",
+      "text": "HR emailed your employee data to manager@client.co.",
+      "type": "email",
+      "creation": "2026-08-22 16:07",
+      "read": 0
+    },
+    {
+      "id": 32,
+      "user": "EMP-007",
+      "text": "Arjun Kapoor emailed their employee data to arjun.personal@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:07",
+      "read": 0
+    },
+    {
+      "id": 31,
+      "user": "EMP-001",
+      "text": "Arjun Kapoor emailed their employee data to arjun.personal@example.com. A copy has been sent to HR.",
+      "type": "email",
+      "creation": "2026-08-22 16:07",
+      "read": 0
+    },
+    {
       "id": 30,
       "user": "EMP-007",
       "text": "Nisha Verma (EMP-002) checked IN at 15:50.",
@@ -4061,6 +4125,2783 @@
       "type": "expense",
       "creation": "2026-08-16 11:20",
       "read": 1
+    }
+  ],
+  "emails": [
+    {
+      "name": "EML-2026-005-HR",
+      "from": "EMP-002",
+      "from_name": "Nisha Verma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "hr@dayflow.local",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "Hello,\n\nPlease find the employee data for Nisha Verma (EMP-002) below.\n\nIncludes: Profile & Personal Info, Attendance Records (18), Leave History (2), Salary & Payslips (3).\n\nRegards,\nNisha Verma",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 18,
+        "leave_applications": 2,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-002",
+          "login_id": "DTNIVE20230002",
+          "employee_name": "Nisha Verma",
+          "first_name": "Nisha",
+          "last_name": "Verma",
+          "gender": "Female",
+          "date_of_birth": "1995-08-22",
+          "date_of_joining": "2023-03-01",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 125000,
+          "department": "Engineering",
+          "designation": "Senior Frontend Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "nisha@dayflow.local",
+          "personal_email": "nisha.verma@example.com",
+          "cell_phone": "+91 98111 22334",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100029999",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-145",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-04",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-144",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-03",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-032",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-22",
+            "status": "Present",
+            "working_hours": 6.1,
+            "late_entry": 1,
+            "early_exit": 1,
+            "in_time": "09:32",
+            "out_time": "15:50"
+          },
+          {
+            "name": "ATT-202608-031",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-030",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-029",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-028",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-027",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-026",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-025",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-024",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-023",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-022",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-021",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-020",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-019",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-018",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-017",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-007",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Sick Leave",
+            "from_date": "2026-09-03",
+            "to_date": "2026-09-04",
+            "total_leave_days": 2,
+            "status": "Approved",
+            "description": "",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          },
+          {
+            "name": "LEAVE-2026-001",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-08-25",
+            "to_date": "2026-08-26",
+            "total_leave_days": 2,
+            "status": "Open",
+            "description": "Attending family celebration and personal errands.",
+            "posting_date": "2026-08-20",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:11:36",
+      "is_hr_copy": true
+    },
+    {
+      "name": "EML-2026-005",
+      "from": "EMP-002",
+      "from_name": "Nisha Verma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "nisha.verma@example.com",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "Hello,\n\nPlease find the employee data for Nisha Verma (EMP-002) below.\n\nIncludes: Profile & Personal Info, Attendance Records (18), Leave History (2), Salary & Payslips (3).\n\nRegards,\nNisha Verma",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 18,
+        "leave_applications": 2,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-002",
+          "login_id": "DTNIVE20230002",
+          "employee_name": "Nisha Verma",
+          "first_name": "Nisha",
+          "last_name": "Verma",
+          "gender": "Female",
+          "date_of_birth": "1995-08-22",
+          "date_of_joining": "2023-03-01",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 125000,
+          "department": "Engineering",
+          "designation": "Senior Frontend Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "nisha@dayflow.local",
+          "personal_email": "nisha.verma@example.com",
+          "cell_phone": "+91 98111 22334",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100029999",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-145",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-04",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-144",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-03",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-032",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-22",
+            "status": "Present",
+            "working_hours": 6.1,
+            "late_entry": 1,
+            "early_exit": 1,
+            "in_time": "09:32",
+            "out_time": "15:50"
+          },
+          {
+            "name": "ATT-202608-031",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-030",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-029",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-028",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-027",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-026",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-025",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-024",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-023",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-022",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-021",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-020",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-019",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-018",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-017",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-007",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Sick Leave",
+            "from_date": "2026-09-03",
+            "to_date": "2026-09-04",
+            "total_leave_days": 2,
+            "status": "Approved",
+            "description": "",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          },
+          {
+            "name": "LEAVE-2026-001",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-08-25",
+            "to_date": "2026-08-26",
+            "total_leave_days": 2,
+            "status": "Open",
+            "description": "Attending family celebration and personal errands.",
+            "posting_date": "2026-08-20",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:11:36"
+    },
+    {
+      "name": "EML-2026-004-HR",
+      "from": "EMP-002",
+      "from_name": "Nisha Verma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "hr@dayflow.local",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "Hello,\n\nPlease find the employee data for Nisha Verma (EMP-002) below.\n\nIncludes: Profile & Personal Info, Attendance Records (18), Leave History (2), Salary & Payslips (3).\n\nRegards,\nNisha Verma",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 18,
+        "leave_applications": 2,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-002",
+          "login_id": "DTNIVE20230002",
+          "employee_name": "Nisha Verma",
+          "first_name": "Nisha",
+          "last_name": "Verma",
+          "gender": "Female",
+          "date_of_birth": "1995-08-22",
+          "date_of_joining": "2023-03-01",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 125000,
+          "department": "Engineering",
+          "designation": "Senior Frontend Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "nisha@dayflow.local",
+          "personal_email": "nisha.verma@example.com",
+          "cell_phone": "+91 98111 22334",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100029999",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-145",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-04",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-144",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-03",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-032",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-22",
+            "status": "Present",
+            "working_hours": 6.1,
+            "late_entry": 1,
+            "early_exit": 1,
+            "in_time": "09:32",
+            "out_time": "15:50"
+          },
+          {
+            "name": "ATT-202608-031",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-030",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-029",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-028",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-027",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-026",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-025",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-024",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-023",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-022",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-021",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-020",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-019",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-018",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-017",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-007",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Sick Leave",
+            "from_date": "2026-09-03",
+            "to_date": "2026-09-04",
+            "total_leave_days": 2,
+            "status": "Approved",
+            "description": "",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          },
+          {
+            "name": "LEAVE-2026-001",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-08-25",
+            "to_date": "2026-08-26",
+            "total_leave_days": 2,
+            "status": "Open",
+            "description": "Attending family celebration and personal errands.",
+            "posting_date": "2026-08-20",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:10:38",
+      "is_hr_copy": true
+    },
+    {
+      "name": "EML-2026-004",
+      "from": "EMP-002",
+      "from_name": "Nisha Verma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "nisha.verma@example.com",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "Hello,\n\nPlease find the employee data for Nisha Verma (EMP-002) below.\n\nIncludes: Profile & Personal Info, Attendance Records (18), Leave History (2), Salary & Payslips (3).\n\nRegards,\nNisha Verma",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 18,
+        "leave_applications": 2,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-002",
+          "login_id": "DTNIVE20230002",
+          "employee_name": "Nisha Verma",
+          "first_name": "Nisha",
+          "last_name": "Verma",
+          "gender": "Female",
+          "date_of_birth": "1995-08-22",
+          "date_of_joining": "2023-03-01",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 125000,
+          "department": "Engineering",
+          "designation": "Senior Frontend Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "nisha@dayflow.local",
+          "personal_email": "nisha.verma@example.com",
+          "cell_phone": "+91 98111 22334",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100029999",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-145",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-04",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-144",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-03",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-032",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-22",
+            "status": "Present",
+            "working_hours": 6.1,
+            "late_entry": 1,
+            "early_exit": 1,
+            "in_time": "09:32",
+            "out_time": "15:50"
+          },
+          {
+            "name": "ATT-202608-031",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-030",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-029",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-028",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-027",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-026",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-025",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-024",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-023",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-022",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-021",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-020",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-019",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-018",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-017",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-007",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Sick Leave",
+            "from_date": "2026-09-03",
+            "to_date": "2026-09-04",
+            "total_leave_days": 2,
+            "status": "Approved",
+            "description": "",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          },
+          {
+            "name": "LEAVE-2026-001",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-08-25",
+            "to_date": "2026-08-26",
+            "total_leave_days": 2,
+            "status": "Open",
+            "description": "Attending family celebration and personal errands.",
+            "posting_date": "2026-08-20",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:10:38"
+    },
+    {
+      "name": "EML-2026-003",
+      "from": "EMP-001",
+      "from_name": "Aditi Sharma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "nisha@dayflow.local",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "Hello,\n\nPlease find the employee data for Nisha Verma (EMP-002) below.\n\nIncludes: Profile & Personal Info, Leave History (2), Salary & Payslips (3).\n\nRegards,\nAditi Sharma",
+      "sections": {
+        "profile": true,
+        "attendance": false,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 0,
+        "leave_applications": 2,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-002",
+          "login_id": "DTNIVE20230002",
+          "employee_name": "Nisha Verma",
+          "first_name": "Nisha",
+          "last_name": "Verma",
+          "gender": "Female",
+          "date_of_birth": "1995-08-22",
+          "date_of_joining": "2023-03-01",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 125000,
+          "department": "Engineering",
+          "designation": "Senior Frontend Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "nisha@dayflow.local",
+          "personal_email": "nisha.verma@example.com",
+          "cell_phone": "+91 98111 22334",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100029999",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+        },
+        "leaves": [
+          {
+            "name": "LEAVE-2026-007",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Sick Leave",
+            "from_date": "2026-09-03",
+            "to_date": "2026-09-04",
+            "total_leave_days": 2,
+            "status": "Approved",
+            "description": "",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          },
+          {
+            "name": "LEAVE-2026-001",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-08-25",
+            "to_date": "2026-08-26",
+            "total_leave_days": 2,
+            "status": "Open",
+            "description": "Attending family celebration and personal errands.",
+            "posting_date": "2026-08-20",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-002",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 125000,
+            "total_deduction": 20200,
+            "net_pay": 104800,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 62500
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 25000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 37500
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7500
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12500
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:10:15"
+    },
+    {
+      "name": "EML-2026-002",
+      "from": "EMP-001",
+      "from_name": "Aditi Sharma",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "to_email": "manager@client.co",
+      "subject": "Employee Data — Nisha Verma",
+      "message": "",
+      "sections": {
+        "profile": false,
+        "attendance": true,
+        "leaves": false,
+        "salary": false
+      },
+      "data_summary": {
+        "profile": false,
+        "attendance_records": 18,
+        "leave_applications": 0,
+        "salary_slips": 0
+      },
+      "data": {
+        "attendance": [
+          {
+            "name": "ATT-145",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-04",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-144",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-09-03",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-032",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-22",
+            "status": "Present",
+            "working_hours": 6.1,
+            "late_entry": 1,
+            "early_exit": 1,
+            "in_time": "09:32",
+            "out_time": "15:50"
+          },
+          {
+            "name": "ATT-202608-031",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-030",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-029",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-028",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-027",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-026",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-025",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-024",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-023",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-022",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-021",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 8.7,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-020",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-019",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-018",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-017",
+            "employee": "EMP-002",
+            "employee_name": "Nisha Verma",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:07:18"
+    },
+    {
+      "name": "EML-2026-001-HR",
+      "from": "EMP-008",
+      "from_name": "Arjun Kapoor",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "to_email": "hr@dayflow.local",
+      "subject": "My data",
+      "message": "pls send",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 16,
+        "leave_applications": 1,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-008",
+          "login_id": "DTARKA20240008",
+          "employee_name": "Arjun Kapoor",
+          "first_name": "Arjun",
+          "last_name": "Kapoor",
+          "gender": "Male",
+          "date_of_birth": "1995-12-05",
+          "date_of_joining": "2024-02-19",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 120000,
+          "department": "Engineering",
+          "designation": "Full Stack Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "arjun@dayflow.local",
+          "personal_email": "arjun.k@example.com",
+          "cell_phone": "+91 96543 21098",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100089999",
+          "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-142",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-09-15",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-124",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-123",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-122",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-121",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-120",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-119",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-118",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-117",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-116",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-115",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 8.2,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-114",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-113",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-112",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-111",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-110",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.9,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-006",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-09-15",
+            "to_date": "2026-09-15",
+            "total_leave_days": 1,
+            "status": "Approved",
+            "description": "test",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:07:18",
+      "is_hr_copy": true
+    },
+    {
+      "name": "EML-2026-001",
+      "from": "EMP-008",
+      "from_name": "Arjun Kapoor",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "to_email": "arjun.personal@example.com",
+      "subject": "My data",
+      "message": "pls send",
+      "sections": {
+        "profile": true,
+        "attendance": true,
+        "leaves": true,
+        "salary": true
+      },
+      "data_summary": {
+        "profile": true,
+        "attendance_records": 16,
+        "leave_applications": 1,
+        "salary_slips": 3
+      },
+      "data": {
+        "profile": {
+          "name": "EMP-008",
+          "login_id": "DTARKA20240008",
+          "employee_name": "Arjun Kapoor",
+          "first_name": "Arjun",
+          "last_name": "Kapoor",
+          "gender": "Male",
+          "date_of_birth": "1995-12-05",
+          "date_of_joining": "2024-02-19",
+          "status": "Active",
+          "user_role": "Employee",
+          "base_salary": 120000,
+          "department": "Engineering",
+          "designation": "Full Stack Engineer",
+          "company": "Dayflow Technologies",
+          "company_email": "arjun@dayflow.local",
+          "personal_email": "arjun.k@example.com",
+          "cell_phone": "+91 96543 21098",
+          "reports_to": "EMP-001",
+          "leave_approver": "EMP-001",
+          "expense_approver": "EMP-001",
+          "shift": "General Shift",
+          "current_address": "Bengaluru, Karnataka",
+          "permanent_address": "India",
+          "emergency_phone_number": "+91 90000 00001",
+          "person_to_be_contacted": "Family Contact",
+          "relation": "Family",
+          "bank_name": "HDFC Bank",
+          "bank_ac_no": "50100089999",
+          "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80"
+        },
+        "attendance": [
+          {
+            "name": "ATT-142",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-09-15",
+            "status": "On Leave",
+            "working_hours": 0,
+            "late_entry": 0,
+            "early_exit": 0,
+            "in_time": null,
+            "out_time": null
+          },
+          {
+            "name": "ATT-202608-124",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-21",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-123",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-20",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-122",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-19",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-121",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-18",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-120",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-17",
+            "status": "Present",
+            "working_hours": 8.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-119",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-14",
+            "status": "Present",
+            "working_hours": 8.6,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-118",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-13",
+            "status": "Present",
+            "working_hours": 8.5,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-117",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-12",
+            "status": "Present",
+            "working_hours": 8.4,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-116",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-11",
+            "status": "Present",
+            "working_hours": 8.3,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-115",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-10",
+            "status": "Present",
+            "working_hours": 8.2,
+            "late_entry": 1,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-114",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-07",
+            "status": "Present",
+            "working_hours": 7.9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-113",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-06",
+            "status": "Present",
+            "working_hours": 7.8,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-112",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-05",
+            "status": "Present",
+            "working_hours": 9.1,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-111",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-04",
+            "status": "Present",
+            "working_hours": 9,
+            "late_entry": 0,
+            "early_exit": 0
+          },
+          {
+            "name": "ATT-202608-110",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "attendance_date": "2026-08-03",
+            "status": "Present",
+            "working_hours": 8.9,
+            "late_entry": 0,
+            "early_exit": 0
+          }
+        ],
+        "leaves": [
+          {
+            "name": "LEAVE-2026-006",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "leave_type": "Casual Leave",
+            "from_date": "2026-09-15",
+            "to_date": "2026-09-15",
+            "total_leave_days": 1,
+            "status": "Approved",
+            "description": "test",
+            "posting_date": "2026-08-22",
+            "leave_approver": "EMP-001"
+          }
+        ],
+        "salary_slips": [
+          {
+            "name": "SLIP-2026-08-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-08-22",
+            "start_date": "2026-08-01",
+            "end_date": "2026-08-31",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "payment_days": 21,
+            "working_days": 21,
+            "lop_days": 0,
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-07-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-07-31",
+            "start_date": "2026-07-01",
+            "end_date": "2026-07-31",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          },
+          {
+            "name": "SLIP-2026-06-008",
+            "employee": "EMP-008",
+            "employee_name": "Arjun Kapoor",
+            "posting_date": "2026-06-30",
+            "start_date": "2026-06-01",
+            "end_date": "2026-06-30",
+            "gross_pay": 120000,
+            "total_deduction": 19400,
+            "net_pay": 100600,
+            "currency": "INR",
+            "docstatus": 1,
+            "status": "Issued",
+            "earnings": [
+              {
+                "salary_component": "Basic Salary",
+                "amount": 60000
+              },
+              {
+                "salary_component": "House Rent Allowance (HRA)",
+                "amount": 24000
+              },
+              {
+                "salary_component": "Special Allowance",
+                "amount": 36000
+              }
+            ],
+            "deductions": [
+              {
+                "salary_component": "Provident Fund (PF)",
+                "amount": 7200
+              },
+              {
+                "salary_component": "Professional Tax (PT)",
+                "amount": 200
+              },
+              {
+                "salary_component": "Income Tax (TDS)",
+                "amount": 12000
+              }
+            ]
+          }
+        ]
+      },
+      "sent_at": "2026-08-22 16:07:18"
     }
   ]
 }

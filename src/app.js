@@ -865,6 +865,8 @@
       { name: 'HOL-005', holiday_date: '2026-12-25', description: 'Christmas Day' }
     ],
 
+    emails: [],
+
     notifications: [
       { id: 1, user: 'EMP-001', text: 'Nisha Verma submitted a Casual Leave request for Aug 25-26.', type: 'leave', creation: '2026-08-20 10:15', read: 0 },
       { id: 2, user: 'EMP-001', text: 'Pooja Nair submitted a Casual Leave request for Aug 28.', type: 'leave', creation: '2026-08-21 09:30', read: 0 },
@@ -1741,11 +1743,6 @@
                 <div class="user-role-text">${escapeHtml(session.role)}</div>
               </div>
             </div>
-            
-            <button class="role-switcher-btn" onclick="window.toggleRole()">
-              <span>Switch to ${isHR ? 'Employee Portal' : 'HR Admin'}</span>
-              <span>⇄</span>
-            </button>
           </div>
         </aside>
 
@@ -1840,9 +1837,6 @@
                   </button>
                   <button class="dropdown-item" onclick="window.handlePunch('${empStatus.status === 'present' ? 'OUT' : 'IN'}'); window.toggleUserMenu();">
                     ${empStatus.status === 'present' ? 'Check Out Now' : 'Check In Now'}
-                  </button>
-                  <button class="dropdown-item" onclick="window.toggleRole(); window.toggleUserMenu();">
-                    ⇄ Switch Mode (${isHR ? 'Employee' : 'HR Admin'})
                   </button>
                   ${isHR ? `
                     <button class="dropdown-item" onclick="window.location.hash='#settings'; window.toggleUserMenu();">
@@ -3489,6 +3483,7 @@
           <p>Personal credentials, emergency contacts, banking information, and job assignment.</p>
         </div>
         <div class="page-actions">
+          <button class="btn btn-primary" onclick="window.openEmailDataModal('${emp.name}')">${ICONS.mail} Email My Data</button>
           <button class="btn btn-secondary" onclick="window.openEditProfileModal()">Edit Contact Info</button>
         </div>
       </div>
@@ -3678,6 +3673,7 @@
         <div class="page-actions">
           <a href="#employees" class="btn btn-secondary">← Back to Employees</a>
           <button class="btn btn-ghost" onclick="window.openEditEmployeeModal('${emp.name}')">Edit Details</button>
+          <button class="btn btn-primary" onclick="window.openEmailDataModal('${emp.name}')">${ICONS.mail} Email Data</button>
         </div>
       </div>
 
@@ -4690,11 +4686,6 @@
               <button type="submit" class="glass-btn-primary ${isHR ? 'purple-glow' : 'blue-glow'}">
                 SIGN IN
               </button>
-
-              <button type="button" class="glass-btn-google" onclick="window.handleGoogleLogin()">
-                ${ICONS.google}
-                <span>Login with Google</span>
-              </button>
             </form>
 
             <!-- 1-CLICK DUMMY CREDENTIALS HELPER -->
@@ -4878,18 +4869,6 @@
       authRole = 'employee';
       if (idEl) idEl.value = 'DTNIVE20230002';
       if (pwdEl) pwdEl.value = 'Dayflow@123';
-    }
-  };
-
-  window.handleGoogleLogin = function () {
-    if (authRole === 'hr') {
-      window.fillDemoCredentials('hr');
-      const form = document.querySelector('.glass-form');
-      if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
-    } else {
-      window.fillDemoCredentials('employee');
-      const form = document.querySelector('.glass-form');
-      if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
     }
   };
 
@@ -5155,23 +5134,6 @@
     saveSession(null);
     window.location.hash = '';
     showToast('success', 'You have been signed out successfully.');
-    renderApp();
-  };
-
-  window.toggleRole = function () {
-    if (!session) return;
-    const newRole = session.role === 'HR / Admin' ? 'Employee' : 'HR / Admin';
-    session.role = newRole;
-    session.employeeId = newRole === 'HR / Admin' ? 'EMP-001' : 'EMP-002';
-    const emp = store.data.employees.find(e => e.name === session.employeeId);
-    if (emp) {
-      session.name = emp.employee_name;
-      session.email = emp.company_email;
-      session.login_id = emp.login_id || emp.name;
-    }
-    saveSession(session);
-    showToast('success', `Switched mode to ${newRole}`);
-    window.location.hash = newRole === 'HR / Admin' ? '#employees' : '#attendance';
     renderApp();
   };
 
@@ -6098,6 +6060,151 @@
         return true;
       },
       `Employee ${empId} updated successfully.`
+    );
+    if (ok) closeModal();
+  };
+
+  // ---------------------------------------------------------------- EMAIL DATA FEATURE (HR + Employee sides)
+  // Send-Email modal per the wireframe: pick which employee data sections to
+  // include, choose recipient/subject/message, and send. When an employee
+  // emails their own data, HR automatically receives a copy.
+
+  function emailSectionCounts(empId) {
+    return {
+      attendance: store.data.attendance.filter(a => a.employee === empId).length,
+      leaves: store.data.leave_applications.filter(l => l.employee === empId).length,
+      salary: store.data.salary_slips.filter(s => s.employee === empId).length
+    };
+  }
+
+  function buildEmailMessage(target, viewer, sections) {
+    const parts = [];
+    if (sections.profile) parts.push('Profile & Personal Info');
+    if (sections.attendance) parts.push(`Attendance Records (${emailSectionCounts(target.name).attendance})`);
+    if (sections.leaves) parts.push(`Leave History (${emailSectionCounts(target.name).leaves})`);
+    if (sections.salary) parts.push(`Salary & Payslips (${emailSectionCounts(target.name).salary})`);
+    return `Hello,\n\nPlease find the employee data for ${target.employee_name} (${target.name}) below.\n\nIncludes: ${parts.join(', ') || '—'}.\n\nRegards,\n${viewer.employee_name}`;
+  }
+
+  // Keeps the auto-generated message in sync with the checkboxes until the
+  // user edits it manually.
+  window.refreshEmailMessage = function () {
+    const ta = document.getElementById('email-message-input');
+    if (!ta || ta.dataset.userEdited === '1') return;
+    const target = store.data.employees.find(e => e.name === ta.dataset.target);
+    const viewer = getActiveEmployee();
+    if (!target || !viewer) return;
+    ta.value = buildEmailMessage(target, viewer, {
+      profile: document.getElementById('email-sec-profile')?.checked,
+      attendance: document.getElementById('email-sec-attendance')?.checked,
+      leaves: document.getElementById('email-sec-leaves')?.checked,
+      salary: document.getElementById('email-sec-salary')?.checked
+    });
+  };
+
+  window.markEmailMessageEdited = function (el) {
+    el.dataset.userEdited = '1';
+  };
+
+  window.openEmailDataModal = function (targetEmpId) {
+    const target = store.data.employees.find(e => e.name === targetEmpId);
+    if (!target) return;
+    const viewer = getActiveEmployee();
+    const isHRViewer = session.role === 'HR / Admin';
+    const defaultTo = isHRViewer ? (target.company_email || '') : (viewer.personal_email || viewer.company_email || '');
+    const counts = emailSectionCounts(target.name);
+    const defaultSections = { profile: true, attendance: true, leaves: true, salary: true };
+    const defaultMessage = buildEmailMessage(target, viewer, defaultSections);
+
+    const sectionRow = (id, label, hint) => `
+      <label style="display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-subtle); cursor: pointer;">
+        <input type="checkbox" id="email-sec-${id}" name="sec_${id}" checked style="margin-top: 2px;" onchange="window.refreshEmailMessage()">
+        <span>
+          <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">${label}</span>
+          <span style="display: block; font-size: 11px; color: var(--text-muted); margin-top: 1px;">${hint}</span>
+        </span>
+      </label>
+    `;
+
+    openModal(() => `
+      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <div class="modal-title">Send Email &middot; ${escapeHtml(target.employee_name)}</div>
+            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
+          </div>
+          <form onsubmit="window.submitEmailData(event)">
+            <input type="hidden" name="target_employee" value="${escapeHtml(target.name)}">
+            <div class="modal-body">
+              <div style="font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); margin-bottom: 10px;">Select Data to Email</div>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                ${sectionRow('profile', 'Profile & Personal Info', 'Name, contact details, job & organization information')}
+                ${sectionRow('attendance', `Attendance Records (${counts.attendance})`, 'Daily attendance status, working hours, late entries')}
+                ${sectionRow('leaves', `Leave History (${counts.leaves})`, 'Leave applications with type, dates and status')}
+                ${sectionRow('salary', `Salary & Payslips (${counts.salary})`, 'Salary slips with earnings and deductions breakdown')}
+              </div>
+
+              <div class="form-group" style="margin-top: 16px;">
+                <label class="form-label">To <span class="required">*</span></label>
+                <input type="email" class="form-control" name="to_email" required value="${escapeHtml(defaultTo)}" placeholder="recipient@example.com">
+              </div>
+              <div class="form-group" style="margin-top: 12px;">
+                <label class="form-label">Subject</label>
+                <input type="text" class="form-control" name="subject" value="Employee Data — ${escapeHtml(target.employee_name)}">
+              </div>
+              <div class="form-group" style="margin-top: 12px;">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" id="email-message-input" name="message" rows="5" data-target="${escapeHtml(target.name)}" data-user-edited="0" oninput="window.markEmailMessageEdited(this)">${escapeHtml(defaultMessage)}</textarea>
+              </div>
+
+              <div style="margin-top: 12px; padding: 10px 12px; border-radius: var(--radius-md); background: var(--primary-pale); font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px;">
+                ${ICONS.info}
+                <span>${isHRViewer
+                  ? `The employee will be notified that their data was emailed.`
+                  : `<strong>HR will also receive a copy of this email.</strong>`}</span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary">${ICONS.mail} Send Email</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    `);
+  };
+
+  window.submitEmailData = async function (e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const viewer = getActiveEmployee();
+    const payload = {
+      from_employee: viewer.name,
+      target_employee: fd.get('target_employee'),
+      to_email: (fd.get('to_email') || '').trim(),
+      subject: fd.get('subject'),
+      message: fd.get('message'),
+      sections: {
+        profile: fd.get('sec_profile') === 'on',
+        attendance: fd.get('sec_attendance') === 'on',
+        leaves: fd.get('sec_leaves') === 'on',
+        salary: fd.get('sec_salary') === 'on'
+      }
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/email/send', payload),
+      () => {
+        // Offline fallback: record locally what would have been sent
+        if (!Array.isArray(store.data.emails)) store.data.emails = [];
+        store.data.emails.unshift({
+          name: `EML-${Date.now()}`,
+          ...payload,
+          sent_at: new Date().toISOString().replace('T', ' ').substring(0, 19)
+        });
+        return true;
+      },
+      'Email sent successfully.'
     );
     if (ok) closeModal();
   };

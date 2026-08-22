@@ -147,7 +147,7 @@ function migrateDb() {
   if (typeof db.leave_allocations !== 'object') { db.leave_allocations = {}; changed = true }
   for (const coll of ['attendance', 'leave_applications', 'expense_claims', 'shift_requests',
     'job_openings', 'job_applicants', 'interviews', 'onboarding_records', 'payroll_entries',
-    'salary_slips', 'announcements', 'holidays', 'shift_types', 'departments', 'designations']) {
+    'salary_slips', 'announcements', 'holidays', 'shift_types', 'departments', 'designations', 'emails']) {
     if (!Array.isArray(db[coll])) { db[coll] = []; changed = true }
   }
   if (!db.company_name) { db.company_name = 'Dayflow Technologies'; changed = true }
@@ -1272,6 +1272,108 @@ route('POST', '/api/notifications/read-all', async (req, res, body) => {
   }
   await persist()
   json(res, 200, { success: true, updated: count })
+})
+
+// ---------------------------------------------------------------- EMAIL ----
+// Compose an email of employee data from the authoritative database. Employees
+// may only email their own data (HR then receives a copy); HR may email any
+// employee's data (the employee is notified).
+
+route('POST', '/api/email/send', async (req, res, body) => {
+  const sender = db.employees.find(e => e.name === body.from_employee)
+  if (!sender) return json(res, 401, { error: 'Sender account not found.' })
+  const target = db.employees.find(e => e.name === (body.target_employee || sender.name))
+  if (!target) return json(res, 404, { error: 'Target employee not found.' })
+
+  const isHR = sender.user_role === 'HR'
+  if (!isHR && sender.name !== target.name) {
+    return json(res, 403, { error: 'You can only email your own employee data.' })
+  }
+
+  const toEmail = String(body.to_email || '').trim()
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(toEmail)) {
+    return json(res, 400, { error: 'Please enter a valid recipient email address.' })
+  }
+
+  const sections = {
+    profile: !!body.sections?.profile,
+    attendance: !!body.sections?.attendance,
+    leaves: !!body.sections?.leaves,
+    salary: !!body.sections?.salary
+  }
+  if (!Object.values(sections).some(Boolean)) {
+    return json(res, 400, { error: 'Select at least one data section to email.' })
+  }
+
+  // Assemble the selected data server-side from the database of record
+  const data = {}
+  if (sections.profile) {
+    const { password, ...safe } = target
+    data.profile = safe
+  }
+  if (sections.attendance) {
+    data.attendance = db.attendance
+      .filter(a => a.employee === target.name)
+      .sort((a, b) => (a.attendance_date < b.attendance_date ? 1 : -1))
+      .slice(0, 92)
+  }
+  if (sections.leaves) {
+    data.leaves = db.leave_applications.filter(l => l.employee === target.name)
+  }
+  if (sections.salary) {
+    data.salary_slips = db.salary_slips
+      .filter(s => s.employee === target.name)
+      .sort((a, b) => ((a.start_date || '') < (b.start_date || '') ? 1 : -1))
+  }
+
+  const seq = nextSeq('emails', 'EML-')
+  const base = {
+    from: sender.name,
+    from_name: sender.employee_name,
+    employee: target.name,
+    employee_name: target.employee_name,
+    to_email: toEmail,
+    subject: String(body.subject || `Employee Data — ${target.employee_name}`).trim(),
+    message: String(body.message || ''),
+    sections,
+    data_summary: {
+      profile: sections.profile,
+      attendance_records: data.attendance ? data.attendance.length : 0,
+      leave_applications: data.leaves ? data.leaves.length : 0,
+      salary_slips: data.salary_slips ? data.salary_slips.length : 0
+    },
+    data,
+    sent_at: localDateTimeStr()
+  }
+
+  db.emails.unshift({ name: `EML-${new Date().getFullYear()}-${String(seq).padStart(3, '0')}`, ...base })
+
+  let hrCopySent = false
+  if (!isHR) {
+    // Wireframe rule: HR always receives a copy when an employee emails data
+    const hrUsers = db.employees.filter(e => e.user_role === 'HR' && e.status === 'Active')
+    if (hrUsers.length) {
+      db.emails.unshift({
+        name: `EML-${new Date().getFullYear()}-${String(seq).padStart(3, '0')}-HR`,
+        ...base,
+        to_email: hrUsers[0].company_email,
+        is_hr_copy: true
+      })
+      hrCopySent = true
+    }
+    for (const hr of hrUsers) {
+      addNotification(hr.name, `${sender.employee_name} emailed their employee data to ${toEmail}. A copy has been sent to HR.`, 'email')
+    }
+  } else {
+    addNotification(target.name, `HR emailed your employee data to ${toEmail}.`, 'email')
+  }
+
+  await persist()
+  json(res, 201, {
+    success: true,
+    hr_copy_sent: hrCopySent,
+    email: { ...base, data: undefined }
+  })
 })
 
 // ============================================================================

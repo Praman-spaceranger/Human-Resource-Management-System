@@ -1563,6 +1563,17 @@ select.form-control {
 .modal-body {
   padding: 20px;
   overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Form-wrapped modals: make the form a shrinking flex column so the
+   body scrolls and the footer always stays visible inside the dialog */
+.modal-dialog form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .modal-footer {
