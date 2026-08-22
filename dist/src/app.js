@@ -38,7 +38,7 @@
         relation: 'Father',
         bank_name: 'HDFC Bank',
         bank_ac_no: '50100234567890',
-        image: null
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80'
       },
       {
         name: 'EMP-002',
@@ -66,7 +66,7 @@
         relation: 'Father',
         bank_name: 'ICICI Bank',
         bank_ac_no: '002305001234',
-        image: null
+        image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80'
       },
       {
         name: 'EMP-003',
@@ -94,7 +94,7 @@
         relation: 'Spouse',
         bank_name: 'State Bank of India',
         bank_ac_no: '30987654321',
-        image: null
+        image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80'
       },
       {
         name: 'EMP-004',
@@ -122,7 +122,7 @@
         relation: 'Mother',
         bank_name: 'Axis Bank',
         bank_ac_no: '918010045678901',
-        image: null
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80'
       },
       {
         name: 'EMP-005',
@@ -150,12 +150,124 @@
         relation: 'Father',
         bank_name: 'HDFC Bank',
         bank_ac_no: '50100987654321',
-        image: null
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        name: 'EMP-006',
+        employee_name: 'Vikram Malhotra',
+        first_name: 'Vikram',
+        last_name: 'Malhotra',
+        gender: 'Male',
+        date_of_birth: '1993-03-24',
+        date_of_joining: '2022-11-01',
+        status: 'Active',
+        department: 'Engineering',
+        designation: 'DevOps Specialist',
+        company: 'Dayflow Technologies',
+        company_email: 'vikram@dayflow.local',
+        personal_email: 'vikram.malhotra@example.com',
+        cell_phone: '+91 98222 33445',
+        reports_to: 'EMP-001',
+        leave_approver: 'EMP-001',
+        expense_approver: 'EMP-001',
+        shift: 'Morning Shift',
+        current_address: 'Flat 304, Palm Meadows, Whitefield, Bengaluru, Karnataka 560066',
+        permanent_address: 'Sector 29, Chandigarh 160030',
+        emergency_phone_number: '+91 98222 99881',
+        person_to_be_contacted: 'Sunil Malhotra',
+        relation: 'Brother',
+        bank_name: 'Kotak Mahindra Bank',
+        bank_ac_no: '481200987654',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        name: 'EMP-007',
+        employee_name: 'Priya Sengupta',
+        first_name: 'Priya',
+        last_name: 'Sengupta',
+        gender: 'Female',
+        date_of_birth: '1996-09-10',
+        date_of_joining: '2023-04-15',
+        status: 'Active',
+        department: 'Human Resources',
+        designation: 'HR Executive',
+        company: 'Dayflow Technologies',
+        company_email: 'priya@dayflow.local',
+        personal_email: 'priya.sengupta@example.com',
+        cell_phone: '+91 97333 44556',
+        reports_to: 'EMP-001',
+        leave_approver: 'EMP-001',
+        expense_approver: 'EMP-001',
+        shift: 'General Shift',
+        current_address: '77, 8th Main, Malleshwaram, Bengaluru, Karnataka 560003',
+        permanent_address: 'Salt Lake City, Kolkata, West Bengal 700091',
+        emergency_phone_number: '+91 97333 11229',
+        person_to_be_contacted: 'Debabrata Sengupta',
+        relation: 'Father',
+        bank_name: 'Axis Bank',
+        bank_ac_no: '919010078654321',
+        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        name: 'EMP-008',
+        employee_name: 'Arjun Kapoor',
+        first_name: 'Arjun',
+        last_name: 'Kapoor',
+        gender: 'Male',
+        date_of_birth: '1995-12-05',
+        date_of_joining: '2023-10-01',
+        status: 'Active',
+        department: 'Engineering',
+        designation: 'Full Stack Engineer',
+        company: 'Dayflow Technologies',
+        company_email: 'arjun@dayflow.local',
+        personal_email: 'arjun.kapoor@example.com',
+        cell_phone: '+91 98444 55667',
+        reports_to: 'EMP-001',
+        leave_approver: 'EMP-001',
+        expense_approver: 'EMP-001',
+        shift: 'General Shift',
+        current_address: '302, Prestige Park, Electronic City, Bengaluru, Karnataka 560100',
+        permanent_address: 'Model Town, Ludhiana, Punjab 141002',
+        emergency_phone_number: '+91 98444 00112',
+        person_to_be_contacted: 'Harsh Kapoor',
+        relation: 'Father',
+        bank_name: 'HDFC Bank',
+        bank_ac_no: '50100445566778',
+        image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80'
+      },
+      {
+        name: 'EMP-009',
+        employee_name: 'Sunita Rao',
+        first_name: 'Sunita',
+        last_name: 'Rao',
+        gender: 'Female',
+        date_of_birth: '1993-06-18',
+        date_of_joining: '2023-01-20',
+        status: 'Active',
+        department: 'Finance',
+        designation: 'Financial Analyst',
+        company: 'Dayflow Technologies',
+        company_email: 'sunita@dayflow.local',
+        personal_email: 'sunita.rao@example.com',
+        cell_phone: '+91 98555 66778',
+        reports_to: 'EMP-001',
+        leave_approver: 'EMP-001',
+        expense_approver: 'EMP-001',
+        shift: 'General Shift',
+        current_address: '55, Outer Ring Road, Marathahalli, Bengaluru, Karnataka 560037',
+        permanent_address: 'Banjara Hills, Hyderabad, Telangana 500034',
+        emergency_phone_number: '+91 98555 12340',
+        person_to_be_contacted: 'Nagesh Rao',
+        relation: 'Father',
+        bank_name: 'ICICI Bank',
+        bank_ac_no: '002305009988',
+        image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=240&auto=format&fit=crop&q=80'
       }
     ],
 
     departments: ['Human Resources', 'Engineering', 'Product', 'Design', 'Marketing', 'Sales', 'Finance'],
-    designations: ['HR Manager', 'HR Executive', 'Senior Frontend Engineer', 'Backend Developer', 'Full Stack Engineer', 'Product Manager', 'UI/UX Designer', 'DevOps Specialist'],
+    designations: ['HR Manager', 'HR Executive', 'Senior Frontend Engineer', 'Backend Developer', 'Full Stack Engineer', 'Product Manager', 'UI/UX Designer', 'DevOps Specialist', 'Financial Analyst'],
 
     shift_types: [
       { name: 'General Shift', start_time: '09:30:00', end_time: '18:30:00', description: 'Standard Office Shift' },
@@ -192,7 +304,11 @@
       'EMP-002': { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 15, 'Compensatory Off': 1 },
       'EMP-003': { 'Casual Leave': 10, 'Sick Leave': 10, 'Earned Leave': 12, 'Compensatory Off': 0 },
       'EMP-004': { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 14, 'Compensatory Off': 1 },
-      'EMP-005': { 'Casual Leave': 8, 'Sick Leave': 8, 'Earned Leave': 10, 'Compensatory Off': 0 }
+      'EMP-005': { 'Casual Leave': 8, 'Sick Leave': 8, 'Earned Leave': 10, 'Compensatory Off': 0 },
+      'EMP-006': { 'Casual Leave': 10, 'Sick Leave': 10, 'Earned Leave': 12, 'Compensatory Off': 1 },
+      'EMP-007': { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 15, 'Compensatory Off': 0 },
+      'EMP-008': { 'Casual Leave': 10, 'Sick Leave': 8, 'Earned Leave': 12, 'Compensatory Off': 0 },
+      'EMP-009': { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 14, 'Compensatory Off': 1 }
     },
 
     leave_applications: [
@@ -213,13 +329,13 @@
         name: 'LEAVE-2026-002',
         employee: 'EMP-003',
         employee_name: 'Kabir Mehta',
-        leave_type: 'Sick Leave',
-        from_date: '2026-08-14',
-        to_date: '2026-08-14',
-        total_leave_days: 1,
+        leave_type: 'Casual Leave',
+        from_date: '2026-08-01',
+        to_date: '2026-08-31',
+        total_leave_days: 20,
         status: 'Approved',
-        description: 'Viral fever rest day.',
-        posting_date: '2026-08-14',
+        description: 'Annual paid leave and family travels.',
+        posting_date: '2026-08-01',
         leave_approver: 'EMP-001'
       },
       {
@@ -247,6 +363,19 @@
         description: 'Relocating apartment.',
         posting_date: '2026-08-21',
         leave_approver: 'EMP-001'
+      },
+      {
+        name: 'LEAVE-2026-005',
+        employee: 'EMP-007',
+        employee_name: 'Priya Sengupta',
+        leave_type: 'Sick Leave',
+        from_date: '2026-08-15',
+        to_date: '2026-08-25',
+        total_leave_days: 10,
+        status: 'Approved',
+        description: 'Medical recovery leave.',
+        posting_date: '2026-08-15',
+        leave_approver: 'EMP-001'
       }
     ],
 
@@ -272,8 +401,9 @@
     checkins: [
       { name: 'CHK-001', employee: 'EMP-002', log_type: 'IN', time: '2026-08-22 09:32:15', latitude: 12.9716, longitude: 77.5946 },
       { name: 'CHK-002', employee: 'EMP-001', log_type: 'IN', time: '2026-08-22 09:15:00', latitude: 12.9716, longitude: 77.5946 },
-      { name: 'CHK-003', employee: 'EMP-003', log_type: 'IN', time: '2026-08-22 08:05:22', latitude: 12.9716, longitude: 77.5946 },
-      { name: 'CHK-004', employee: 'EMP-004', log_type: 'IN', time: '2026-08-22 09:40:11', latitude: 12.9716, longitude: 77.5946 }
+      { name: 'CHK-004', employee: 'EMP-004', log_type: 'IN', time: '2026-08-22 09:40:11', latitude: 12.9716, longitude: 77.5946 },
+      { name: 'CHK-005', employee: 'EMP-006', log_type: 'IN', time: '2026-08-22 08:50:00', latitude: 12.9716, longitude: 77.5946 },
+      { name: 'CHK-006', employee: 'EMP-009', log_type: 'IN', time: '2026-08-22 09:05:30', latitude: 12.9716, longitude: 77.5946 }
     ],
 
     expense_claims: [
@@ -645,8 +775,8 @@
   // 2. STORE ENGINE & PERSISTENCE
   // =========================================================================
 
-  const STORAGE_KEY = 'dayflow_hrms_data_v2';
-  const SESSION_KEY = 'dayflow_hrms_session_v2';
+  const STORAGE_KEY = 'dayflow_hrms_data_v3';
+  const SESSION_KEY = 'dayflow_hrms_session_v3';
 
   class Store {
     constructor() {
@@ -975,18 +1105,113 @@
     return colors[Math.abs(hash) % colors.length];
   }
 
+  // Attendance & work status calculator
+  function getEmployeeWorkStatus(empId) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    
+    // Check if on approved leave
+    const onLeave = store.data.leave_applications.find(l => 
+      l.employee === empId && 
+      l.status === 'Approved' && 
+      (l.from_date <= todayStr && l.to_date >= todayStr || l.from_date <= '2026-08-22' && l.to_date >= '2026-08-22')
+    );
+    if (onLeave) {
+      return {
+        status: 'leave',
+        label: 'On Leave',
+        icon: '✈️',
+        iconHtml: '<span class="card-status-icon icon-plane" title="Employee is on leave">✈️</span>',
+        badgeClass: 'badge-warning',
+        description: `On Leave (${onLeave.leave_type})`
+      };
+    }
+
+    // Check if employee checked in today
+    const checkins = store.data.checkins.filter(c => 
+      c.employee === empId && 
+      (c.time.startsWith(todayStr) || c.time.startsWith('2026-08-22'))
+    );
+    if (checkins.length > 0) {
+      const latest = checkins[0];
+      if (latest.log_type === 'IN') {
+        const timePart = (latest.time.split(' ')[1] || '09:00').substring(0, 5);
+        return {
+          status: 'present',
+          label: 'Present',
+          icon: '🟢',
+          iconHtml: '<span class="card-status-dot dot-green" title="Employee is present in the office"></span>',
+          badgeClass: 'badge-success',
+          description: `Present (In since ${timePart})`
+        };
+      }
+    }
+
+    // Otherwise absent
+    return {
+      status: 'absent',
+      label: 'Absent',
+      icon: '🟡',
+      iconHtml: '<span class="card-status-dot dot-yellow" title="Employee is absent (has not applied time off)"></span>',
+      badgeClass: 'badge-danger',
+      description: 'Absent (No time off applied)'
+    };
+  }
+
+  function getLatestCheckinTime(empId) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    const checkin = store.data.checkins.find(c => 
+      c.employee === empId && 
+      c.log_type === 'IN' && 
+      (c.time.startsWith(todayStr) || c.time.startsWith('2026-08-22'))
+    );
+    if (!checkin) return '09:15 AM';
+    const timeStr = checkin.time.split(' ')[1] || '09:15:00';
+    const parts = timeStr.split(':');
+    let hours = parseInt(parts[0], 10);
+    const minutes = parts[1] || '00';
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    return `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+  }
+
   // =========================================================================
   // 8. ROUTING & CONTROLLER
   // =========================================================================
 
-  let currentRoute = '#dashboard';
+  let currentRoute = '#employees';
   let routeParams = {};
   let mobileSidebarOpen = false;
 
   function parseHash() {
-    const hash = window.location.hash || '#dashboard';
+    const isHR = session && session.role === 'HR / Admin';
+    const defaultHash = isHR ? '#employees' : '#attendance';
+    let hash = window.location.hash || defaultHash;
     const parts = hash.split('/');
     currentRoute = parts[0];
+
+    // Restrict Employee Portal from HR-only routes & removed sections
+    if (!isHR) {
+      const hrOnlyRoutes = [
+        '#dashboard',
+        '#employees',
+        '#employee-new',
+        '#settings',
+        '#leave-approvals',
+        '#payroll',
+        '#payroll-run',
+        '#payroll-slips',
+        '#recruitment',
+        '#recruitment-applicants',
+        '#recruitment-interviews',
+        '#onboarding',
+        '#reports'
+      ];
+      if (hrOnlyRoutes.includes(currentRoute)) {
+        currentRoute = '#attendance';
+        hash = '#attendance';
+      }
+    }
+
     routeParams = { id: parts[1] || null, sub: parts[2] || null };
   }
 
@@ -1022,6 +1247,7 @@
 
     const emp = getActiveEmployee();
     const isHR = session.role === 'HR / Admin';
+    const empStatus = emp ? getEmployeeWorkStatus(emp.name) : { status: 'absent' };
 
     root.innerHTML = `
       <div class="app-layout">
@@ -1033,38 +1259,53 @@
             <div class="sidebar-brand">
               <div class="brand-logo">D</div>
               <span>Dayflow</span>
-              <small>${isHR ? 'HR Core' : 'Portal'}</small>
+              <small>${isHR ? 'HR Core' : 'Employee Portal'}</small>
             </div>
           </div>
 
           <div class="sidebar-content">
-            <!-- MAIN SECTION -->
+            <!-- MAIN SECTION (WORKFORCE HUB) -->
             <div>
-              <div class="nav-group-title">Main</div>
+              <div class="nav-group-title">Workforce Hub</div>
               <ul class="nav-list">
-                <li class="nav-item ${currentRoute === '#dashboard' ? 'active' : ''}">
-                  <button onclick="window.location.hash='#dashboard'">
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
-                  </button>
-                </li>
-                ${!isHR ? `
-                  <li class="nav-item ${currentRoute === '#checkin' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#checkin'">
-                      <span class="nav-icon">⏱️</span>
-                      <span>Check In / Out</span>
+                ${isHR ? `
+                  <li class="nav-item ${currentRoute === '#employees' || currentRoute === '#employee' || currentRoute === '#employee-new' ? 'active' : ''}">
+                    <button onclick="window.location.hash='#employees'">
+                      <span class="nav-icon">👥</span>
+                      <span>Employees</span>
+                      <span class="nav-badge">${store.data.employees.length}</span>
                     </button>
                   </li>
                   <li class="nav-item ${currentRoute === '#attendance' ? 'active' : ''}">
                     <button onclick="window.location.hash='#attendance'">
-                      <span class="nav-icon">📅</span>
-                      <span>My Attendance</span>
+                      <span class="nav-icon">🗓️</span>
+                      <span>Attendance</span>
+                    </button>
+                  </li>
+                  <li class="nav-item ${currentRoute === '#leave-approvals' ? 'active' : ''}">
+                    <button onclick="window.location.hash='#leave-approvals'">
+                      <span class="nav-icon">🌴</span>
+                      <span>Leave Approvals</span>
+                      <span class="nav-badge">${store.data.leave_applications.filter(l => l.status === 'Open').length}</span>
+                    </button>
+                  </li>
+                  <li class="nav-item ${currentRoute === '#dashboard' ? 'active' : ''}">
+                    <button onclick="window.location.hash='#dashboard'">
+                      <span class="nav-icon">📊</span>
+                      <span>HR Dashboard</span>
+                    </button>
+                  </li>
+                ` : `
+                  <li class="nav-item ${currentRoute === '#attendance' ? 'active' : ''}">
+                    <button onclick="window.location.hash='#attendance'">
+                      <span class="nav-icon">🗓️</span>
+                      <span>Attendance</span>
                     </button>
                   </li>
                   <li class="nav-item ${currentRoute === '#leave' ? 'active' : ''}">
                     <button onclick="window.location.hash='#leave'">
                       <span class="nav-icon">🌴</span>
-                      <span>My Leaves</span>
+                      <span>Time Off</span>
                     </button>
                   </li>
                   <li class="nav-item ${currentRoute === '#payslip' ? 'active' : ''}">
@@ -1085,47 +1326,21 @@
                       <span>Shift Requests</span>
                     </button>
                   </li>
-                ` : ''}
+                `}
               </ul>
             </div>
 
             <!-- HR / ADMIN OPERATIONS -->
             ${isHR ? `
               <div>
-                <div class="nav-group-title">People & Attendance</div>
+                <div class="nav-group-title">Talent & Operations</div>
                 <ul class="nav-list">
-                  <li class="nav-item ${currentRoute === '#employees' || currentRoute === '#employee' || currentRoute === '#employee-new' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#employees'">
-                      <span class="nav-icon">👥</span>
-                      <span>Employees</span>
-                      <span class="nav-badge">${store.data.employees.length}</span>
-                    </button>
-                  </li>
-                  <li class="nav-item ${currentRoute === '#attendance' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#attendance'">
-                      <span class="nav-icon">🗓️</span>
-                      <span>Attendance</span>
-                    </button>
-                  </li>
-                  <li class="nav-item ${currentRoute === '#leave-approvals' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#leave-approvals'">
-                      <span class="nav-icon">✅</span>
-                      <span>Leave Approvals</span>
-                      <span class="nav-badge">${store.data.leave_applications.filter(l => l.status === 'Open').length}</span>
-                    </button>
-                  </li>
                   <li class="nav-item ${currentRoute === '#onboarding' ? 'active' : ''}">
                     <button onclick="window.location.hash='#onboarding'">
                       <span class="nav-icon">🚀</span>
                       <span>Onboarding</span>
                     </button>
                   </li>
-                </ul>
-              </div>
-
-              <div>
-                <div class="nav-group-title">Recruitment & Hiring</div>
-                <ul class="nav-list">
                   <li class="nav-item ${currentRoute === '#recruitment' ? 'active' : ''}">
                     <button onclick="window.location.hash='#recruitment'">
                       <span class="nav-icon">💼</span>
@@ -1200,18 +1415,14 @@
                     <span>Announcements</span>
                   </button>
                 </li>
-                <li class="nav-item ${currentRoute === '#profile' ? 'active' : ''}">
-                  <button onclick="window.location.hash='#profile'">
-                    <span class="nav-icon">👤</span>
-                    <span>My Profile</span>
-                  </button>
-                </li>
-                <li class="nav-item ${currentRoute === '#settings' ? 'active' : ''}">
-                  <button onclick="window.location.hash='#settings'">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Workspace Settings</span>
-                  </button>
-                </li>
+                ${isHR ? `
+                  <li class="nav-item ${currentRoute === '#settings' ? 'active' : ''}">
+                    <button onclick="window.location.hash='#settings'">
+                      <span class="nav-icon">⚙️</span>
+                      <span>Settings</span>
+                    </button>
+                  </li>
+                ` : ''}
               </ul>
             </div>
           </div>
@@ -1237,21 +1448,56 @@
 
         <!-- MAIN WORKSPACE -->
         <div class="main-workspace">
-          <!-- TOPBAR -->
+          <!-- TOPBAR WITH COMPANY LOGO, NAV TABS, SYSTRAY CHECK IN/OUT & PROFILE AVATAR -->
           <header class="topbar">
             <div class="topbar-left">
               <button class="mobile-menu-toggle" onclick="window.toggleMobileSidebar()">
                 ☰
               </button>
-              <div class="breadcrumbs">
-                <a href="#dashboard">Dayflow</a>
-                <span class="separator">/</span>
-                <span class="current">${getRouteTitle()}</span>
+              <div class="sidebar-brand" style="cursor: pointer;" onclick="window.location.hash='${isHR ? '#employees' : '#attendance'}'">
+                <div class="brand-logo" style="width: 30px; height: 30px; font-size: 15px;">D</div>
+                <span style="font-weight: 700; font-size: 16px; color: var(--text-primary); letter-spacing: -0.3px;">Dayflow</span>
               </div>
+
+              <!-- TOPBAR NAVIGATION TABS -->
+              <nav class="topbar-nav">
+                ${isHR ? `
+                  <a href="#employees" class="topbar-nav-link ${currentRoute === '#employees' || currentRoute === '#employee' || currentRoute === '#employee-new' ? 'active' : ''}">
+                    Employees
+                  </a>
+                ` : ''}
+                <a href="#attendance" class="topbar-nav-link ${currentRoute === '#attendance' ? 'active' : ''}">
+                  Attendance
+                </a>
+                <a href="${isHR ? '#leave-approvals' : '#leave'}" class="topbar-nav-link ${currentRoute === '#leave' || currentRoute === '#leave-approvals' ? 'active' : ''}">
+                  Time Off
+                </a>
+                ${!isHR ? `
+                  <a href="#directory" class="topbar-nav-link ${currentRoute === '#directory' ? 'active' : ''}">
+                    Directory
+                  </a>
+                ` : ''}
+              </nav>
             </div>
 
             <div class="topbar-right">
-              <div class="badge ${isHR ? 'badge-purple' : 'badge-info'}">
+              <!-- CHECK IN / CHECK OUT SYSTRAY WIDGET -->
+              <div class="topbar-systray">
+                ${empStatus.status === 'present' ? `
+                  <button class="systray-btn checked-in" onclick="window.handlePunch('OUT')" title="You are currently Checked In. Click to Check Out.">
+                    <span class="systray-dot-green"></span>
+                    <span class="systray-text">Since ${getLatestCheckinTime(emp?.name)}</span>
+                    <span class="systray-action">Check Out ➔</span>
+                  </button>
+                ` : `
+                  <button class="systray-btn checked-out" onclick="window.handlePunch('IN')" title="You are currently Checked Out. Click to Check In.">
+                    <span class="systray-dot-red"></span>
+                    <span class="systray-action">Check IN ➔</span>
+                  </button>
+                `}
+              </div>
+
+              <div class="badge ${isHR ? 'badge-purple' : 'badge-info'}" style="margin: 0 4px;">
                 <span class="badge-dot"></span>
                 <span>${escapeHtml(session.role)}</span>
               </div>
@@ -1261,24 +1507,51 @@
                 ${getUnreadCount() > 0 ? `<span class="notification-count">${getUnreadCount()}</span>` : ''}
               </button>
 
+              <!-- PROFILE AVATAR WITH LIVE ATTENDANCE STATUS DOT -->
               <div class="profile-dropdown-container">
-                <button class="profile-trigger-btn" onclick="window.toggleUserMenu()">
-                  <div class="user-avatar-sm" style="background: ${nameToColor(emp?.employee_name)}; color: #fff; width: 28px; height: 28px; font-size: 11px;">
-                    ${getInitials(emp?.employee_name)}
+                <button class="profile-avatar-btn" onclick="window.toggleUserMenu()" title="User Profile Menu">
+                  <div class="avatar-with-status">
+                    ${emp?.image ? `
+                      <img src="${escapeHtml(emp.image)}" alt="${escapeHtml(emp.employee_name)}" class="topbar-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                      <div class="topbar-avatar-initials" style="display: none; background: ${nameToColor(emp?.employee_name)}22; color: ${nameToColor(emp?.employee_name)};">
+                        ${getInitials(emp?.employee_name)}
+                      </div>
+                    ` : `
+                      <div class="topbar-avatar-initials" style="background: ${nameToColor(emp?.employee_name)}22; color: ${nameToColor(emp?.employee_name)};">
+                        ${getInitials(emp?.employee_name)}
+                      </div>
+                    `}
+                    <span class="avatar-live-status ${empStatus.status === 'present' ? 'live-green' : 'live-red'}" title="${empStatus.status === 'present' ? 'Checked In (Present)' : 'Checked Out (Absent)'}"></span>
                   </div>
-                  <span style="font-size: 11px; color: var(--text-muted);">▾</span>
                 </button>
                 
                 <div id="user-menu-dropdown" class="dropdown-menu" style="display: none;">
-                  <div style="padding: 6px 10px; font-size: 11px; font-weight: 600; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle);">
-                    ${escapeHtml(emp?.employee_name)}
-                    <div style="font-size: 10px; font-weight: normal; color: var(--text-muted);">${escapeHtml(emp?.company_email)}</div>
+                  <div class="dropdown-user-header">
+                    <div class="dropdown-user-name">${escapeHtml(emp?.employee_name || 'User')}</div>
+                    <div class="dropdown-user-email">${escapeHtml(emp?.company_email || '')}</div>
+                    <div class="dropdown-user-status">
+                      <span class="card-status-dot ${empStatus.status === 'present' ? 'dot-green' : 'dot-red'}"></span>
+                      <span>${empStatus.status === 'present' ? 'Currently Checked In' : 'Currently Checked Out'}</span>
+                    </div>
                   </div>
-                  <button class="dropdown-item" onclick="window.location.hash='#profile'; window.toggleUserMenu();">👤 My Profile</button>
-                  <button class="dropdown-item" onclick="window.toggleRole(); window.toggleUserMenu();">⇄ Switch Mode</button>
-                  <button class="dropdown-item" onclick="window.location.hash='#settings'; window.toggleUserMenu();">⚙️ System Settings</button>
+                  <button class="dropdown-item" onclick="window.location.hash='#profile'; window.toggleUserMenu();">
+                    👤 My Profile
+                  </button>
+                  <button class="dropdown-item" onclick="window.handlePunch('${empStatus.status === 'present' ? 'OUT' : 'IN'}'); window.toggleUserMenu();">
+                    ${empStatus.status === 'present' ? '⏱️ Check Out Now' : '⏱️ Check In Now'}
+                  </button>
+                  <button class="dropdown-item" onclick="window.toggleRole(); window.toggleUserMenu();">
+                    ⇄ Switch Mode (${isHR ? 'Employee' : 'HR Admin'})
+                  </button>
+                  ${isHR ? `
+                    <button class="dropdown-item" onclick="window.location.hash='#settings'; window.toggleUserMenu();">
+                      ⚙️ Settings
+                    </button>
+                  ` : ''}
                   <div class="dropdown-divider"></div>
-                  <button class="dropdown-item" style="color: var(--danger);" onclick="window.logout()">🚪 Sign Out</button>
+                  <button class="dropdown-item dropdown-logout" style="color: var(--danger);" onclick="window.logout()">
+                    🚪 Log Out
+                  </button>
                 </div>
               </div>
             </div>
@@ -1341,7 +1614,7 @@
 
     switch (currentRoute) {
       case '#dashboard':
-        return isHR ? renderHRDashboard() : renderEmployeeDashboard();
+        return isHR ? renderHRDashboard() : renderEmployeeAttendanceView();
       case '#checkin':
         return renderCheckinView();
       case '#attendance':
@@ -1349,15 +1622,15 @@
       case '#leave':
         return renderEmployeeLeaveView();
       case '#leave-approvals':
-        return renderHRLeaveApprovalsView();
+        return isHR ? renderHRLeaveApprovalsView() : renderEmployeeLeaveView();
       case '#payslip':
         return renderEmployeePayslipView();
       case '#payroll':
-        return renderHRPayrollOverview();
+        return isHR ? renderHRPayrollOverview() : renderEmployeePayslipView();
       case '#payroll-run':
-        return renderRunPayrollWizard();
+        return isHR ? renderRunPayrollWizard() : renderEmployeePayslipView();
       case '#payroll-slips':
-        return renderHRSalarySlipsView();
+        return isHR ? renderHRSalarySlipsView() : renderEmployeePayslipView();
       case '#expenses':
         return renderExpensesView();
       case '#shifts':
@@ -1369,25 +1642,25 @@
       case '#profile':
         return renderProfileView();
       case '#employees':
-        return renderEmployeesListView();
+        return isHR ? renderEmployeesListView() : renderEmployeeAttendanceView();
       case '#employee':
         return renderEmployeeDetailView(routeParams.id);
       case '#employee-new':
-        return renderAddEmployeeView();
+        return isHR ? renderAddEmployeeView() : renderEmployeeAttendanceView();
       case '#recruitment':
-        return renderRecruitmentOpeningsView();
+        return isHR ? renderRecruitmentOpeningsView() : renderDirectoryView();
       case '#recruitment-applicants':
-        return renderRecruitmentApplicantsView();
+        return isHR ? renderRecruitmentApplicantsView() : renderDirectoryView();
       case '#recruitment-interviews':
-        return renderRecruitmentInterviewsView();
+        return isHR ? renderRecruitmentInterviewsView() : renderDirectoryView();
       case '#onboarding':
-        return renderOnboardingView();
+        return isHR ? renderOnboardingView() : renderDirectoryView();
       case '#reports':
-        return renderReportsView();
+        return isHR ? renderReportsView() : renderEmployeeAttendanceView();
       case '#notifications':
         return renderNotificationsView();
       case '#settings':
-        return renderSettingsView();
+        return isHR ? renderSettingsView() : renderProfileView();
       default:
         return `<div class="card"><div class="card-body"><p>Page not found.</p></div></div>`;
     }
@@ -2939,7 +3212,7 @@
   }
 
   // -------------------------------------------------------------------------
-  // HR EMPLOYEES ROSTER LIST VIEW
+  // HR EMPLOYEES ROSTER CARD GRID VIEW (#employees)
   // -------------------------------------------------------------------------
   let employeeSearch = '';
   let employeeFilterDept = 'All';
@@ -2947,91 +3220,98 @@
   function renderEmployeesListView() {
     let list = store.data.employees;
     if (employeeSearch) {
-      const q = employeeSearch.toLowerCase();
-      list = list.filter(e => e.employee_name.toLowerCase().includes(q) || e.name.toLowerCase().includes(q) || (e.department || '').toLowerCase().includes(q));
+      const q = employeeSearch.toLowerCase().trim();
+      list = list.filter(e => 
+        e.employee_name.toLowerCase().includes(q) || 
+        e.name.toLowerCase().includes(q) || 
+        (e.department || '').toLowerCase().includes(q) ||
+        (e.designation || '').toLowerCase().includes(q)
+      );
     }
     if (employeeFilterDept !== 'All') {
       list = list.filter(e => e.department === employeeFilterDept);
     }
 
     return `
-      <div class="page-header">
-        <div class="page-title-group">
-          <h1>Employee Management Directory</h1>
-          <p>Official workforce master roster, onboarding records, and employee credentials.</p>
+      <!-- TOP ACTION BAR -->
+      <div class="employees-action-bar">
+        <div class="action-bar-left">
+          <button class="btn-purple-new" onclick="window.location.hash='#employee-new'">
+            <span>NEW</span>
+          </button>
         </div>
-        <div class="page-actions">
-          <button class="btn btn-primary" onclick="window.location.hash='#employee-new'">+ Onboard Employee</button>
-        </div>
-      </div>
 
-      <!-- FILTER TOOLBAR -->
-      <div class="filter-toolbar">
-        <div class="filter-group-left">
-          <div class="search-box">
-            <span class="icon">🔍</span>
-            <input type="text" placeholder="Search by name or employee ID..." value="${escapeHtml(employeeSearch)}" oninput="window.setEmployeeSearch(this.value)">
-          </div>
-          <select class="filter-select" onchange="window.setEmployeeDept(this.value)">
+        <div class="action-bar-right" style="display: flex; align-items: center; gap: 12px;">
+          <select class="filter-select" style="height: 38px; border-radius: var(--radius-full); padding: 0 14px; background: #ffffff;" onchange="window.setEmployeeDept(this.value)">
             <option ${employeeFilterDept === 'All' ? 'selected' : ''}>All Departments</option>
             ${store.data.departments.map(d => `<option ${employeeFilterDept === d ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('')}
           </select>
-        </div>
-        <div class="filter-group-right">
-          <span style="font-size: 12px; color: var(--text-muted);">${list.length} Total Records</span>
+
+          <div class="search-pill-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search" value="${escapeHtml(employeeSearch)}" oninput="window.setEmployeeSearch(this.value)">
+          </div>
         </div>
       </div>
 
-      <!-- EMPLOYEES TABLE -->
-      <div class="card">
-        <div class="table-container" style="border: none;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Employee ID</th>
-                <th>Full Name</th>
-                <th>Department</th>
-                <th>Designation</th>
-                <th>Date of Joining</th>
-                <th>Status</th>
-                <th style="text-align: right;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${list.map(e => `
-                <tr onclick="window.location.hash='#employee/${e.name}'" style="cursor: pointer;">
-                  <td><strong>${escapeHtml(e.name)}</strong></td>
-                  <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <div class="user-avatar-sm" style="width: 26px; height: 26px; font-size: 10px; background: ${nameToColor(e.employee_name)}22; color: ${nameToColor(e.employee_name)};">
-                        ${getInitials(e.employee_name)}
-                      </div>
-                      <strong>${escapeHtml(e.employee_name)}</strong>
-                    </div>
-                  </td>
-                  <td>${escapeHtml(e.department)}</td>
-                  <td>${escapeHtml(e.designation)}</td>
-                  <td>${formatDate(e.date_of_joining)}</td>
-                  <td><span class="badge badge-success">${escapeHtml(e.status)}</span></td>
-                  <td style="text-align: right;">
-                    <a href="#employee/${e.name}" class="btn btn-sm btn-secondary">View Document →</a>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
+      <!-- STATUS LEGEND INDICATOR BAR -->
+      <div class="status-legend-bar">
+        <span style="font-weight: 700; color: var(--text-primary); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px;">Status Indicators:</span>
+        <span class="legend-item"><span class="card-status-dot dot-green"></span> <strong>Green dot:</strong> Employee is present in the office.</span>
+        <span class="legend-item"><span class="card-status-icon icon-plane">✈️</span> <strong>Airplane icon:</strong> Employee is on leave.</span>
+        <span class="legend-item"><span class="card-status-dot dot-yellow"></span> <strong>Yellow dot:</strong> Employee is absent. (Employee has not applied time off and is absent.)</span>
+        <span style="margin-left: auto; color: var(--text-muted); font-size: 12px; font-weight: 600;">${list.length} Employees</span>
+      </div>
+
+      <!-- EMPLOYEES CARDS GRID -->
+      <div class="employees-cards-grid">
+        ${list.map(e => {
+          const statusObj = getEmployeeWorkStatus(e.name);
+          return `
+            <div class="employee-card" onclick="window.location.hash='#employee/${e.name}'" role="button" tabindex="0" title="Click to view full employee information">
+              <!-- TOP-RIGHT ATTENDANCE / WORK STATUS INDICATOR -->
+              <div class="employee-card-status-badge" title="${statusObj.description}">
+                ${statusObj.iconHtml}
+              </div>
+
+              <!-- PROFILE PICTURE (AVATAR) -->
+              <div class="employee-card-avatar-wrap">
+                ${e.image ? `
+                  <img src="${escapeHtml(e.image)}" alt="${escapeHtml(e.employee_name)}" class="emp-card-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                  <div class="emp-card-avatar-fallback" style="display: none; background: ${nameToColor(e.employee_name)}22; color: ${nameToColor(e.employee_name)};">
+                    ${getInitials(e.employee_name)}
+                  </div>
+                ` : `
+                  <div class="emp-card-avatar-fallback" style="background: ${nameToColor(e.employee_name)}22; color: ${nameToColor(e.employee_name)};">
+                    ${getInitials(e.employee_name)}
+                  </div>
+                `}
+              </div>
+
+              <!-- BASIC INFORMATION -->
+              <h3 class="emp-card-name">${escapeHtml(e.employee_name)}</h3>
+              <div class="emp-card-designation">${escapeHtml(e.designation)}</div>
+              <div class="emp-card-dept-badge">${escapeHtml(e.department)}</div>
+
+              <div class="emp-card-meta-row">
+                <span><strong>ID:</strong> ${escapeHtml(e.name)}</span>
+                <span class="badge ${statusObj.badgeClass}" style="font-size: 10.5px; padding: 2px 8px;">${statusObj.label}</span>
+              </div>
+            </div>
+          `;
+        }).join('')}
       </div>
     `;
   }
 
   // -------------------------------------------------------------------------
-  // HR EMPLOYEE DOCUMENT DETAIL VIEW (#employee/:id)
+  // HR / EMPLOYEE VIEW-ONLY DETAIL VIEW (#employee/:id)
   // -------------------------------------------------------------------------
   let activeEmpTab = 'personal';
 
   function renderEmployeeDetailView(empId) {
     const emp = store.data.employees.find(e => e.name === empId) || store.data.employees[0];
+    const statusObj = getEmployeeWorkStatus(emp.name);
 
     return `
       <div class="page-header">
@@ -3041,70 +3321,156 @@
             <span class="separator">/</span>
             <span class="current">${escapeHtml(emp.name)}</span>
           </div>
-          <h1>${escapeHtml(emp.employee_name)}</h1>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <h1>${escapeHtml(emp.employee_name)}</h1>
+            <span class="view-only-tag">🔒 View-Only Mode</span>
+          </div>
         </div>
         <div class="page-actions">
-          <button class="btn btn-secondary" onclick="window.openEditEmployeeModal('${emp.name}')">✏️ Edit Record</button>
-          <a href="#employees" class="btn btn-ghost">Back to List</a>
+          <a href="#employees" class="btn btn-secondary">← Back to Employees</a>
+          <button class="btn btn-ghost" onclick="window.openEditEmployeeModal('${emp.name}')">✏️ Edit Details</button>
         </div>
       </div>
 
-      <!-- TABS -->
+      <!-- HERO PROFILE CARD -->
+      <div class="emp-profile-hero">
+        <div class="emp-profile-hero-left">
+          ${emp.image ? `
+            <img src="${escapeHtml(emp.image)}" alt="${escapeHtml(emp.employee_name)}" class="emp-hero-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="emp-hero-initials" style="display: none; background: ${nameToColor(emp.employee_name)}22; color: ${nameToColor(emp.employee_name)};">
+              ${getInitials(emp.employee_name)}
+            </div>
+          ` : `
+            <div class="emp-hero-initials" style="background: ${nameToColor(emp.employee_name)}22; color: ${nameToColor(emp.employee_name)};">
+              ${getInitials(emp.employee_name)}
+            </div>
+          `}
+          <div>
+            <h2 class="emp-hero-title">${escapeHtml(emp.employee_name)}</h2>
+            <div class="emp-hero-subtitle">
+              <span><strong>${escapeHtml(emp.designation)}</strong></span>
+              <span>•</span>
+              <span>${escapeHtml(emp.department)}</span>
+              <span>•</span>
+              <span>${escapeHtml(emp.name)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="text-align: right;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Attendance Status</div>
+            <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 4px;">
+              ${statusObj.iconHtml}
+              <span class="badge ${statusObj.badgeClass}" style="font-size: 12px; font-weight: 600;">${statusObj.label}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW-ONLY FORM TABS -->
       <div class="card">
         <div class="card-header" style="border-bottom: none; padding-bottom: 0;">
           <div class="tabs-nav" style="border-bottom: none; margin-bottom: 0;">
-            <button class="tab-btn ${activeEmpTab === 'personal' ? 'active' : ''}" onclick="window.setEmpDocTab('personal')">Personal Info</button>
+            <button class="tab-btn ${activeEmpTab === 'personal' ? 'active' : ''}" onclick="window.setEmpDocTab('personal')">Personal Details</button>
             <button class="tab-btn ${activeEmpTab === 'job' ? 'active' : ''}" onclick="window.setEmpDocTab('job')">Job & Organization</button>
-            <button class="tab-btn ${activeEmpTab === 'salary' ? 'active' : ''}" onclick="window.setEmpDocTab('salary')">Salary & Structure</button>
             <button class="tab-btn ${activeEmpTab === 'emergency' ? 'active' : ''}" onclick="window.setEmpDocTab('emergency')">Emergency & Bank</button>
           </div>
         </div>
 
-        <div class="card-body" style="border-top: 1px solid var(--border-color); font-size: 13px;">
+        <div class="card-body" style="border-top: 1px solid var(--border-color); padding: 24px;">
           ${activeEmpTab === 'personal' ? `
-            <div class="form-row">
-              <div><span style="color: var(--text-muted);">Employee Name:</span> <strong>${escapeHtml(emp.employee_name)}</strong></div>
-              <div><span style="color: var(--text-muted);">Gender:</span> <strong>${escapeHtml(emp.gender || '—')}</strong></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+              <div class="view-only-field-group">
+                <span class="view-only-label">Full Name</span>
+                <span class="view-only-value">${escapeHtml(emp.employee_name)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Gender</span>
+                <span class="view-only-value">${escapeHtml(emp.gender || '—')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Date of Birth</span>
+                <span class="view-only-value">${formatDate(emp.date_of_birth)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Cell Phone</span>
+                <span class="view-only-value">${escapeHtml(emp.cell_phone || '—')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Company Email</span>
+                <span class="view-only-value">${escapeHtml(emp.company_email)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Personal Email</span>
+                <span class="view-only-value">${escapeHtml(emp.personal_email || '—')}</span>
+              </div>
+              <div class="view-only-field-group" style="grid-column: span 2;">
+                <span class="view-only-label">Current Residential Address</span>
+                <span class="view-only-value">${escapeHtml(emp.current_address || '—')}</span>
+              </div>
+              <div class="view-only-field-group" style="grid-column: span 2;">
+                <span class="view-only-label">Permanent Address</span>
+                <span class="view-only-value">${escapeHtml(emp.permanent_address || '—')}</span>
+              </div>
             </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">Company Email:</span> <strong>${escapeHtml(emp.company_email)}</strong></div>
-              <div><span style="color: var(--text-muted);">Personal Email:</span> <strong>${escapeHtml(emp.personal_email || '—')}</strong></div>
-            </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">Cell Phone:</span> <strong>${escapeHtml(emp.cell_phone)}</strong></div>
-              <div><span style="color: var(--text-muted);">Date of Birth:</span> <strong>${formatDate(emp.date_of_birth)}</strong></div>
-            </div>
-            <div style="margin-top: 14px;"><span style="color: var(--text-muted);">Residential Address:</span> <div>${escapeHtml(emp.current_address || '—')}</div></div>
           ` : activeEmpTab === 'job' ? `
-            <div class="form-row">
-              <div><span style="color: var(--text-muted);">Department:</span> <strong>${escapeHtml(emp.department)}</strong></div>
-              <div><span style="color: var(--text-muted);">Designation:</span> <strong>${escapeHtml(emp.designation)}</strong></div>
-            </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">Date of Joining:</span> <strong>${formatDate(emp.date_of_joining)}</strong></div>
-              <div><span style="color: var(--text-muted);">Reports To:</span> <strong>${escapeHtml(emp.reports_to || 'Management')}</strong></div>
-            </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">Shift Roster:</span> <strong>${escapeHtml(emp.shift || 'General Shift')}</strong></div>
-              <div><span style="color: var(--text-muted);">Status:</span> <span class="badge badge-success">${escapeHtml(emp.status)}</span></div>
-            </div>
-          ` : activeEmpTab === 'salary' ? `
-            <div class="form-row">
-              <div><span style="color: var(--text-muted);">Monthly CTC:</span> <strong>₹1,25,000</strong></div>
-              <div><span style="color: var(--text-muted);">Basic Pay:</span> <strong>₹62,500</strong></div>
-            </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">HRA:</span> <strong>₹25,000</strong></div>
-              <div><span style="color: var(--text-muted);">Special Allowance:</span> <strong>₹37,500</strong></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+              <div class="view-only-field-group">
+                <span class="view-only-label">Department</span>
+                <span class="view-only-value">${escapeHtml(emp.department)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Designation</span>
+                <span class="view-only-value">${escapeHtml(emp.designation)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Date of Joining</span>
+                <span class="view-only-value">${formatDate(emp.date_of_joining)}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Employment Status</span>
+                <span class="view-only-value"><span class="badge badge-success">${escapeHtml(emp.status)}</span></span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Reports To</span>
+                <span class="view-only-value">${escapeHtml(emp.reports_to || 'Management')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Shift Schedule</span>
+                <span class="view-only-value">${escapeHtml(emp.shift || 'General Shift')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Leave Approver</span>
+                <span class="view-only-value">${escapeHtml(emp.leave_approver || 'HR Manager')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Expense Approver</span>
+                <span class="view-only-value">${escapeHtml(emp.expense_approver || 'HR Manager')}</span>
+              </div>
             </div>
           ` : `
-            <div class="form-row">
-              <div><span style="color: var(--text-muted);">Contact Person:</span> <strong>${escapeHtml(emp.person_to_be_contacted || '—')}</strong></div>
-              <div><span style="color: var(--text-muted);">Relationship:</span> <strong>${escapeHtml(emp.relation || '—')}</strong></div>
-            </div>
-            <div class="form-row" style="margin-top: 14px;">
-              <div><span style="color: var(--text-muted);">Emergency Phone:</span> <strong>${escapeHtml(emp.emergency_phone_number || '—')}</strong></div>
-              <div><span style="color: var(--text-muted);">Bank Account:</span> <strong>•••• ${escapeHtml((emp.bank_ac_no || '0000').slice(-4))}</strong></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+              <div class="view-only-field-group">
+                <span class="view-only-label">Emergency Contact Person</span>
+                <span class="view-only-value">${escapeHtml(emp.person_to_be_contacted || '—')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Relationship</span>
+                <span class="view-only-value">${escapeHtml(emp.relation || '—')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Emergency Phone Number</span>
+                <span class="view-only-value">${escapeHtml(emp.emergency_phone_number || '—')}</span>
+              </div>
+              <div class="view-only-field-group">
+                <span class="view-only-label">Bank Name</span>
+                <span class="view-only-value">${escapeHtml(emp.bank_name || 'HDFC Bank')}</span>
+              </div>
+              <div class="view-only-field-group" style="grid-column: span 2;">
+                <span class="view-only-label">Bank Account Number</span>
+                <span class="view-only-value">•••• •••• •••• ${escapeHtml((emp.bank_ac_no || '1234').slice(-4))}</span>
+              </div>
             </div>
           `}
         </div>
@@ -3803,6 +4169,7 @@
     });
 
     showToast('success', `Welcome back, ${name}!`);
+    window.location.hash = role === 'HR / Admin' ? '#employees' : '#attendance';
     renderApp();
   };
 
@@ -3819,7 +4186,7 @@
     session.employeeId = newRole === 'HR / Admin' ? 'EMP-001' : 'EMP-002';
     saveSession(session);
     showToast('success', `Switched mode to ${newRole}`);
-    window.location.hash = '#dashboard';
+    window.location.hash = newRole === 'HR / Admin' ? '#employees' : '#attendance';
     renderApp();
   };
 
