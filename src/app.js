@@ -1482,6 +1482,13 @@
     const parts = hash.split('/');
     currentRoute = parts[0];
 
+    // Talent & Operations section was removed — redirect legacy links
+    const removedRoutes = ['#onboarding', '#recruitment', '#recruitment-applicants', '#recruitment-interviews'];
+    if (removedRoutes.includes(currentRoute)) {
+      currentRoute = isHR ? '#employees' : '#attendance';
+      hash = currentRoute;
+    }
+
     // Restrict Employee Portal from HR-only routes & removed sections
     if (!isHR) {
       const hrOnlyRoutes = [
@@ -1493,10 +1500,6 @@
         '#payroll',
         '#payroll-run',
         '#payroll-slips',
-        '#recruitment',
-        '#recruitment-applicants',
-        '#recruitment-interviews',
-        '#onboarding',
         '#reports'
       ];
       if (hrOnlyRoutes.includes(currentRoute)) {
@@ -1660,38 +1663,8 @@
               </ul>
             </div>
 
-            <!-- HR / ADMIN OPERATIONS -->
+            <!-- HR PAYROLL OPERATIONS -->
             ${isHR ? `
-              <div>
-                <div class="nav-group-title">Talent & Operations</div>
-                <ul class="nav-list">
-                  <li class="nav-item ${currentRoute === '#onboarding' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#onboarding'">
-                      <span class="nav-icon">${ICONS.rocket}</span>
-                      <span>Onboarding</span>
-                    </button>
-                  </li>
-                  <li class="nav-item ${currentRoute === '#recruitment' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#recruitment'">
-                      <span class="nav-icon">${ICONS.briefcase}</span>
-                      <span>Job Openings</span>
-                    </button>
-                  </li>
-                  <li class="nav-item ${currentRoute === '#recruitment-applicants' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#recruitment-applicants'">
-                      <span class="nav-icon">${ICONS.target}</span>
-                      <span>Applicants Board</span>
-                    </button>
-                  </li>
-                  <li class="nav-item ${currentRoute === '#recruitment-interviews' ? 'active' : ''}">
-                    <button onclick="window.location.hash='#recruitment-interviews'">
-                      <span class="nav-icon">${ICONS.mic}</span>
-                      <span>Interviews</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
               <div>
                 <div class="nav-group-title">Payroll & Compensation</div>
                 <ul class="nav-list">
@@ -1915,10 +1888,6 @@
       case '#employees': return 'Employee Directory';
       case '#employee': return 'Employee Document';
       case '#employee-new': return 'Onboard New Employee';
-      case '#recruitment': return 'Job Openings';
-      case '#recruitment-applicants': return 'Applicant Tracking Pipeline';
-      case '#recruitment-interviews': return 'Interview Schedule & Feedback';
-      case '#onboarding': return 'Employee Onboarding Progress';
       case '#reports': return 'Reports & HR Analytics';
       case '#notifications': return 'Notifications Center';
       case '#settings': return 'Workspace Preferences';
@@ -1975,14 +1944,6 @@
         return renderEmployeeDetailView(routeParams.id);
       case '#employee-new':
         return isHR ? renderAddEmployeeView() : renderEmployeeAttendanceView();
-      case '#recruitment':
-        return isHR ? renderRecruitmentOpeningsView() : renderDirectoryView();
-      case '#recruitment-applicants':
-        return isHR ? renderRecruitmentApplicantsView() : renderDirectoryView();
-      case '#recruitment-interviews':
-        return isHR ? renderRecruitmentInterviewsView() : renderDirectoryView();
-      case '#onboarding':
-        return isHR ? renderOnboardingView() : renderDirectoryView();
       case '#reports':
         return isHR ? renderReportsView() : renderEmployeeAttendanceView();
       case '#notifications':
@@ -2196,7 +2157,6 @@
   function renderHRDashboard() {
     const totalEmployees = store.data.employees.length;
     const activeEmployees = store.data.employees.filter(e => e.status === 'Active').length;
-    const openPositions = store.data.job_openings.filter(j => j.status === 'Open').length;
     const pendingLeaves = store.data.leave_applications.filter(l => l.status === 'Open');
     const pendingExpenses = store.data.expense_claims.filter(e => e.approval_status === 'Draft');
     const pendingShifts = store.data.shift_requests.filter(s => s.status === 'Draft');
@@ -2210,14 +2170,6 @@
     const presentToday = cameToWork;
     const absentToday = liveStats.filter(s => s.status === 'Absent').length;
     const attendanceRate = activeEmps.length ? Math.round((cameToWork / activeEmps.length) * 100) : 0;
-
-    // Recruitment pipeline — computed from applicants & interviews
-    const applicants = store.data.job_applicants;
-    const stageOpen = applicants.filter(a => a.status === 'Open').length;
-    const stageScreened = applicants.filter(a => a.status === 'Replied' || a.status === 'Hold').length;
-    const stageInterviewed = new Set(store.data.interviews.map(i => i.applicant)).size;
-    const stageAccepted = applicants.filter(a => a.status === 'Accepted').length;
-    const maxStage = Math.max(stageOpen, stageScreened, stageInterviewed, stageAccepted, 1);
 
     // Next payroll run — current month, slips still to generate
     const nowD = new Date();
@@ -2236,7 +2188,7 @@
       <div class="page-header">
         <div class="page-title-group">
           <h1>Workforce & Operations Dashboard</h1>
-          <p>Real-time organizational headcount, attendance metrics, recruitment funnel, and pending approval queues.</p>
+          <p>Real-time organizational headcount, attendance metrics, and pending approval queues.</p>
         </div>
         <div class="page-actions">
           <button class="btn btn-primary" onclick="window.location.hash='#employee-new'">+ Onboard Employee</button>
@@ -2278,28 +2230,6 @@
           <div class="stat-card-value">${totalPendingApprovals}</div>
           <div class="stat-card-footer">
             <span>${pendingLeaves.length} Leaves &middot; ${pendingExpenses.length} Expenses &middot; ${pendingShifts.length} Shifts</span>
-          </div>
-        </div>
-
-        <div class="stat-card info">
-          <div class="stat-card-header">
-            <span class="stat-card-title">Open Positions</span>
-            <span class="stat-card-icon" style="background: var(--info-pale); color: var(--info);">${ICONS.briefcase}</span>
-          </div>
-          <div class="stat-card-value">${openPositions}</div>
-          <div class="stat-card-footer">
-            <span>${store.data.job_applicants.length} Total Applicants</span>
-          </div>
-        </div>
-
-        <div class="stat-card purple">
-          <div class="stat-card-header">
-            <span class="stat-card-title">Onboarding Pipeline</span>
-            <span class="stat-card-icon" style="background: var(--purple-pale); color: var(--purple);">${ICONS.rocket}</span>
-          </div>
-          <div class="stat-card-value">${store.data.onboarding_records.filter(o => o.boarding_status === 'In Progress').length}</div>
-          <div class="stat-card-footer">
-            <span>New Hires in induction</span>
           </div>
         </div>
 
@@ -2380,38 +2310,8 @@
           </div>
         </div>
 
-        <!-- RECRUITMENT & RECENT ACTIVITIES -->
+        <!-- RECENT ACTIVITIES -->
         <div style="display: flex; flex-direction: column; gap: 20px;">
-          <!-- RECRUITMENT PIPELINE WIDGET -->
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">Recruitment Pipeline</span>
-              <a href="#recruitment-applicants" class="btn btn-ghost btn-sm">Kanban →</a>
-            </div>
-            <div class="card-body" style="padding: 16px;">
-              <div class="report-bar-row">
-                <span class="report-bar-label">Open / Sourced</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageOpen / maxStage * 100)}%; background: #94a3b8;"></div></div>
-                <span class="report-bar-value">${stageOpen}</span>
-              </div>
-              <div class="report-bar-row">
-                <span class="report-bar-label">Replied / Screened</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageScreened / maxStage * 100)}%; background: #3b82f6;"></div></div>
-                <span class="report-bar-value">${stageScreened}</span>
-              </div>
-              <div class="report-bar-row">
-                <span class="report-bar-label">Interview Stage</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageInterviewed / maxStage * 100)}%; background: #8b5cf6;"></div></div>
-                <span class="report-bar-value">${stageInterviewed}</span>
-              </div>
-              <div class="report-bar-row">
-                <span class="report-bar-label">Offer Accepted</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageAccepted / maxStage * 100)}%; background: #10b981;"></div></div>
-                <span class="report-bar-value">${stageAccepted}</span>
-              </div>
-            </div>
-          </div>
-
           <!-- RECENT ACTIVITY FEED -->
           <div class="card">
             <div class="card-header">
@@ -4329,211 +4229,6 @@
 
 
   // -------------------------------------------------------------------------
-  // HR RECRUITMENT MODULES (Openings, Applicants Kanban, Interviews)
-  // -------------------------------------------------------------------------
-  function renderRecruitmentOpeningsView() {
-    const openings = store.data.job_openings;
-
-    return `
-      <div class="page-header">
-        <div class="page-title-group">
-          <h1>Job Openings & Requisitions</h1>
-          <p>Create job descriptions, manage target headcount, and view applicant pipelines.</p>
-        </div>
-        <div class="page-actions">
-          <button class="btn btn-primary" onclick="window.openCreateJobOpeningModal()">+ Create Job Opening</button>
-          <a href="#recruitment-applicants" class="btn btn-secondary">Applicant Kanban</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-container" style="border: none;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Job Title</th>
-                <th>Department</th>
-                <th style="text-align: center;">Open Vacancies</th>
-                <th>Posted Date</th>
-                <th>Status</th>
-                <th style="text-align: right;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${openings.map(j => `
-                <tr>
-                  <td><strong>${escapeHtml(j.job_title)}</strong></td>
-                  <td>${escapeHtml(j.department)}</td>
-                  <td style="text-align: center;"><strong>${j.vacancies}</strong></td>
-                  <td>${formatDate(j.posted_date)}</td>
-                  <td><span class="badge ${j.status === 'Open' ? 'badge-success' : 'badge-neutral'}">${escapeHtml(j.status)}</span></td>
-                  <td style="text-align: right;">
-                    <a href="#recruitment-applicants" class="btn btn-sm btn-secondary">View Applicants</a>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-  }
-
-  // APPLICANTS KANBAN BOARD
-  function renderRecruitmentApplicantsView() {
-    const applicants = store.data.job_applicants;
-    const stages = ['Open', 'Replied', 'Accepted', 'Rejected', 'Hold'];
-
-    return `
-      <div class="page-header">
-        <div class="page-title-group">
-          <h1>Applicant Tracking Pipeline</h1>
-          <p>Kanban pipeline view to track candidate evaluations, screening rounds, and offers.</p>
-        </div>
-        <div class="page-actions">
-          <button class="btn btn-primary" onclick="window.openAddApplicantModal()">+ Add Applicant</button>
-          <a href="#recruitment-interviews" class="btn btn-secondary">Interviews Schedule</a>
-        </div>
-      </div>
-
-      <!-- KANBAN COLUMNS -->
-      <div class="kanban-board">
-        ${stages.map(stage => {
-          const list = applicants.filter(a => a.status === stage);
-          return `
-            <div class="kanban-column">
-              <div class="kanban-column-header">
-                <div class="kanban-column-title">
-                  <span class="badge-dot" style="background: ${stage === 'Accepted' ? 'var(--success)' : stage === 'Rejected' ? 'var(--danger)' : stage === 'Replied' ? 'var(--primary)' : 'var(--warning)'};"></span>
-                  <span>${escapeHtml(stage)}</span>
-                </div>
-                <span class="badge badge-neutral">${list.length}</span>
-              </div>
-              <div class="kanban-cards-list">
-                ${list.map(a => `
-                  <div class="kanban-card" onclick="window.openApplicantDetailsModal('${a.name}')">
-                    <div class="kanban-card-title">${escapeHtml(a.applicant_name)}</div>
-                    <div class="kanban-card-sub">${escapeHtml(a.job_title)}</div>
-                    <div class="kanban-card-meta">
-                      <span>${escapeHtml(a.source || 'Direct')}</span>
-                      <span>${a.rating || 0} / 5</span>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
-  }
-
-  // INTERVIEWS MANAGEMENT
-  function renderRecruitmentInterviewsView() {
-    const list = store.data.interviews;
-
-    return `
-      <div class="page-header">
-        <div class="page-title-group">
-          <h1>Interview Schedules & Candidate Ratings</h1>
-          <p>Coordinate panel interview time slots, record technical evaluations, and track outcomes.</p>
-        </div>
-        <div class="page-actions">
-          <button class="btn btn-primary" onclick="window.openScheduleInterviewModal()">+ Schedule Interview</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-container" style="border: none;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Applicant</th>
-                <th>Job Title</th>
-                <th>Interview Date & Time</th>
-                <th>Assigned Panelist</th>
-                <th>Rating</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${list.map(i => `
-                <tr>
-                  <td><strong>${escapeHtml(i.applicant_name)}</strong></td>
-                  <td>${escapeHtml(i.job_title)}</td>
-                  <td><strong>${formatDate(i.scheduled_date)}</strong> &middot; ${escapeHtml(i.from_time)} - ${escapeHtml(i.to_time)}</td>
-                  <td>${escapeHtml(i.interviewer)}</td>
-                  <td>${i.rating || 0} / 5</td>
-                  <td><span class="badge ${i.status === 'Cleared' ? 'badge-success' : i.status === 'Scheduled' ? 'badge-warning' : 'badge-danger'}">${escapeHtml(i.status)}</span></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-  }
-
-  // -------------------------------------------------------------------------
-  // HR ONBOARDING MANAGEMENT VIEW
-  // -------------------------------------------------------------------------
-  function renderOnboardingView() {
-    const records = store.data.onboarding_records;
-
-    return `
-      <div class="page-header">
-        <div class="page-title-group">
-          <h1>Employee Onboarding & Induction</h1>
-          <p>Track new hire verification checklists, IT allocations, and 30-day milestones.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="table-container" style="border: none;">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Employee</th>
-                <th>Department</th>
-                <th>Designation</th>
-                <th>Induction Status</th>
-                <th style="width: 240px;">Activity Progress</th>
-                <th style="text-align: right;">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${records.map(r => {
-                const total = (r.activities || []).length;
-                const done = (r.activities || []).filter(a => a.completed).length;
-                const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-                return `
-                  <tr>
-                    <td><strong>${escapeHtml(r.employee_name)}</strong> <small>(${r.employee})</small></td>
-                    <td>${escapeHtml(r.department)}</td>
-                    <td>${escapeHtml(r.designation)}</td>
-                    <td><span class="badge ${r.boarding_status === 'Completed' ? 'badge-success' : 'badge-warning'}">${escapeHtml(r.boarding_status)}</span></td>
-                    <td>
-                      <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="flex: 1; height: 6px; background: var(--bg-muted); border-radius: 3px; overflow: hidden;">
-                          <div style="width: ${pct}%; height: 100%; background: ${pct === 100 ? 'var(--success)' : 'var(--primary)'};"></div>
-                        </div>
-                        <span style="font-size: 11px; font-weight: 600;">${done}/${total}</span>
-                      </div>
-                    </td>
-                    <td style="text-align: right;">
-                      <button class="btn btn-sm btn-secondary" onclick="window.openOnboardingChecklistModal('${r.name}')">Checklist →</button>
-                    </td>
-                  </tr>
-                `;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    `;
-  }
-
-  // -------------------------------------------------------------------------
   // HR REPORTS & ANALYTICS VIEW (6 Reports)
   // -------------------------------------------------------------------------
   function renderReportsView() {
@@ -4551,15 +4246,7 @@
     }
     const totalHeadcount = store.data.employees.length || 1;
 
-    // 2. Recruitment funnel
-    const applicants = store.data.job_applicants;
-    const appliedCount = applicants.length;
-    const screenedCount = applicants.filter(a => a.status !== 'Open').length;
-    const interviewedCount = new Set(store.data.interviews.map(i => i.applicant)).size;
-    const hiredCount = applicants.filter(a => a.status === 'Accepted').length;
-    const pctOf = (n) => appliedCount ? Math.round((n / appliedCount) * 100) : 0;
-
-    // 3. Leave utilization
+    // 2. Leave utilization
     const leaveTypesSet = new Set();
     for (const allocs of Object.values(store.data.leave_allocations || {})) {
       Object.keys(allocs).forEach(t => leaveTypesSet.add(t));
@@ -4579,7 +4266,7 @@
       return { type, allocated, consumed, remaining: Math.max(0, allocated - consumed) };
     }).filter(r => r.allocated > 0);
 
-    // 4. Payroll disbursement history (aggregated from salary slips by month)
+    // 3. Payroll disbursement history (aggregated from salary slips by month)
     const slipMonths = {};
     for (const s of store.data.salary_slips) {
       const key = String(s.start_date || '').substring(0, 7);
@@ -4594,7 +4281,7 @@
       .sort((a, b) => (a[0] < b[0] ? 1 : -1))
       .slice(0, 6);
 
-    // 5. Monthly attendance summary (current + previous month)
+    // 4. Monthly attendance summary (current + previous month)
     const monthStats = (prefix) => {
       const recs = store.data.attendance.filter(a => String(a.attendance_date || '').startsWith(prefix));
       const n = recs.length || 1;
@@ -4610,7 +4297,7 @@
       return `${new Date(Number(y), Number(m) - 1, 1).toLocaleDateString('en-US', { month: 'long' })} ${y}`;
     };
 
-    // 6. Turnover & retention
+    // 5. Turnover & retention
     const joinedThisYear = store.data.employees.filter(e => String(e.date_of_joining || '').startsWith(String(curYear))).length;
     const leftCount = store.data.employees.filter(e => e.status === 'Left').length;
     const retention = totalHeadcount ? Math.round((1 - leftCount / totalHeadcount) * 100) : 100;
@@ -4620,7 +4307,7 @@
       <div class="page-header">
         <div class="page-title-group">
           <h1>Reports & HR Intelligence</h1>
-          <p>Comprehensive organizational analytics across headcount, attendance, leaves, payroll, recruitment, and turnover.</p>
+          <p>Comprehensive organizational analytics across headcount, attendance, leaves, payroll, and turnover.</p>
         </div>
       </div>
 
@@ -4639,34 +4326,7 @@
           </div>
         </div>
 
-        <!-- REPORT 2: RECRUITMENT FUNNEL CONVERSION -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">2. Recruitment Pipeline Funnel</span></div>
-          <div class="card-body">
-            <div class="report-bar-row">
-              <span class="report-bar-label">Applied</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 100%; background: #64748b;"></div></div>
-              <span class="report-bar-value">${appliedCount} (100%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Screened</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(screenedCount)}%; background: #3b82f6;"></div></div>
-              <span class="report-bar-value">${screenedCount} (${pctOf(screenedCount)}%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Interviewed</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(interviewedCount)}%; background: #8b5cf6;"></div></div>
-              <span class="report-bar-value">${interviewedCount} (${pctOf(interviewedCount)}%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Hired & Accepted</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(hiredCount)}%; background: #10b981;"></div></div>
-              <span class="report-bar-value">${hiredCount} (${pctOf(hiredCount)}%)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- REPORT 3: LEAVE UTILIZATION -->
+        <!-- REPORT 2: LEAVE UTILIZATION -->
         <div class="card">
           <div class="card-header"><span class="card-title">3. Leave Type Quota Utilization</span></div>
           <div class="card-body">
@@ -4685,9 +4345,9 @@
           </div>
         </div>
 
-        <!-- REPORT 4: PAYROLL DISBURSEMENTS HISTORY -->
+        <!-- REPORT 3: PAYROLL DISBURSEMENTS HISTORY -->
         <div class="card">
-          <div class="card-header"><span class="card-title">4. Monthly Payroll Expense Trajectory</span></div>
+          <div class="card-header"><span class="card-title">3. Monthly Payroll Expense Trajectory</span></div>
           <div class="card-body">
             <div class="table-container" style="border: none;">
               <table class="data-table">
@@ -4704,9 +4364,9 @@
           </div>
         </div>
 
-        <!-- REPORT 5: MONTHLY ATTENDANCE SUMMARY -->
+        <!-- REPORT 4: MONTHLY ATTENDANCE SUMMARY -->
         <div class="card">
-          <div class="card-header"><span class="card-title">5. Monthly Presence & Punctuality</span></div>
+          <div class="card-header"><span class="card-title">4. Monthly Presence & Punctuality</span></div>
           <div class="card-body">
             <div class="table-container" style="border: none;">
               <table class="data-table">
@@ -4722,9 +4382,9 @@
           </div>
         </div>
 
-        <!-- REPORT 6: EMPLOYEE TURNOVER & RETENTION -->
+        <!-- REPORT 5: EMPLOYEE TURNOVER & RETENTION -->
         <div class="card">
-          <div class="card-header"><span class="card-title">6. Annual Turnover & Growth (${curYear})</span></div>
+          <div class="card-header"><span class="card-title">5. Annual Turnover & Growth (${curYear})</span></div>
           <div class="card-body">
             <div class="report-bar-row">
               <span class="report-bar-label">Joined This Year</span>
@@ -6055,339 +5715,6 @@
       'Shift schedule request submitted to HR.'
     );
     if (ok) closeModal();
-  };
-
-  window.openCreateJobOpeningModal = function () {
-    openModal(() => `
-      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
-        <div class="modal-dialog">
-          <div class="modal-header">
-            <div class="modal-title">Create Job Opening Requisition</div>
-            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
-          </div>
-          <form onsubmit="window.submitCreateJobOpening(event)">
-            <div class="modal-body">
-              <div class="form-group">
-                <label class="form-label">Job Title <span class="required">*</span></label>
-                <input type="text" class="form-control" name="job_title" required placeholder="e.g. Lead Cloud Architect">
-              </div>
-              <div class="form-row" style="margin-top: 14px;">
-                <div class="form-group">
-                  <label class="form-label">Department <span class="required">*</span></label>
-                  <select class="form-control" name="department" required>
-                    ${store.data.departments.map(d => `<option>${escapeHtml(d)}</option>`).join('')}
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Vacancies <span class="required">*</span></label>
-                  <input type="number" class="form-control" name="vacancies" required value="1" min="1">
-                </div>
-              </div>
-              <div class="form-group" style="margin-top: 14px;">
-                <label class="form-label">Job Description & Qualifications</label>
-                <textarea class="form-control" name="description" placeholder="Requirements, responsibilities, and experience guidelines..."></textarea>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Cancel</button>
-              <button type="submit" class="btn btn-primary">Publish Opening</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    `);
-  };
-
-  window.submitCreateJobOpening = async function (e) {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const payload = {
-      job_title: fd.get('job_title'),
-      department: fd.get('department'),
-      vacancies: parseInt(fd.get('vacancies') || '1', 10),
-      description: fd.get('description')
-    };
-
-    const ok = await runAction(
-      () => API.post('/api/job-openings', payload),
-      () => {
-        store.data.job_openings.unshift({
-          name: `JOB-${Date.now()}`,
-          job_title: payload.job_title,
-          department: payload.department,
-          vacancies: payload.vacancies,
-          status: 'Open',
-          posted_date: new Date().toISOString().split('T')[0],
-          description: payload.description
-        });
-        return true;
-      },
-      'Job opening published to career board.'
-    );
-    if (ok) closeModal();
-  };
-
-  window.openAddApplicantModal = function () {
-    openModal(() => `
-      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
-        <div class="modal-dialog">
-          <div class="modal-header">
-            <div class="modal-title">Add Job Candidate / Applicant</div>
-            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
-          </div>
-          <form onsubmit="window.submitAddApplicant(event)">
-            <div class="modal-body">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Candidate Name <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="applicant_name" required placeholder="e.g. Maya Iyer">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Candidate Email <span class="required">*</span></label>
-                  <input type="email" class="form-control" name="email" required placeholder="e.g. maya@example.com">
-                </div>
-              </div>
-              <div class="form-group" style="margin-top: 14px;">
-                <label class="form-label">Target Job Opening <span class="required">*</span></label>
-                <select class="form-control" name="job_opening" required>
-                  ${store.data.job_openings.map(j => `<option value="${escapeHtml(j.name)}">${escapeHtml(j.job_title)} (${j.department})</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-row" style="margin-top: 14px;">
-                <div class="form-group">
-                  <label class="form-label">Initial Rating</label>
-                  <select class="form-control" name="rating">
-                    <option value="5">5 / 5 - Exceptional</option>
-                    <option value="4" selected>4 / 5 - Strong Hire</option>
-                    <option value="3">3 / 5 - Qualified</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Source</label>
-                  <input type="text" class="form-control" name="source" placeholder="LinkedIn, Referral, etc.">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Cancel</button>
-              <button type="submit" class="btn btn-primary">Add to Pipeline</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    `);
-  };
-
-  window.submitAddApplicant = async function (e) {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const payload = {
-      applicant_name: fd.get('applicant_name'),
-      email: fd.get('email'),
-      job_opening: fd.get('job_opening'),
-      source: fd.get('source'),
-      rating: parseInt(fd.get('rating') || '4', 10)
-    };
-
-    const ok = await runAction(
-      () => API.post('/api/applicants', payload),
-      () => {
-        const jobObj = store.data.job_openings.find(j => j.name === payload.job_opening);
-        store.data.job_applicants.unshift({
-          name: `APP-${Date.now()}`,
-          applicant_name: payload.applicant_name,
-          email: payload.email,
-          phone: '+91 98000 11111',
-          job_title: jobObj?.job_title || 'Software Engineer',
-          job_opening: payload.job_opening,
-          status: 'Open',
-          application_date: new Date().toISOString().split('T')[0],
-          source: payload.source || 'Direct',
-          rating: payload.rating,
-          notes: 'Initial profile candidate created in pipeline.'
-        });
-        return true;
-      },
-      'Candidate added to Open column.'
-    );
-    if (ok) closeModal();
-  };
-
-  window.openApplicantDetailsModal = function (appId) {
-    const app = store.data.job_applicants.find(a => a.name === appId);
-    if (!app) return;
-
-    openModal(() => `
-      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
-        <div class="modal-dialog">
-          <div class="modal-header">
-            <div class="modal-title">${escapeHtml(app.applicant_name)}</div>
-            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
-          </div>
-          <div class="modal-body" style="font-size: 13px; display: flex; flex-direction: column; gap: 12px;">
-            <div><span style="color: var(--text-muted);">Applied Role:</span> <strong>${escapeHtml(app.job_title)}</strong></div>
-            <div><span style="color: var(--text-muted);">Email:</span> <strong>${escapeHtml(app.email)}</strong></div>
-            <div><span style="color: var(--text-muted);">Source & Date:</span> <strong>${escapeHtml(app.source)} &middot; ${formatDate(app.application_date)}</strong></div>
-            <div><span style="color: var(--text-muted);">Rating:</span> <strong>${app.rating || 0} / 5</strong></div>
-            
-            <div class="form-group" style="margin-top: 10px;">
-              <label class="form-label">Move Stage</label>
-              <select class="form-control" onchange="window.updateApplicantStage('${app.name}', this.value)">
-                ${['Open', 'Replied', 'Accepted', 'Rejected', 'Hold'].map(s => `<option ${app.status === s ? 'selected' : ''}>${s}</option>`).join('')}
-              </select>
-            </div>
-
-            <div style="margin-top: 8px;">
-              <span style="color: var(--text-muted);">Interviewer Feedback & Notes:</span>
-              <div style="background: var(--bg-subtle); padding: 10px; border-radius: var(--radius-md); margin-top: 4px;">
-                ${escapeHtml(app.notes || 'No detailed feedback notes recorded yet.')}
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Close</button>
-          </div>
-        </div>
-      </div>
-    `);
-  };
-
-  window.updateApplicantStage = async function (appId, newStage) {
-    const ok = await runAction(
-      () => API.put(`/api/applicants/${encodeURIComponent(appId)}`, { status: newStage }),
-      () => {
-        const app = store.data.job_applicants.find(a => a.name === appId);
-        if (!app) return false;
-        app.status = newStage;
-        return true;
-      },
-      `Candidate moved to ${newStage}.`
-    );
-    if (ok) closeModal();
-  };
-
-  window.openScheduleInterviewModal = function () {
-    openModal(() => `
-      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
-        <div class="modal-dialog">
-          <div class="modal-header">
-            <div class="modal-title">Schedule Candidate Interview</div>
-            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
-          </div>
-          <form onsubmit="window.submitScheduleInterview(event)">
-            <div class="modal-body">
-              <div class="form-group">
-                <label class="form-label">Applicant <span class="required">*</span></label>
-                <select class="form-control" name="applicant" required>
-                  ${store.data.job_applicants.map(a => `<option value="${escapeHtml(a.name)}">${escapeHtml(a.applicant_name)} (${a.job_title})</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-row" style="margin-top: 14px;">
-                <div class="form-group">
-                  <label class="form-label">Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="scheduled_date" required value="${dateOffset(3)}">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Time Window</label>
-                  <input type="text" class="form-control" name="time_window" value="15:00 - 16:00">
-                </div>
-              </div>
-              <div class="form-group" style="margin-top: 14px;">
-                <label class="form-label">Lead Interviewer</label>
-                <select class="form-control" name="interviewer">
-                  ${store.data.employees.map(e => `<option>${escapeHtml(e.employee_name)} (${e.designation})</option>`).join('')}
-                </select>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Cancel</button>
-              <button type="submit" class="btn btn-primary">Schedule Interview</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    `);
-  };
-
-  window.submitScheduleInterview = async function (e) {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const payload = {
-      applicant: fd.get('applicant'),
-      scheduled_date: fd.get('scheduled_date'),
-      time_window: fd.get('time_window'),
-      interviewer: fd.get('interviewer')
-    };
-
-    const ok = await runAction(
-      () => API.post('/api/interviews', payload),
-      () => {
-        const appObj = store.data.job_applicants.find(a => a.name === payload.applicant);
-        const m = String(payload.time_window || '').match(/(\d{1,2}:\d{2})\s*(?:-|–|to)\s*(\d{1,2}:\d{2})/);
-        store.data.interviews.unshift({
-          name: `INT-${Date.now()}`,
-          applicant: payload.applicant,
-          applicant_name: appObj?.applicant_name || 'Candidate',
-          job_opening: appObj?.job_opening,
-          job_title: appObj?.job_title || 'Role',
-          scheduled_date: payload.scheduled_date,
-          from_time: m ? m[1] : '15:00',
-          to_time: m ? m[2] : '16:00',
-          interviewer: payload.interviewer,
-          status: 'Scheduled',
-          rating: 0,
-          notes: 'Technical evaluation round.'
-        });
-        return true;
-      },
-      'Interview scheduled and calendar invite dispatched.'
-    );
-    if (ok) closeModal();
-  };
-
-  window.openOnboardingChecklistModal = function (onbId) {
-    const onb = store.data.onboarding_records.find(o => o.name === onbId);
-    if (!onb) return;
-
-    openModal(() => `
-      <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
-        <div class="modal-dialog">
-          <div class="modal-header">
-            <div class="modal-title">Onboarding Induction Checklist &middot; ${escapeHtml(onb.employee_name)}</div>
-            <button class="icon-btn" onclick="window.closeModal()">&times;</button>
-          </div>
-          <div class="modal-body">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              ${(onb.activities || []).map((act, i) => `
-                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: var(--radius-md); background: var(--bg-subtle); cursor: pointer;">
-                  <input type="checkbox" ${act.completed ? 'checked' : ''} onchange="window.toggleOnboardingActivity('${onb.name}', ${i})">
-                  <span style="font-size: 13px; ${act.completed ? 'text-decoration: line-through; color: var(--text-muted);' : 'font-weight: 500;'}">${escapeHtml(act.name)}</span>
-                </label>
-              `).join('')}
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="window.closeModal()">Close</button>
-          </div>
-        </div>
-      </div>
-    `);
-  };
-
-  window.toggleOnboardingActivity = async function (onbId, index) {
-    const ok = await runAction(
-      () => API.put(`/api/onboarding/${encodeURIComponent(onbId)}`, { activity_index: index }),
-      () => {
-        const onb = store.data.onboarding_records.find(o => o.name === onbId);
-        if (!onb || !onb.activities || !onb.activities[index]) return false;
-        onb.activities[index].completed = onb.activities[index].completed ? 0 : 1;
-        onb.boarding_status = onb.activities.every(a => a.completed) ? 'Completed' : 'In Progress';
-        return true;
-      }
-    );
-    if (ok) {
-      renderModal();
-    }
   };
 
   window.openPostAnnouncementModal = function () {

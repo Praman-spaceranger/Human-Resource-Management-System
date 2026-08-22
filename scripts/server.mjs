@@ -24,6 +24,19 @@ const dataDir = join(root, 'data')
 const dbPath = join(dataDir, 'db.json')
 const tmpPath = join(dataDir, 'db.json.tmp')
 
+// Official demo profile photos per seeded employee
+const EMPLOYEE_IMAGES = {
+  'EMP-001': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80',
+  'EMP-002': 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80',
+  'EMP-003': 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80',
+  'EMP-004': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80',
+  'EMP-005': 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80',
+  'EMP-006': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80',
+  'EMP-007': 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80',
+  'EMP-008': 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80',
+  'EMP-009': 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=240&auto=format&fit=crop&q=80'
+}
+
 // ============================================================================
 // SMALL HELPERS
 // ============================================================================
@@ -115,6 +128,12 @@ function migrateDb() {
     }
     if (e.base_salary === undefined) {
       e.base_salary = salaryByDesignation[e.designation] ?? defaults.base_salary
+      changed = true
+    }
+    // Repair broken generated photo URLs from earlier seeds
+    if (EMPLOYEE_IMAGES[e.name] && e.image !== EMPLOYEE_IMAGES[e.name] &&
+        (!e.image || /photo-15\d+9142\?/.test(e.image))) {
+      e.image = EMPLOYEE_IMAGES[e.name]
       changed = true
     }
   }
@@ -413,14 +432,14 @@ function buildSeed() {
   const companyName = 'Dayflow Technologies'
 
   const employees = [
-    ['EMP-001', 'Aditi', 'Sharma', 'Female', '1992-04-15', '2022-01-10', 'Human Resources', 'HR Manager', 'HR', 160000, 'hr@dayflow.local', 'aditi.sharma92@gmail.com', '+91 98765 43210', 'General Shift'],
-    ['EMP-002', 'Nisha', 'Verma', 'Female', '1995-08-22', '2023-03-01', 'Engineering', 'Senior Frontend Engineer', 'Employee', 125000, 'nisha@dayflow.local', 'nisha.verma@example.com', '+91 98111 22334', 'General Shift'],
-    ['EMP-003', 'Kabir', 'Mehta', 'Male', '1994-11-12', '2023-06-15', 'Engineering', 'Backend Developer', 'Employee', 110000, 'kabir@dayflow.local', 'kabir.mehta@example.com', '+91 97234 56789', 'Morning Shift'],
-    ['EMP-004', 'Rohan', 'Deshmukh', 'Male', '1996-02-18', '2023-09-01', 'Product', 'Product Manager', 'Employee', 135000, 'rohan@dayflow.local', 'rohan.deshmukh@example.com', '+91 96321 09876', 'General Shift'],
-    ['EMP-005', 'Pooja', 'Nair', 'Female', '1997-06-25', '2024-01-08', 'Design', 'UI/UX Designer', 'Employee', 95000, 'pooja@dayflow.local', 'pooja.nair@example.com', '+91 99887 76655', 'General Shift'],
-    ['EMP-006', 'Vikram', 'Malhotra', 'Male', '1993-03-30', '2023-11-20', 'Engineering', 'DevOps Specialist', 'Employee', 115000, 'vikram@dayflow.local', 'vikram.m@example.com', '+91 98123 45678', 'Morning Shift'],
-    ['EMP-007', 'Priya', 'Sengupta', 'Female', '1998-09-12', '2024-04-02', 'Human Resources', 'HR Executive', 'HR', 60000, 'priya@dayflow.local', 'priya.s@example.com', '+91 97654 32109', 'General Shift'],
-    ['EMP-008', 'Arjun', 'Kapoor', 'Male', '1995-12-05', '2024-02-19', 'Engineering', 'Full Stack Engineer', 'Employee', 120000, 'arjun@dayflow.local', 'arjun.k@example.com', '+91 96543 21098', 'General Shift'],
+    ['EMP-001', 'Aditi', 'Sharma', 'Female', '1992-04-15', '2022-01-10', 'Human Resources', 'HR Manager', 'HR', 160000, 'hr@dayflow.local', 'aditi.sharma92@gmail.com', '+91 98765 43210', 'General Shift', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-002', 'Nisha', 'Verma', 'Female', '1995-08-22', '2023-03-01', 'Engineering', 'Senior Frontend Engineer', 'Employee', 125000, 'nisha@dayflow.local', 'nisha.verma@example.com', '+91 98111 22334', 'General Shift', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-003', 'Kabir', 'Mehta', 'Male', '1994-11-12', '2023-06-15', 'Engineering', 'Backend Developer', 'Employee', 110000, 'kabir@dayflow.local', 'kabir.mehta@example.com', '+91 97234 56789', 'Morning Shift', 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-004', 'Rohan', 'Deshmukh', 'Male', '1996-02-18', '2023-09-01', 'Product', 'Product Manager', 'Employee', 135000, 'rohan@dayflow.local', 'rohan.deshmukh@example.com', '+91 96321 09876', 'General Shift', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-005', 'Pooja', 'Nair', 'Female', '1997-06-25', '2024-01-08', 'Design', 'UI/UX Designer', 'Employee', 95000, 'pooja@dayflow.local', 'pooja.nair@example.com', '+91 99887 76655', 'General Shift', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-006', 'Vikram', 'Malhotra', 'Male', '1993-03-30', '2023-11-20', 'Engineering', 'DevOps Specialist', 'Employee', 115000, 'vikram@dayflow.local', 'vikram.m@example.com', '+91 98123 45678', 'Morning Shift', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-007', 'Priya', 'Sengupta', 'Female', '1998-09-12', '2024-04-02', 'Human Resources', 'HR Executive', 'HR', 60000, 'priya@dayflow.local', 'priya.s@example.com', '+91 97654 32109', 'General Shift', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80'],
+    ['EMP-008', 'Arjun', 'Kapoor', 'Male', '1995-12-05', '2024-02-19', 'Engineering', 'Full Stack Engineer', 'Employee', 120000, 'arjun@dayflow.local', 'arjun.k@example.com', '+91 96543 21098', 'General Shift', 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80'],
     ['EMP-009', 'Sunita', 'Rao', 'Female', '1991-07-08', '2023-08-14', 'Finance', 'Financial Analyst', 'Employee', 105000, 'sunita@dayflow.local', 'sunita.rao@example.com', '+91 95432 10987', 'General Shift']
   ].map(([name, fn, ln, gender, dob, doj, dept, desig, role, salary, cemail, pemail, phone, shift]) => ({
     name, login_id: '', password: 'Dayflow@123', employee_name: `${fn} ${ln}`, first_name: fn, last_name: ln,
@@ -430,7 +449,7 @@ function buildSeed() {
     shift, current_address: 'Bengaluru, Karnataka', permanent_address: 'India',
     emergency_phone_number: '+91 90000 00001', person_to_be_contacted: 'Family Contact', relation: 'Family',
     bank_name: 'HDFC Bank', bank_ac_no: `5010${name.substring(4)}9999`,
-    image: `https://images.unsplash.com/photo-15${name.charCodeAt(4) * 137}9142?w=240&auto=format&fit=crop&q=80`
+    image: EMPLOYEE_IMAGES[name] || ''
   }))
 
   for (const e of employees) {
