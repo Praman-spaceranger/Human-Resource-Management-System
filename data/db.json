@@ -1,8 +1,10 @@
 {
+  "rev": 32,
+  "company_name": "Dayflow Technologies",
   "employees": [
     {
       "name": "EMP-001",
-      "login_id": "OIADSH20220001",
+      "login_id": "DTADSH20220001",
       "password": "Dayflow@123",
       "employee_name": "Aditi Sharma",
       "first_name": "Aditi",
@@ -11,6 +13,8 @@
       "date_of_birth": "1992-04-15",
       "date_of_joining": "2022-01-10",
       "status": "Active",
+      "user_role": "HR",
+      "base_salary": 160000,
       "department": "Human Resources",
       "designation": "HR Manager",
       "company": "Dayflow Technologies",
@@ -21,18 +25,18 @@
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "Flat 402, Green Glen Layout, Bellandur, Bengaluru, Karnataka 560103",
-      "permanent_address": "House 12, Sector 14, Gurugram, Haryana 122001",
-      "emergency_phone_number": "+91 98765 00001",
-      "person_to_be_contacted": "Rajesh Sharma",
-      "relation": "Father",
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
       "bank_name": "HDFC Bank",
-      "bank_ac_no": "50100234567890",
-      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80"
+      "bank_ac_no": "50100019999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-002",
-      "login_id": "OINIVE20230002",
+      "login_id": "DTNIVE20230002",
       "password": "Dayflow@123",
       "employee_name": "Nisha Verma",
       "first_name": "Nisha",
@@ -41,6 +45,8 @@
       "date_of_birth": "1995-08-22",
       "date_of_joining": "2023-03-01",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 125000,
       "department": "Engineering",
       "designation": "Senior Frontend Engineer",
       "company": "Dayflow Technologies",
@@ -51,18 +57,18 @@
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "42, 4th Cross, Indiranagar, Bengaluru, Karnataka 560038",
-      "permanent_address": "15 Civil Lines, Jaipur, Rajasthan 302006",
-      "emergency_phone_number": "+91 98111 99887",
-      "person_to_be_contacted": "Suresh Verma",
-      "relation": "Father",
-      "bank_name": "ICICI Bank",
-      "bank_ac_no": "002305001234",
-      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100029999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-003",
-      "login_id": "OIKAME20230003",
+      "login_id": "DTKAME20230003",
       "password": "Dayflow@123",
       "employee_name": "Kabir Mehta",
       "first_name": "Kabir",
@@ -71,6 +77,8 @@
       "date_of_birth": "1994-11-12",
       "date_of_joining": "2023-06-15",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 110000,
       "department": "Engineering",
       "designation": "Backend Developer",
       "company": "Dayflow Technologies",
@@ -81,18 +89,18 @@
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "Morning Shift",
-      "current_address": "108, Koramangala 5th Block, Bengaluru, Karnataka 560095",
-      "permanent_address": "77 Nariman Point, Mumbai, Maharashtra 400021",
-      "emergency_phone_number": "+91 97234 11223",
-      "person_to_be_contacted": "Ananya Mehta",
-      "relation": "Spouse",
-      "bank_name": "State Bank of India",
-      "bank_ac_no": "30987654321",
-      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100039999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-004",
-      "login_id": "OIRODE20230004",
+      "login_id": "DTRODE20230004",
       "password": "Dayflow@123",
       "employee_name": "Rohan Deshmukh",
       "first_name": "Rohan",
@@ -101,6 +109,8 @@
       "date_of_birth": "1996-02-18",
       "date_of_joining": "2023-09-01",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 135000,
       "department": "Product",
       "designation": "Product Manager",
       "company": "Dayflow Technologies",
@@ -111,156 +121,174 @@
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "B-201, Ferns Residency, HSR Layout, Bengaluru, Karnataka 560102",
-      "permanent_address": "22 Deccan Gymkhana, Pune, Maharashtra 411004",
-      "emergency_phone_number": "+91 96321 55443",
-      "person_to_be_contacted": "Meera Deshmukh",
-      "relation": "Mother",
-      "bank_name": "Axis Bank",
-      "bank_ac_no": "918010045678901",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100049999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-005",
-      "login_id": "OIPONA20240005",
+      "login_id": "DTPONA20240005",
       "password": "Dayflow@123",
       "employee_name": "Pooja Nair",
       "first_name": "Pooja",
       "last_name": "Nair",
       "gender": "Female",
-      "date_of_birth": "1998-07-30",
-      "date_of_joining": "2024-01-15",
+      "date_of_birth": "1997-06-25",
+      "date_of_joining": "2024-01-08",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 95000,
       "department": "Design",
       "designation": "UI/UX Designer",
       "company": "Dayflow Technologies",
       "company_email": "pooja@dayflow.local",
       "personal_email": "pooja.nair@example.com",
-      "cell_phone": "+91 95432 10987",
+      "cell_phone": "+91 99887 76655",
       "reports_to": "EMP-001",
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "14/2, 1st Main, Domlur, Bengaluru, Karnataka 560071",
-      "permanent_address": "Kalyan Nagar, Kochi, Kerala 682025",
-      "emergency_phone_number": "+91 95432 66778",
-      "person_to_be_contacted": "Gopal Nair",
-      "relation": "Father",
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
       "bank_name": "HDFC Bank",
-      "bank_ac_no": "50100987654321",
-      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80"
+      "bank_ac_no": "50100059999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-006",
+      "login_id": "DTVIMA20230006",
+      "password": "Dayflow@123",
       "employee_name": "Vikram Malhotra",
       "first_name": "Vikram",
       "last_name": "Malhotra",
       "gender": "Male",
-      "date_of_birth": "1993-03-24",
-      "date_of_joining": "2022-11-01",
+      "date_of_birth": "1993-03-30",
+      "date_of_joining": "2023-11-20",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 115000,
       "department": "Engineering",
       "designation": "DevOps Specialist",
       "company": "Dayflow Technologies",
       "company_email": "vikram@dayflow.local",
-      "personal_email": "vikram.malhotra@example.com",
-      "cell_phone": "+91 98222 33445",
+      "personal_email": "vikram.m@example.com",
+      "cell_phone": "+91 98123 45678",
       "reports_to": "EMP-001",
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "Morning Shift",
-      "current_address": "Flat 304, Palm Meadows, Whitefield, Bengaluru, Karnataka 560066",
-      "permanent_address": "Sector 29, Chandigarh 160030",
-      "emergency_phone_number": "+91 98222 99881",
-      "person_to_be_contacted": "Sunil Malhotra",
-      "relation": "Brother",
-      "bank_name": "Kotak Mahindra Bank",
-      "bank_ac_no": "481200987654",
-      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100069999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-007",
+      "login_id": "DTPRSE20240007",
+      "password": "Dayflow@123",
       "employee_name": "Priya Sengupta",
       "first_name": "Priya",
       "last_name": "Sengupta",
       "gender": "Female",
-      "date_of_birth": "1996-09-10",
-      "date_of_joining": "2023-04-15",
+      "date_of_birth": "1998-09-12",
+      "date_of_joining": "2024-04-02",
       "status": "Active",
+      "user_role": "HR",
+      "base_salary": 60000,
       "department": "Human Resources",
       "designation": "HR Executive",
       "company": "Dayflow Technologies",
       "company_email": "priya@dayflow.local",
-      "personal_email": "priya.sengupta@example.com",
-      "cell_phone": "+91 97333 44556",
+      "personal_email": "priya.s@example.com",
+      "cell_phone": "+91 97654 32109",
       "reports_to": "EMP-001",
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "77, 8th Main, Malleshwaram, Bengaluru, Karnataka 560003",
-      "permanent_address": "Salt Lake City, Kolkata, West Bengal 700091",
-      "emergency_phone_number": "+91 97333 11229",
-      "person_to_be_contacted": "Debabrata Sengupta",
-      "relation": "Father",
-      "bank_name": "Axis Bank",
-      "bank_ac_no": "919010078654321",
-      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100079999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-008",
+      "login_id": "DTARKA20240008",
+      "password": "Dayflow@123",
       "employee_name": "Arjun Kapoor",
       "first_name": "Arjun",
       "last_name": "Kapoor",
       "gender": "Male",
       "date_of_birth": "1995-12-05",
-      "date_of_joining": "2023-10-01",
+      "date_of_joining": "2024-02-19",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 120000,
       "department": "Engineering",
       "designation": "Full Stack Engineer",
       "company": "Dayflow Technologies",
       "company_email": "arjun@dayflow.local",
-      "personal_email": "arjun.kapoor@example.com",
-      "cell_phone": "+91 98444 55667",
+      "personal_email": "arjun.k@example.com",
+      "cell_phone": "+91 96543 21098",
       "reports_to": "EMP-001",
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "302, Prestige Park, Electronic City, Bengaluru, Karnataka 560100",
-      "permanent_address": "Model Town, Ludhiana, Punjab 141002",
-      "emergency_phone_number": "+91 98444 00112",
-      "person_to_be_contacted": "Harsh Kapoor",
-      "relation": "Father",
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
       "bank_name": "HDFC Bank",
-      "bank_ac_no": "50100445566778",
-      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80"
+      "bank_ac_no": "50100089999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-009",
+      "login_id": "DTSURA20230009",
+      "password": "Dayflow@123",
       "employee_name": "Sunita Rao",
       "first_name": "Sunita",
       "last_name": "Rao",
       "gender": "Female",
-      "date_of_birth": "1993-06-18",
-      "date_of_joining": "2023-01-20",
+      "date_of_birth": "1991-07-08",
+      "date_of_joining": "2023-08-14",
       "status": "Active",
+      "user_role": "Employee",
+      "base_salary": 105000,
       "department": "Finance",
       "designation": "Financial Analyst",
       "company": "Dayflow Technologies",
       "company_email": "sunita@dayflow.local",
       "personal_email": "sunita.rao@example.com",
-      "cell_phone": "+91 98555 66778",
+      "cell_phone": "+91 95432 10987",
       "reports_to": "EMP-001",
       "leave_approver": "EMP-001",
       "expense_approver": "EMP-001",
       "shift": "General Shift",
-      "current_address": "55, Outer Ring Road, Marathahalli, Bengaluru, Karnataka 560037",
-      "permanent_address": "Banjara Hills, Hyderabad, Telangana 500034",
-      "emergency_phone_number": "+91 98555 12340",
-      "person_to_be_contacted": "Nagesh Rao",
-      "relation": "Father",
-      "bank_name": "ICICI Bank",
-      "bank_ac_no": "002305009988",
-      "image": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=240&auto=format&fit=crop&q=80"
+      "current_address": "Bengaluru, Karnataka",
+      "permanent_address": "India",
+      "emergency_phone_number": "+91 90000 00001",
+      "person_to_be_contacted": "Family Contact",
+      "relation": "Family",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100099999",
+      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
     }
   ],
   "departments": [
@@ -389,6 +417,32 @@
   },
   "leave_applications": [
     {
+      "name": "LEAVE-2026-007",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "leave_type": "Sick Leave",
+      "from_date": "2026-09-03",
+      "to_date": "2026-09-04",
+      "total_leave_days": 2,
+      "status": "Approved",
+      "description": "",
+      "posting_date": "2026-08-22",
+      "leave_approver": "EMP-001"
+    },
+    {
+      "name": "LEAVE-2026-006",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "leave_type": "Casual Leave",
+      "from_date": "2026-09-15",
+      "to_date": "2026-09-15",
+      "total_leave_days": 1,
+      "status": "Approved",
+      "description": "test",
+      "posting_date": "2026-08-22",
+      "leave_approver": "EMP-001"
+    },
+    {
       "name": "LEAVE-2026-001",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
@@ -408,7 +462,7 @@
       "leave_type": "Casual Leave",
       "from_date": "2026-08-01",
       "to_date": "2026-08-31",
-      "total_leave_days": 20,
+      "total_leave_days": 21,
       "status": "Approved",
       "description": "Annual paid leave and family travels.",
       "posting_date": "2026-08-01",
@@ -446,8 +500,8 @@
       "employee_name": "Priya Sengupta",
       "leave_type": "Sick Leave",
       "from_date": "2026-08-15",
-      "to_date": "2026-08-25",
-      "total_leave_days": 10,
+      "to_date": "2026-08-21",
+      "total_leave_days": 5,
       "status": "Approved",
       "description": "Medical recovery leave.",
       "posting_date": "2026-08-15",
@@ -456,29 +510,1015 @@
   ],
   "attendance": [
     {
-      "name": "ATT-2026-08-01",
+      "name": "ATT-145",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-01",
-      "status": "Present",
-      "working_hours": 8.5,
+      "attendance_date": "2026-09-04",
+      "status": "On Leave",
+      "working_hours": 0,
       "late_entry": 0,
-      "early_exit": 0
+      "early_exit": 0,
+      "in_time": null,
+      "out_time": null
     },
     {
-      "name": "ATT-2026-08-02",
+      "name": "ATT-144",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-02",
+      "attendance_date": "2026-09-03",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0,
+      "in_time": null,
+      "out_time": null
+    },
+    {
+      "name": "ATT-143",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 0,
+      "late_entry": 1,
+      "early_exit": 0,
+      "in_time": "14:40",
+      "out_time": null
+    },
+    {
+      "name": "ATT-142",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-09-15",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0,
+      "in_time": null,
+      "out_time": null
+    },
+    {
+      "name": "ATT-141",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 0,
+      "late_entry": 1,
+      "early_exit": 0,
+      "in_time": "14:38",
+      "out_time": null
+    },
+    {
+      "name": "ATT-202608-001",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-03",
       "status": "Present",
       "working_hours": 8.2,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-03",
+      "name": "ATT-202608-002",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-003",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-004",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-005",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-006",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-007",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-008",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-009",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-010",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-011",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-012",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-013",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-014",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-015",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-016",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 5.6,
+      "late_entry": 0,
+      "early_exit": 1,
+      "in_time": "09:15",
+      "out_time": "14:50"
+    },
+    {
+      "name": "ATT-202608-017",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-018",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-019",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-020",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-021",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-022",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-023",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-024",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-025",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-026",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-027",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-028",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-029",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-030",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-031",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-032",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 5.3,
+      "late_entry": 1,
+      "early_exit": 1,
+      "in_time": "09:32",
+      "out_time": "14:57"
+    },
+    {
+      "name": "ATT-202608-033",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-03",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-034",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-04",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-035",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-05",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-036",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-06",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-037",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-07",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-038",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-10",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-039",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-11",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-040",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-12",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-041",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-13",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-042",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-14",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-043",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-17",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-044",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-18",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-045",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-19",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-046",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-20",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-047",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "attendance_date": "2026-08-21",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-048",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-049",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-050",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-051",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-052",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-053",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-054",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-055",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-056",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 8.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-057",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-058",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-059",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-060",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-061",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-062",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-063",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 4,
+      "late_entry": 0,
+      "early_exit": 0,
+      "in_time": "09:40"
+    },
+    {
+      "name": "ATT-202608-064",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-065",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-066",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-067",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-068",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-069",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-070",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-071",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-072",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-073",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-074",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-075",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-076",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-077",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-078",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-079",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-080",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-081",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-082",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-083",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-084",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-085",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 8.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-086",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-087",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-088",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-089",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-090",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-091",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-092",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-093",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-094",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 4,
+      "late_entry": 0,
+      "early_exit": 0,
+      "in_time": "08:50"
+    },
+    {
+      "name": "ATT-202608-095",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-03",
       "status": "Present",
       "working_hours": 8.8,
@@ -486,19 +1526,19 @@
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-04",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-096",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-04",
       "status": "Present",
-      "working_hours": 8,
+      "working_hours": 8.9,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-05",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-097",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-05",
       "status": "Present",
       "working_hours": 9,
@@ -506,29 +1546,29 @@
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-08",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-08",
+      "name": "ATT-202608-098",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-06",
       "status": "Present",
-      "working_hours": 8.3,
+      "working_hours": 9.1,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-09",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-09",
+      "name": "ATT-202608-099",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-07",
       "status": "Present",
-      "working_hours": 8.5,
+      "working_hours": 7.8,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-10",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-100",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-10",
       "status": "Present",
       "working_hours": 8.1,
@@ -536,205 +1576,608 @@
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-11",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-101",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-11",
-      "status": "Work From Home",
-      "working_hours": 8,
-      "late_entry": 0,
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 1,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-12",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-102",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-12",
       "status": "Present",
-      "working_hours": 8.6,
+      "working_hours": 8.3,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-15",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-15",
-      "status": "On Leave",
-      "working_hours": 0,
-      "late_entry": 0,
-      "early_exit": 0
-    },
-    {
-      "name": "ATT-2026-08-16",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-16",
+      "name": "ATT-202608-103",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-13",
       "status": "Present",
       "working_hours": 8.4,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-17",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-17",
-      "status": "Present",
-      "working_hours": 8,
-      "late_entry": 0,
-      "early_exit": 0
-    },
-    {
-      "name": "ATT-2026-08-18",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "attendance_date": "2026-08-18",
+      "name": "ATT-202608-104",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-14",
       "status": "Present",
       "working_hours": 8.5,
       "late_entry": 0,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-19",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-105",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-17",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-106",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-18",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-107",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
       "attendance_date": "2026-08-19",
-      "status": "Half Day",
-      "working_hours": 4.5,
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-108",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-20",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-109",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "attendance_date": "2026-08-21",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-110",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-111",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-112",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-113",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-114",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-115",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 8.2,
       "late_entry": 1,
       "early_exit": 0
     },
     {
-      "name": "ATT-2026-08-22",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
+      "name": "ATT-202608-116",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-117",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-118",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-119",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-120",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-121",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-122",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-123",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-124",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-125",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-126",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-127",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-128",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-06",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-129",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-07",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-130",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-131",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-11",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-132",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-133",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-13",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-134",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-14",
+      "status": "Present",
+      "working_hours": 8.7,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-135",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-136",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 9.1,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-137",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-19",
+      "status": "Present",
+      "working_hours": 7.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-138",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-20",
+      "status": "Present",
+      "working_hours": 7.9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-139",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "attendance_date": "2026-08-21",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-202608-140",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
       "attendance_date": "2026-08-22",
       "status": "Present",
       "working_hours": 4,
       "late_entry": 0,
-      "early_exit": 0
+      "early_exit": 0,
+      "in_time": "09:05"
     }
   ],
   "checkins": [
     {
-      "name": "CHK-1787386184940",
+      "name": "CHK-9493-8472",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
       "log_type": "IN",
-      "time": "2026-08-22 08:09:44",
+      "time": "2026-08-22 14:57:48",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787386184932",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "log_type": "IN",
-      "time": "2026-08-22 08:09:44",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-1787386113175",
+      "name": "CHK-9493-9470",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
       "log_type": "OUT",
-      "time": "2026-08-22 08:08:33",
+      "time": "2026-08-22 14:57:39",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787386113167",
+      "name": "CHK-9493-6027",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:56:46",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-4915",
       "employee": "EMP-002",
       "employee_name": "Nisha Verma",
       "log_type": "OUT",
-      "time": "2026-08-22 08:08:33",
+      "time": "2026-08-22 14:56:44",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787385690577",
-      "employee": "EMP-001",
+      "name": "CHK-9493-0742",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
       "log_type": "IN",
-      "time": "2026-08-22 08:01:30",
+      "time": "2026-08-22 14:53:00",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787385689322",
-      "employee": "EMP-001",
+      "name": "CHK-9493-1936",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
       "log_type": "OUT",
-      "time": "2026-08-22 08:01:29",
+      "time": "2026-08-22 14:52:51",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787385627377",
-      "employee": "EMP-002",
-      "log_type": "IN",
-      "time": "2026-08-22 08:00:27",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-1787385599208",
-      "employee": "EMP-002",
-      "log_type": "OUT",
-      "time": "2026-08-22 07:59:59",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-1787385548947",
-      "employee": "EMP-002",
-      "log_type": "IN",
-      "time": "2026-08-22 07:59:08",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-1787385547963",
-      "employee": "EMP-002",
-      "log_type": "OUT",
-      "time": "2026-08-22 07:59:07",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-1787385162970",
+      "name": "CHK-9493-4548",
       "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
       "log_type": "IN",
-      "time": "2026-08-22 07:52:42",
+      "time": "2026-08-22 14:50:04",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-1787385161631",
+      "name": "CHK-9493-3597",
       "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
       "log_type": "OUT",
-      "time": "2026-08-22 07:52:41",
+      "time": "2026-08-22 14:50:03",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-001",
-      "employee": "EMP-002",
-      "log_type": "IN",
-      "time": "2026-08-22 09:32:15",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    },
-    {
-      "name": "CHK-002",
+      "name": "CHK-9493-1185",
       "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
       "log_type": "IN",
-      "time": "2026-08-22 09:15:00",
+      "time": "2026-08-22 14:50:01",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-004",
+      "name": "CHK-9493-8417",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:49:58",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-1491",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:49:51",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-1664",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:49:51",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-1043",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:49:41",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-7920",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:49:37",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-3490",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:49:23",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-6968",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:44:06",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-8611",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:43:38",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-5623",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:43:05",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-1730",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 14:43:01",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-1474",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 14:40:51",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-8876-9492",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "log_type": "IN",
+      "time": "2026-08-22 14:40:09",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-6-8875",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "log_type": "IN",
+      "time": "2026-08-22 14:38:18",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-003",
       "employee": "EMP-004",
       "log_type": "IN",
       "time": "2026-08-22 09:40:11",
@@ -742,18 +2185,34 @@
       "longitude": 77.5946
     },
     {
-      "name": "CHK-005",
-      "employee": "EMP-006",
+      "name": "CHK-002",
+      "employee": "EMP-002",
       "log_type": "IN",
-      "time": "2026-08-22 08:50:00",
+      "time": "2026-08-22 09:32:15",
       "latitude": 12.9716,
       "longitude": 77.5946
     },
     {
-      "name": "CHK-006",
+      "name": "CHK-001",
+      "employee": "EMP-001",
+      "log_type": "IN",
+      "time": "2026-08-22 09:15:00",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-005",
       "employee": "EMP-009",
       "log_type": "IN",
       "time": "2026-08-22 09:05:30",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-004",
+      "employee": "EMP-006",
+      "log_type": "IN",
+      "time": "2026-08-22 08:50:00",
       "latitude": 12.9716,
       "longitude": 77.5946
     }
@@ -1004,15 +2463,27 @@
   ],
   "payroll_entries": [
     {
+      "name": "PAY-2026-08",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "payroll_frequency": "Monthly",
+      "company": "Dayflow Technologies",
+      "number_of_employees": 9,
+      "status": "Submitted",
+      "total_amount": 859200,
+      "total_gross": 1025000
+    },
+    {
       "name": "PAY-2026-07",
       "posting_date": "2026-07-31",
       "start_date": "2026-07-01",
       "end_date": "2026-07-31",
       "payroll_frequency": "Monthly",
       "company": "Dayflow Technologies",
-      "number_of_employees": 5,
+      "number_of_employees": 9,
       "status": "Submitted",
-      "total_amount": 585000
+      "total_amount": 859200
     },
     {
       "name": "PAY-2026-06",
@@ -1021,24 +2492,343 @@
       "end_date": "2026-06-30",
       "payroll_frequency": "Monthly",
       "company": "Dayflow Technologies",
-      "number_of_employees": 5,
+      "number_of_employees": 9,
       "status": "Submitted",
-      "total_amount": 585000
+      "total_amount": 859200
     }
   ],
   "salary_slips": [
     {
-      "name": "SLIP-2026-07-002",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "posting_date": "2026-07-31",
-      "start_date": "2026-07-01",
-      "end_date": "2026-07-31",
-      "gross_pay": 125000,
-      "total_deduction": 12500,
-      "net_pay": 112500,
+      "name": "SLIP-2026-08-009",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 105000,
+      "total_deduction": 17000,
+      "net_pay": 88000,
       "currency": "INR",
       "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 52500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 21000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 31500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6300
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 10500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-008",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 120000,
+      "total_deduction": 19400,
+      "net_pay": 100600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 60000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 24000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 36000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7200
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 12000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-007",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 60000,
+      "total_deduction": 9800,
+      "net_pay": 50200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 30000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 12000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 18000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 3600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 6000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-006",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 115000,
+      "total_deduction": 18600,
+      "net_pay": 96400,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 57500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 23000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 34500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6900
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-005",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 95000,
+      "total_deduction": 15400,
+      "net_pay": 79600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 47500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 19000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 28500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 5700
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 9500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-004",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 135000,
+      "total_deduction": 21800,
+      "net_pay": 113200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 67500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 27000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 40500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 8100
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 13500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-003",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 110000,
+      "total_deduction": 17800,
+      "net_pay": 92200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 55000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 22000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 33000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-08-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "gross_pay": 125000,
+      "total_deduction": 20200,
+      "net_pay": 104800,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
       "earnings": [
         {
           "salary_component": "Basic Salary",
@@ -1050,11 +2840,7 @@
         },
         {
           "salary_component": "Special Allowance",
-          "amount": 27500
-        },
-        {
-          "salary_component": "Performance Bonus",
-          "amount": 10000
+          "amount": 37500
         }
       ],
       "deductions": [
@@ -1068,67 +2854,26 @@
         },
         {
           "salary_component": "Income Tax (TDS)",
-          "amount": 4800
+          "amount": 12500
         }
       ]
     },
     {
-      "name": "SLIP-2026-06-002",
-      "employee": "EMP-002",
-      "employee_name": "Nisha Verma",
-      "posting_date": "2026-06-30",
-      "start_date": "2026-06-01",
-      "end_date": "2026-06-30",
-      "gross_pay": 125000,
-      "total_deduction": 12500,
-      "net_pay": 112500,
-      "currency": "INR",
-      "docstatus": 1,
-      "earnings": [
-        {
-          "salary_component": "Basic Salary",
-          "amount": 62500
-        },
-        {
-          "salary_component": "House Rent Allowance (HRA)",
-          "amount": 25000
-        },
-        {
-          "salary_component": "Special Allowance",
-          "amount": 27500
-        },
-        {
-          "salary_component": "Performance Bonus",
-          "amount": 10000
-        }
-      ],
-      "deductions": [
-        {
-          "salary_component": "Provident Fund (PF)",
-          "amount": 7500
-        },
-        {
-          "salary_component": "Professional Tax (PT)",
-          "amount": 200
-        },
-        {
-          "salary_component": "Income Tax (TDS)",
-          "amount": 4800
-        }
-      ]
-    },
-    {
-      "name": "SLIP-2026-07-001",
+      "name": "SLIP-2026-08-001",
       "employee": "EMP-001",
       "employee_name": "Aditi Sharma",
-      "posting_date": "2026-07-31",
-      "start_date": "2026-07-01",
-      "end_date": "2026-07-31",
+      "posting_date": "2026-08-22",
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
       "gross_pay": 160000,
-      "total_deduction": 18000,
-      "net_pay": 142000,
+      "total_deduction": 25800,
+      "net_pay": 134200,
       "currency": "INR",
       "docstatus": 1,
+      "status": "Issued",
+      "payment_days": 21,
+      "working_days": 21,
+      "lop_days": 0,
       "earnings": [
         {
           "salary_component": "Basic Salary",
@@ -1139,7 +2884,7 @@
           "amount": 32000
         },
         {
-          "salary_component": "Executive Special Allowance",
+          "salary_component": "Special Allowance",
           "amount": 48000
         }
       ],
@@ -1154,7 +2899,91 @@
         },
         {
           "salary_component": "Income Tax (TDS)",
-          "amount": 8200
+          "amount": 16000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-001",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 160000,
+      "total_deduction": 25800,
+      "net_pay": 134200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 80000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 32000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 48000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 9600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 16000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 125000,
+      "total_deduction": 20200,
+      "net_pay": 104800,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 62500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 25000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 37500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7500
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 12500
         }
       ]
     },
@@ -1166,17 +2995,18 @@
       "start_date": "2026-07-01",
       "end_date": "2026-07-31",
       "gross_pay": 110000,
-      "total_deduction": 11000,
-      "net_pay": 99000,
+      "total_deduction": 17800,
+      "net_pay": 92200,
       "currency": "INR",
       "docstatus": 1,
+      "status": "Issued",
       "earnings": [
         {
           "salary_component": "Basic Salary",
           "amount": 55000
         },
         {
-          "salary_component": "HRA",
+          "salary_component": "House Rent Allowance (HRA)",
           "amount": 22000
         },
         {
@@ -1186,12 +3016,646 @@
       ],
       "deductions": [
         {
-          "salary_component": "PF",
+          "salary_component": "Provident Fund (PF)",
           "amount": 6600
         },
         {
-          "salary_component": "TDS",
-          "amount": 4400
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-004",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 135000,
+      "total_deduction": 21800,
+      "net_pay": 113200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 67500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 27000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 40500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 8100
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 13500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-005",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 95000,
+      "total_deduction": 15400,
+      "net_pay": 79600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 47500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 19000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 28500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 5700
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 9500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-006",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 115000,
+      "total_deduction": 18600,
+      "net_pay": 96400,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 57500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 23000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 34500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6900
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-007",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 60000,
+      "total_deduction": 9800,
+      "net_pay": 50200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 30000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 12000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 18000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 3600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 6000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-008",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 120000,
+      "total_deduction": 19400,
+      "net_pay": 100600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 60000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 24000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 36000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7200
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 12000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-009",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 105000,
+      "total_deduction": 17000,
+      "net_pay": 88000,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 52500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 21000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 31500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6300
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 10500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-001",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 160000,
+      "total_deduction": 25800,
+      "net_pay": 134200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 80000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 32000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 48000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 9600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 16000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 125000,
+      "total_deduction": 20200,
+      "net_pay": 104800,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 62500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 25000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 37500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7500
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 12500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-003",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 110000,
+      "total_deduction": 17800,
+      "net_pay": 92200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 55000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 22000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 33000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-004",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 135000,
+      "total_deduction": 21800,
+      "net_pay": 113200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 67500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 27000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 40500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 8100
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 13500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-005",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 95000,
+      "total_deduction": 15400,
+      "net_pay": 79600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 47500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 19000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 28500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 5700
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 9500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-006",
+      "employee": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 115000,
+      "total_deduction": 18600,
+      "net_pay": 96400,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 57500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 23000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 34500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6900
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 11500
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-007",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 60000,
+      "total_deduction": 9800,
+      "net_pay": 50200,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 30000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 12000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 18000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 3600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 6000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-008",
+      "employee": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 120000,
+      "total_deduction": 19400,
+      "net_pay": 100600,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 60000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 24000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 36000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7200
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 12000
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-009",
+      "employee": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 105000,
+      "total_deduction": 17000,
+      "net_pay": 88000,
+      "currency": "INR",
+      "docstatus": 1,
+      "status": "Issued",
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 52500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 21000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 31500
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 6300
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 10500
         }
       ]
     }
@@ -1241,9 +3705,113 @@
   ],
   "notifications": [
     {
+      "id": 18,
+      "user": "EMP-002",
+      "text": "Your Sick Leave (2026-09-03 to 2026-09-04) was approved.",
+      "type": "leave",
+      "creation": "2026-08-22 14:46",
+      "read": 0
+    },
+    {
+      "id": 17,
+      "user": "EMP-001",
+      "text": "Nisha Verma submitted a Sick Leave request for 2 day(s) (2026-09-03 to 2026-09-04).",
+      "type": "leave",
+      "creation": "2026-08-22 14:42",
+      "read": 0
+    },
+    {
+      "id": 16,
+      "user": "EMP-009",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-009) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 15,
+      "user": "EMP-008",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-008) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 14,
+      "user": "EMP-007",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-007) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 13,
+      "user": "EMP-006",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-006) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 12,
+      "user": "EMP-005",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-005) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 11,
+      "user": "EMP-004",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-004) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 10,
+      "user": "EMP-003",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-003) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 9,
+      "user": "EMP-002",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-002) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 8,
+      "user": "EMP-001",
+      "text": "Your August 2026 salary slip (SLIP-2026-08-001) has been published.",
+      "type": "payroll",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 7,
+      "user": "EMP-008",
+      "text": "Your Casual Leave (2026-09-15 to 2026-09-15) was approved.",
+      "type": "leave",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
+      "id": 6,
+      "user": "EMP-001",
+      "text": "Arjun Kapoor submitted a Casual Leave request for 1 day(s) (2026-09-15 to 2026-09-15).",
+      "type": "leave",
+      "creation": "2026-08-22 14:38",
+      "read": 0
+    },
+    {
       "id": 1,
       "user": "EMP-001",
-      "text": "Nisha Verma submitted a Casual Leave request for Aug 25-26.",
+      "text": "Nisha Verma submitted a Casual Leave request awaiting your approval.",
       "type": "leave",
       "creation": "2026-08-20 10:15",
       "read": 0
@@ -1251,7 +3819,7 @@
     {
       "id": 2,
       "user": "EMP-001",
-      "text": "Pooja Nair submitted a Casual Leave request for Aug 28.",
+      "text": "Pooja Nair submitted a Casual Leave request awaiting your approval.",
       "type": "leave",
       "creation": "2026-08-21 09:30",
       "read": 0
@@ -1267,9 +3835,9 @@
     {
       "id": 4,
       "user": "EMP-002",
-      "text": "July 2026 Salary Slip has been published and is ready for download.",
+      "text": "Your latest salary slip has been published and is ready for download.",
       "type": "payroll",
-      "creation": "2026-07-31 18:00",
+      "creation": "2026-08-02 18:00",
       "read": 1
     },
     {

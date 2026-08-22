@@ -85,7 +85,9 @@
     employees: [
       {
         name: 'EMP-001',
-        login_id: 'OIADSH20220001',
+        login_id: 'DTADSH20220001',
+        user_role: 'HR',
+        base_salary: 160000,
         password: 'Dayflow@123',
         employee_name: 'Aditi Sharma',
         first_name: 'Aditi',
@@ -115,7 +117,9 @@
       },
       {
         name: 'EMP-002',
-        login_id: 'OINIVE20230002',
+        login_id: 'DTNIVE20230002',
+        user_role: 'Employee',
+        base_salary: 125000,
         password: 'Dayflow@123',
         employee_name: 'Nisha Verma',
         first_name: 'Nisha',
@@ -145,7 +149,9 @@
       },
       {
         name: 'EMP-003',
-        login_id: 'OIKAME20230003',
+        login_id: 'DTKAME20230003',
+        user_role: 'Employee',
+        base_salary: 110000,
         password: 'Dayflow@123',
         employee_name: 'Kabir Mehta',
         first_name: 'Kabir',
@@ -175,7 +181,9 @@
       },
       {
         name: 'EMP-004',
-        login_id: 'OIRODE20230004',
+        login_id: 'DTRODE20230004',
+        user_role: 'Employee',
+        base_salary: 135000,
         password: 'Dayflow@123',
         employee_name: 'Rohan Deshmukh',
         first_name: 'Rohan',
@@ -205,7 +213,9 @@
       },
       {
         name: 'EMP-005',
-        login_id: 'OIPONA20240005',
+        login_id: 'DTPONA20240005',
+        user_role: 'Employee',
+        base_salary: 95000,
         password: 'Dayflow@123',
         employee_name: 'Pooja Nair',
         first_name: 'Pooja',
@@ -235,6 +245,9 @@
       },
       {
         name: 'EMP-006',
+        login_id: 'DTVIMA20220006',
+        user_role: 'Employee',
+        base_salary: 115000,
         employee_name: 'Vikram Malhotra',
         first_name: 'Vikram',
         last_name: 'Malhotra',
@@ -263,6 +276,9 @@
       },
       {
         name: 'EMP-007',
+        login_id: 'DTPRSE20230007',
+        user_role: 'HR',
+        base_salary: 60000,
         employee_name: 'Priya Sengupta',
         first_name: 'Priya',
         last_name: 'Sengupta',
@@ -291,6 +307,9 @@
       },
       {
         name: 'EMP-008',
+        login_id: 'DTARKA20230008',
+        user_role: 'Employee',
+        base_salary: 120000,
         employee_name: 'Arjun Kapoor',
         first_name: 'Arjun',
         last_name: 'Kapoor',
@@ -319,6 +338,9 @@
       },
       {
         name: 'EMP-009',
+        login_id: 'DTSURA20230009',
+        user_role: 'Employee',
+        base_salary: 105000,
         employee_name: 'Sunita Rao',
         first_name: 'Sunita',
         last_name: 'Rao',
@@ -859,6 +881,41 @@
   const STORAGE_KEY = 'dayflow_hrms_data_v3';
   const SESSION_KEY = 'dayflow_hrms_session_v3';
 
+  // Central REST API client. All mutations go through the backend, which is
+  // the single source of truth — clients never push the whole database.
+  const API = {
+    online: false,
+    async req(path, method = 'GET', body) {
+      let res;
+      try {
+        res = await fetch(path, {
+          method,
+          headers: body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+          body: body !== undefined ? JSON.stringify(body) : undefined
+        });
+      } catch (err) {
+        const e = new Error('Server unreachable. Running in offline mode.');
+        e.isNetwork = true;
+        throw e;
+      }
+      let json = null;
+      try { json = await res.json(); } catch (err) {}
+      if (!res.ok) {
+        const e = new Error((json && json.error) || `Request failed (${res.status})`);
+        e.status = res.status;
+        throw e;
+      }
+      return json;
+    },
+    get(path) { return this.req(path, 'GET'); },
+    post(path, body) { return this.req(path, 'POST', body || {}); },
+    put(path, body) { return this.req(path, 'PUT', body || {}); }
+  };
+
+  function todayStr() {
+    return (store && store.data && store.data.today) || new Date().toISOString().split('T')[0];
+  }
+
   class Store {
     constructor() {
       this.data = this.load();
@@ -878,48 +935,41 @@
       return JSON.parse(JSON.stringify(INITIAL_DATA));
     }
 
-    save(skipServer = false) {
+    // Local persistence only (cache). The server is authoritative.
+    save() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
       } catch (e) {
-        console.error('Failed to persist HRMS data:', e);
+        console.error('Failed to persist HRMS data locally:', e);
       }
-
-      if (!skipServer && typeof fetch !== 'undefined') {
-        fetch('/api/data', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.data)
-        }).catch(err => console.debug('Server db save deferred:', err));
-      }
-
       this.notify();
+    }
+
+    // Fetch the authoritative snapshot from the backend.
+    async reload() {
+      try {
+        const snap = await API.get('/api/data');
+        API.online = true;
+        if (snap && Array.isArray(snap.employees) && snap.employees.length > 0) {
+          this.data = snap;
+          this.save();
+        }
+        return true;
+      } catch (err) {
+        if (err.isNetwork) API.online = false;
+        return false;
+      }
     }
 
     async initServerSync() {
       if (typeof fetch === 'undefined') return;
 
-      try {
-        const res = await fetch('/api/data');
-        if (res.ok) {
-          const sData = await res.json();
-          if (sData && Array.isArray(sData.employees) && sData.employees.length > 0) {
-            this.data = sData;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
-            this.notify();
-          } else {
-            // First time seeding server DB
-            this.save();
-          }
-        }
-      } catch (e) {
-        console.debug('Local standalone mode:', e);
-      }
+      await this.reload();
 
-      // Cross-tab synchronization via storage event
+      // Cross-tab synchronization via storage event (offline mode)
       if (typeof window !== 'undefined') {
         window.addEventListener('storage', (e) => {
-          if (e.key === STORAGE_KEY && e.newValue) {
+          if (e.key === STORAGE_KEY && e.newValue && !API.online) {
             try {
               this.data = JSON.parse(e.newValue);
               this.notify();
@@ -928,28 +978,34 @@
           }
         });
 
-        // Periodic background poll for multi-window / HR sync (every 3s)
+        // Poll the backend for revision changes. The server bumps `rev` on
+        // every mutation, so HR and Employee sessions converge automatically.
         setInterval(async () => {
           try {
-            const r = await fetch('/api/data');
-            if (r.ok) {
-              const serverJson = await r.json();
-              if (serverJson && Array.isArray(serverJson.checkins)) {
-                // If checkin count or data changed, sync reactively
-                if (JSON.stringify(serverJson.checkins) !== JSON.stringify(this.data.checkins)) {
-                  this.data = serverJson;
-                  localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
-                  this.notify();
-                  renderApp();
-                }
-              }
+            const snap = await API.get('/api/data');
+            API.online = true;
+            if (snap && snap.rev !== undefined && snap.rev !== this.data.rev) {
+              this.data = snap;
+              this.save();
+              const ae = document.activeElement;
+              const typing = ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT');
+              if (!typing && !activeModal) renderApp();
+              // Read-only live modals (e.g. punch log) refresh in place
+              if (activeModal && activeModalLiveTag) renderModal();
             }
-          } catch (e) {}
+          } catch (e) { /* backend temporarily unreachable */ }
         }, 3000);
       }
     }
 
-    reset() {
+    async reset() {
+      try {
+        await API.post('/api/reset');
+        await this.reload();
+        return;
+      } catch (e) {
+        console.warn('Server reset unavailable, resetting locally:', e.message);
+      }
       this.data = JSON.parse(JSON.stringify(INITIAL_DATA));
       this.save();
     }
@@ -967,6 +1023,28 @@
   }
 
   const store = new Store();
+
+  // Standard action wrapper: run against the backend, refresh the snapshot,
+  // fall back to a local mutation when the server is unreachable.
+  // localFn must return true when the local mutation actually happened.
+  async function runAction(serverFn, localFn, successMsg) {
+    let ok = false;
+    try {
+      await serverFn();
+      await store.reload();
+      ok = true;
+    } catch (err) {
+      if (err.isNetwork) {
+        if (localFn) ok = localFn() !== false;
+        store.save();
+      } else {
+        showToast('danger', err.message);
+      }
+    }
+    renderApp();
+    if (ok && successMsg) showToast('success', successMsg);
+    return ok;
+  }
 
   // =========================================================================
   // 3. ERPNEXT / FRAPPE API COMPATIBILITY LAYER
@@ -1125,7 +1203,7 @@
 
   function getActiveEmployee() {
     if (!session || !session.employeeId) return null;
-    return store.data.employees.find(e => e.name === session.employeeId) || store.data.employees[0];
+    return store.data.employees.find(e => e.name === session.employeeId) || null;
   }
 
   // =========================================================================
@@ -1169,14 +1247,17 @@
   // =========================================================================
 
   let activeModal = null;
+  let activeModalLiveTag = null; // set for read-only modals that should auto-refresh on data changes
 
-  function openModal(templateFn) {
+  function openModal(templateFn, liveTag) {
     activeModal = templateFn;
+    activeModalLiveTag = liveTag || null;
     renderModal();
   }
 
   function closeModal() {
     activeModal = null;
+    activeModalLiveTag = null;
     renderModal();
   }
 
@@ -1228,6 +1309,24 @@
     });
   }
 
+  // ISO date string offset by N days from today
+  function dateOffset(days) {
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    return d.toISOString().split('T')[0];
+  }
+
+  // '09:30:00' | '09:30' -> '09:30 AM'
+  function fmtTime12(t) {
+    if (!t) return '—';
+    const parts = String(t).split(':');
+    let h = parseInt(parts[0], 10);
+    const m = parts[1] || '00';
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${String(h).padStart(2, '0')}:${m} ${ampm}`;
+  }
+
   function getInitials(name) {
     if (!name) return '?';
     const parts = name.trim().split(/\s+/);
@@ -1242,66 +1341,123 @@
     return colors[Math.abs(hash) % colors.length];
   }
 
-  // Attendance & work status calculator
+  // Attendance & work status calculator (uses backend-computed live map when
+  // connected; recomputes locally as offline fallback)
+  function getLiveAttendance(empId) {
+    const live = store.data.live_attendance;
+    if (live && live[empId]) return live[empId];
+    // Offline fallback: derive from checkins/leaves for the real today
+    const t = new Date().toISOString().split('T')[0];
+    const punches = store.data.checkins
+      .filter(c => c.employee === empId && String(c.time).startsWith(t))
+      .sort((a, b) => (a.time < b.time ? -1 : 1));
+    const leave = store.data.leave_applications.find(l =>
+      l.employee === empId && l.status === 'Approved' && l.from_date <= t && l.to_date >= t);
+    let minutes = 0, openIn = null;
+    for (const p of punches) {
+      if (p.log_type === 'IN') openIn = new Date(p.time.replace(' ', 'T')).getTime();
+      else if (openIn) { minutes += Math.max(0, (new Date(p.time.replace(' ', 'T')).getTime() - openIn) / 60000); openIn = null; }
+    }
+    if (openIn) minutes += Math.max(0, (Date.now() - openIn) / 60000);
+  const ins = punches.filter(p => p.log_type === 'IN');
+  const outs = punches.filter(p => p.log_type === 'OUT');
+  const currentlyIn = punches.length > 0 && punches[punches.length - 1].log_type === 'IN';
+  return {
+    status: leave ? 'On Leave' : punches.length === 0 ? 'Absent' : (currentlyIn ? 'Present' : 'Checked Out'),
+    currently_in: currentlyIn,
+    first_in: ins.length ? String(ins[0].time).split(' ')[1].substring(0, 5) : null,
+    last_in: ins.length ? String(ins[ins.length - 1].time).split(' ')[1].substring(0, 5) : null,
+    last_out: outs.length ? String(outs[outs.length - 1].time).split(' ')[1].substring(0, 5) : null,
+    total_minutes: Math.round(minutes),
+    punch_count: punches.length,
+    leave_type: leave ? leave.leave_type : null
+  };
+}
+
+  // Elapsed-time helpers — always computed fresh from the (server-synced)
+  // punch records so durations keep ticking between punches.
+  function todaysPunchList(empId) {
+    const t = new Date().toISOString().split('T')[0];
+    return store.data.checkins
+      .filter(c => c.employee === empId && String(c.time).startsWith(t))
+      .sort((a, b) => (a.time < b.time ? -1 : 1));
+  }
+
+  function hasPunchedToday(empId) {
+    return todaysPunchList(empId).length > 0;
+  }
+
+  function liveWorkingMinutes(empId) {
+    let minutes = 0;
+    let openIn = null;
+    for (const p of todaysPunchList(empId)) {
+      if (p.log_type === 'IN') openIn = new Date(p.time.replace(' ', 'T')).getTime();
+      else if (openIn) {
+        minutes += Math.max(0, (new Date(p.time.replace(' ', 'T')).getTime() - openIn) / 60000);
+        openIn = null;
+      }
+    }
+    if (openIn) minutes += Math.max(0, (Date.now() - openIn) / 60000);
+    return Math.round(minutes);
+  }
+
+  function fmtDuration(minutes) {
+    if (minutes <= 0) return '< 1m';
+    const h = Math.floor(minutes / 60);
+    const m = Math.round(minutes % 60);
+    return `${h}h ${m}m`;
+  }
+
   function getEmployeeWorkStatus(empId) {
-    const todayStr = new Date().toISOString().split('T')[0];
-    
-    // Check if on approved leave
-    const onLeave = store.data.leave_applications.find(l => 
-      l.employee === empId && 
-      l.status === 'Approved' && 
-      (l.from_date <= todayStr && l.to_date >= todayStr || l.from_date <= '2026-08-22' && l.to_date >= '2026-08-22')
-    );
-    if (onLeave) {
+    const live = getLiveAttendance(empId);
+
+    if (live.status === 'On Leave') {
       return {
         status: 'leave',
         label: 'On Leave',
-        icon: '',
         iconHtml: '<span class="card-status-icon icon-plane" title="Employee is on leave">' + ICONS.plane + '</span>',
         badgeClass: 'badge-warning',
-        description: `On Leave (${onLeave.leave_type})`
+        description: `On Leave (${live.leave_type || 'Approved'})`
       };
     }
 
-    // Check if employee checked in today
-    const checkins = store.data.checkins.filter(c => 
-      c.employee === empId && 
-      (c.time.startsWith(todayStr) || c.time.startsWith('2026-08-22'))
-    );
-    if (checkins.length > 0) {
-      const latest = checkins[0];
-      if (latest.log_type === 'IN') {
-        const timePart = (latest.time.split(' ')[1] || '09:00').substring(0, 5);
-        return {
-          status: 'present',
-          label: 'Present',
-          icon: '',
-          iconHtml: '<span class="card-status-dot dot-green" title="Employee is present in the office"></span>',
-          badgeClass: 'badge-success',
-          description: `Present (In since ${timePart})`
-        };
-      }
+    if (live.currently_in) {
+      return {
+        status: 'present',
+        label: 'Present',
+        iconHtml: '<span class="card-status-dot dot-green" title="Employee is present in the office"></span>',
+        badgeClass: 'badge-success',
+        description: `Present (In since ${live.last_in || live.first_in || '—'})`
+      };
     }
 
-    // Otherwise absent
+    if (live.punch_count > 0) {
+      return {
+        status: 'checked_out',
+        label: 'Checked Out',
+        iconHtml: '<span class="card-status-dot dot-blue" title="Employee completed the shift today"></span>',
+        badgeClass: 'badge-info',
+        description: `Present (Checked out at ${live.last_out || '—'})`
+      };
+    }
+
     return {
       status: 'absent',
       label: 'Absent',
-      icon: '',
       iconHtml: '<span class="card-status-dot dot-yellow" title="Employee is absent (has not applied time off)"></span>',
       badgeClass: 'badge-danger',
       description: 'Absent (No time off applied)'
     };
   }
 
+  // Most recent check-in time today (for the systray "Since ..." label)
   function getLatestCheckinTime(empId) {
-    const todayStr = new Date().toISOString().split('T')[0];
-    const checkin = store.data.checkins.find(c => 
-      c.employee === empId && 
-      c.log_type === 'IN' && 
-      (c.time.startsWith(todayStr) || c.time.startsWith('2026-08-22'))
-    );
-    if (!checkin) return '09:15 AM';
+    const t = new Date().toISOString().split('T')[0];
+    const ins = store.data.checkins
+      .filter(c => c.employee === empId && c.log_type === 'IN' && String(c.time).startsWith(t))
+      .sort((a, b) => (a.time < b.time ? 1 : -1));
+    const checkin = ins[0];
+    if (!checkin) return '—';
     const timeStr = checkin.time.split(' ')[1] || '09:15:00';
     const parts = timeStr.split(':');
     let hours = parseInt(parts[0], 10);
@@ -1368,6 +1524,35 @@
     }
   }, 1000);
 
+  // Live duration ticker — elapsed work durations, shift hours, and the systray
+  // "Since" label are pure arithmetic on punch data we already hold, so they are
+  // recomputed in place every 15s without a server round-trip or full re-render.
+  setInterval(() => {
+    try {
+      if (!session || !session.authenticated) return;
+      const emp = getActiveEmployee();
+      if (!emp) return;
+
+      // Check-in page "Shift Hours Today"
+      const shiftHrsEl = document.getElementById('shift-hours-today');
+      if (shiftHrsEl && hasPunchedToday(emp.name)) {
+        shiftHrsEl.textContent = fmtDuration(liveWorkingMinutes(emp.name));
+      }
+
+      // Topbar systray "Since" label
+      const sinceEl = document.getElementById('systray-since-text');
+      if (sinceEl) sinceEl.textContent = `Since ${getLatestCheckinTime(emp.name)}`;
+
+      // HR attendance table duration cells
+      document.querySelectorAll('[data-duration-for]').forEach(td => {
+        const empId = td.getAttribute('data-duration-for');
+        if (hasPunchedToday(empId)) {
+          td.textContent = fmtDuration(liveWorkingMinutes(empId));
+        }
+      });
+    } catch (e) { /* ticker is best-effort */ }
+  }, 15000);
+
   // =========================================================================
   // 9. VIEW TEMPLATES (COMPONENTS)
   // =========================================================================
@@ -1377,6 +1562,14 @@
     if (!root) return;
 
     if (!session || !session.authenticated) {
+      root.innerHTML = renderAuthView();
+      bindAuthEvents();
+      return;
+    }
+
+    if (!getActiveEmployee()) {
+      // Logged-in employee no longer exists in the database — force re-auth
+      saveSession(null);
       root.innerHTML = renderAuthView();
       bindAuthEvents();
       return;
@@ -1621,7 +1814,7 @@
                 ${empStatus.status === 'present' ? `
                   <button class="systray-btn checked-in" onclick="window.handlePunch('OUT')" title="You are currently Checked In. Click to Check Out.">
                     <span class="systray-dot-green"></span>
-                    <span class="systray-text">Since ${getLatestCheckinTime(emp?.name)}</span>
+                    <span class="systray-text" id="systray-since-text">Since ${getLatestCheckinTime(emp?.name)}</span>
                     <span class="systray-action">Check Out &rarr;</span>
                   </button>
                 ` : `
@@ -1808,21 +2001,48 @@
     const emp = getActiveEmployee();
     const hour = new Date().getHours();
     const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-    
-    // Calculate leave balance
+    const nowD = new Date();
+    const todayIso = nowD.toISOString().split('T')[0];
+    const monthPrefix = `${nowD.getFullYear()}-${String(nowD.getMonth() + 1).padStart(2, '0')}`;
+
+    // Calculate leave balance (remaining)
+    let totalRemaining = 0, casualRemaining = 0, sickRemaining = 0, earnedRemaining = 0;
+    const balMap = store.data.leave_balances && store.data.leave_balances[emp.name];
     const allocs = store.data.leave_allocations[emp.name] || {};
-    const totalLeavesAlloc = Object.values(allocs).reduce((a, b) => a + b, 0);
+    const consumedOf = (type) => store.data.leave_applications
+      .filter(l => l.employee === emp.name && l.status === 'Approved' && l.leave_type === type)
+      .reduce((s, l) => s + (Number(l.total_leave_days) || 0), 0);
+    const balanceOf = (type) => {
+      if (balMap && balMap[type]) return balMap[type].remaining;
+      return Math.max(0, (allocs[type] || 0) - consumedOf(type));
+    };
+    casualRemaining = balanceOf('Casual Leave');
+    sickRemaining = balanceOf('Sick Leave');
+    earnedRemaining = balanceOf('Earned Leave');
+    totalRemaining = casualRemaining + sickRemaining + earnedRemaining
+      + balanceOf('Compensatory Off') + balanceOf('Leave Without Pay');
+
     const myLeaves = store.data.leave_applications.filter(l => l.employee === emp.name);
     const pendingCount = myLeaves.filter(l => l.status === 'Open').length;
-    
-    // Attendance count this month
-    const myAttThisMonth = store.data.attendance.filter(a => a.employee === emp.name && (a.status === 'Present' || a.status === 'Work From Home')).length;
-    
-    // Upcoming Holidays
-    const holidays = store.data.holidays.slice(0, 3);
-    
+
+    // Attendance count this month (current calendar month)
+    const myAttThisMonth = store.data.attendance.filter(a =>
+      a.employee === emp.name &&
+      String(a.attendance_date || '').startsWith(monthPrefix) &&
+      (a.status === 'Present' || a.status === 'Work From Home')).length;
+
+    // Upcoming Holidays (from today onward)
+    const holidays = store.data.holidays
+      .filter(h => h.holiday_date >= todayIso)
+      .sort((a, b) => (a.holiday_date < b.holiday_date ? -1 : 1))
+      .slice(0, 3);
+
     // Team on leave today
-    const teamLeaves = store.data.leave_applications.filter(l => l.status === 'Approved' && l.employee !== emp.name);
+    const teamLeaves = store.data.leave_applications.filter(l =>
+      l.status === 'Approved' && l.employee !== emp.name && l.from_date <= todayIso && l.to_date >= todayIso);
+
+    // Shift definition
+    const shiftDef = store.data.shift_types.find(s => s.name === emp.shift) || { start_time: '09:30:00', end_time: '18:30:00' };
 
     return `
       <!-- GREETING & QUICK ACTIONS -->
@@ -1845,9 +2065,9 @@
             <span class="stat-card-title">Available Leave Balance</span>
             <span class="stat-card-icon" style="background: var(--primary-pale); color: var(--primary);">${ICONS.sun}</span>
           </div>
-          <div class="stat-card-value">${totalLeavesAlloc} Days</div>
+          <div class="stat-card-value">${totalRemaining} Days</div>
           <div class="stat-card-footer">
-            <span>Casual: ${allocs['Casual Leave'] || 0} | Sick: ${allocs['Sick Leave'] || 0} | Earned: ${allocs['Earned Leave'] || 0}</span>
+            <span>Casual: ${casualRemaining} | Sick: ${sickRemaining} | Earned: ${earnedRemaining}</span>
           </div>
         </div>
 
@@ -1881,7 +2101,7 @@
           </div>
           <div class="stat-card-value" style="font-size: 18px;">${escapeHtml(emp.shift || 'General Shift')}</div>
           <div class="stat-card-footer">
-            <span>09:30 AM — 06:30 PM</span>
+            <span>${fmtTime12(shiftDef.start_time)} — ${fmtTime12(shiftDef.end_time)}</span>
           </div>
         </div>
       </div>
@@ -1982,11 +2202,35 @@
     const pendingShifts = store.data.shift_requests.filter(s => s.status === 'Draft');
     const totalPendingApprovals = pendingLeaves.length + pendingExpenses.length + pendingShifts.length;
 
-    // Attendance breakdown today
-    const presentToday = 4;
-    const absentToday = 0;
-    const onLeaveToday = 1;
-    const attendanceRate = Math.round((presentToday / totalEmployees) * 100);
+    // Attendance breakdown today — computed from live attendance map
+    const activeEmps = store.data.employees.filter(e => e.status === 'Active');
+    const liveStats = activeEmps.map(e => getLiveAttendance(e.name));
+    const cameToWork = liveStats.filter(s => s.status === 'Present' || s.status === 'Checked Out').length;
+    const onLeaveToday = liveStats.filter(s => s.status === 'On Leave').length;
+    const presentToday = cameToWork;
+    const absentToday = liveStats.filter(s => s.status === 'Absent').length;
+    const attendanceRate = activeEmps.length ? Math.round((cameToWork / activeEmps.length) * 100) : 0;
+
+    // Recruitment pipeline — computed from applicants & interviews
+    const applicants = store.data.job_applicants;
+    const stageOpen = applicants.filter(a => a.status === 'Open').length;
+    const stageScreened = applicants.filter(a => a.status === 'Replied' || a.status === 'Hold').length;
+    const stageInterviewed = new Set(store.data.interviews.map(i => i.applicant)).size;
+    const stageAccepted = applicants.filter(a => a.status === 'Accepted').length;
+    const maxStage = Math.max(stageOpen, stageScreened, stageInterviewed, stageAccepted, 1);
+
+    // Next payroll run — current month, slips still to generate
+    const nowD = new Date();
+    const curMonth = nowD.getMonth();
+    const curYear = nowD.getFullYear();
+    const lastDayOfMonth = new Date(curYear, curMonth + 1, 0).getDate();
+    const monthStart = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-01`;
+    const monthEnd = `${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(lastDayOfMonth).padStart(2, '0')}`;
+    const slipsThisMonth = store.data.salary_slips.filter(s => s.start_date === monthStart && s.end_date === monthEnd).length;
+    const slipsPending = Math.max(0, activeEmps.length - slipsThisMonth);
+
+    // Operational feed — latest system notifications
+    const feed = (store.data.notifications || []).slice(0, 5);
 
     return `
       <div class="page-header">
@@ -2011,7 +2255,7 @@
           <div class="stat-card-value">${totalEmployees}</div>
           <div class="stat-card-footer">
             <span class="badge badge-success">${activeEmployees} Active</span>
-            <span>0 On Notice</span>
+            <span>${totalEmployees - activeEmployees} Inactive</span>
           </div>
         </div>
 
@@ -2064,9 +2308,9 @@
             <span class="stat-card-title">Next Payroll Run</span>
             <span class="stat-card-icon" style="background: var(--danger-pale); color: var(--danger);">${ICONS.card}</span>
           </div>
-          <div class="stat-card-value" style="font-size: 18px;">Aug 31</div>
+          <div class="stat-card-value" style="font-size: 18px;">${nowD.toLocaleDateString('en-US', { month: 'short' })} ${lastDayOfMonth}</div>
           <div class="stat-card-footer">
-            <span>5 Slips Pending Run</span>
+            <span>${slipsPending} Slips Pending Run</span>
           </div>
         </div>
       </div>
@@ -2147,45 +2391,41 @@
             <div class="card-body" style="padding: 16px;">
               <div class="report-bar-row">
                 <span class="report-bar-label">Open / Sourced</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%; background: #94a3b8;"></div></div>
-                <span class="report-bar-value">1</span>
+                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageOpen / maxStage * 100)}%; background: #94a3b8;"></div></div>
+                <span class="report-bar-value">${stageOpen}</span>
               </div>
               <div class="report-bar-row">
                 <span class="report-bar-label">Replied / Screened</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%; background: #3b82f6;"></div></div>
-                <span class="report-bar-value">1</span>
+                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageScreened / maxStage * 100)}%; background: #3b82f6;"></div></div>
+                <span class="report-bar-value">${stageScreened}</span>
               </div>
               <div class="report-bar-row">
                 <span class="report-bar-label">Interview Stage</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: 40%; background: #8b5cf6;"></div></div>
-                <span class="report-bar-value">2</span>
+                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageInterviewed / maxStage * 100)}%; background: #8b5cf6;"></div></div>
+                <span class="report-bar-value">${stageInterviewed}</span>
               </div>
               <div class="report-bar-row">
                 <span class="report-bar-label">Offer Accepted</span>
-                <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%; background: #10b981;"></div></div>
-                <span class="report-bar-value">1</span>
+                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(stageAccepted / maxStage * 100)}%; background: #10b981;"></div></div>
+                <span class="report-bar-value">${stageAccepted}</span>
               </div>
             </div>
           </div>
 
-          <!-- RECENT AUDIT LOGS -->
+          <!-- RECENT ACTIVITY FEED -->
           <div class="card">
             <div class="card-header">
               <span class="card-title">Operational Feed</span>
             </div>
             <div class="card-body" style="padding: 10px 14px; font-size: 12px;">
-              <div style="padding: 8px 0; border-bottom: 1px solid var(--border-subtle);">
-                <strong>Aditi Sharma</strong> published company all-hands announcement.
-                <div style="font-size: 10.5px; color: var(--text-light);">2 days ago</div>
-              </div>
-              <div style="padding: 8px 0; border-bottom: 1px solid var(--border-subtle);">
-                <strong>Varun Grover</strong> accepted Staff Full Stack Engineer offer.
-                <div style="font-size: 10.5px; color: var(--text-light);">3 days ago</div>
-              </div>
-              <div style="padding: 8px 0;">
-                <strong>July 2026 Payroll</strong> finalized and locked (5 slips).
-                <div style="font-size: 10.5px; color: var(--text-light);">July 31, 2026</div>
-              </div>
+              ${feed.length === 0 ? `
+                <div style="padding: 8px 0; color: var(--text-muted);">No recent activity recorded.</div>
+              ` : feed.map(n => `
+                <div style="padding: 8px 0; border-bottom: 1px solid var(--border-subtle);">
+                  ${escapeHtml(n.text)}
+                  <div style="font-size: 10.5px; color: var(--text-light);">${escapeHtml(String(n.creation))}</div>
+                </div>
+              `).join('')}
             </div>
           </div>
         </div>
@@ -2198,20 +2438,20 @@
   // -------------------------------------------------------------------------
   function renderCheckinView() {
     const emp = getActiveEmployee();
-    const myLogs = store.data.checkins.filter(c => c.employee === emp.name);
+    const t = new Date().toISOString().split('T')[0];
+    const myLogs = store.data.checkins.filter(c => c.employee === emp.name && String(c.time).startsWith(t));
     const lastCheckin = myLogs[0];
     const isCheckedIn = lastCheckin?.log_type === 'IN';
     const nextAction = isCheckedIn ? 'OUT' : 'IN';
 
-    // Calculate working hours today
-    let workingMinutes = 0;
-    if (isCheckedIn && lastCheckin) {
-      const startMs = new Date(lastCheckin.time).getTime();
-      const nowMs = Date.now();
-      workingMinutes = Math.max(0, Math.round((nowMs - startMs) / 60000));
-    }
+    // Total working time today from all IN/OUT pairs — recomputed fresh from
+    // punch records so it keeps ticking between punches
+    const workingMinutes = liveWorkingMinutes(emp.name);
     const hrs = Math.floor(workingMinutes / 60);
-    const mins = workingMinutes % 60;
+    const mins = Math.round(workingMinutes % 60);
+    const shiftHoursText = workingMinutes > 0
+      ? `${hrs}h ${mins}m`
+      : (isCheckedIn ? '< 1m' : '0h 0m');
 
     return `
       <div class="page-header">
@@ -2251,8 +2491,8 @@
         <div style="display: flex; justify-content: center; gap: 32px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);">
           <div>
             <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Shift Hours Today</div>
-            <div style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-top: 2px;">
-              ${isCheckedIn ? `${hrs}h ${mins}m` : '0h 0m'}
+            <div id="shift-hours-today" style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-top: 2px;">
+              ${shiftHoursText}
             </div>
           </div>
           <div style="width: 1px; background: var(--border-color);"></div>
@@ -2308,15 +2548,24 @@
 
   function renderEmployeeAttendanceView() {
     const emp = getActiveEmployee();
-    const now = new Date(2026, 7 + currentMonthOffset, 1);
+    const base = new Date();
+    const now = new Date(base.getFullYear(), base.getMonth() + currentMonthOffset, 1);
     const year = now.getFullYear();
     const month = now.getMonth();
     const monthName = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const monthPrefix = `${year}-${String(month + 1).padStart(2, '0')}`;
+    const todayIso = base.toISOString().split('T')[0];
 
-    const records = store.data.attendance.filter(a => a.employee === emp.name);
+    const records = store.data.attendance
+      .filter(a => a.employee === emp.name && String(a.attendance_date || '').startsWith(monthPrefix))
+      .sort((a, b) => (a.attendance_date < b.attendance_date ? 1 : -1));
     const presentCount = records.filter(r => r.status === 'Present' || r.status === 'Work From Home').length;
     const leaveCount = records.filter(r => r.status === 'On Leave').length;
     const halfDayCount = records.filter(r => r.status === 'Half Day').length;
+    const hoursList = records.map(r => Number(r.working_hours) || 0).filter(h => h > 0);
+    const avgHours = hoursList.length
+      ? (hoursList.reduce((a, b) => a + b, 0) / hoursList.length).toFixed(1)
+      : null;
 
     // Calendar generation
     const firstDay = new Date(year, month, 1).getDay();
@@ -2354,7 +2603,7 @@
         </div>
         <div class="stat-card primary">
           <span class="stat-card-title">Avg Working Hours</span>
-          <div class="stat-card-value">8.4 hrs</div>
+          <div class="stat-card-value">${avgHours === null ? '—' : `${avgHours} hrs`}</div>
         </div>
       </div>
 
@@ -2387,7 +2636,7 @@
               const att = attMap[dateStr];
               const dayOfWeek = (firstDay + idx) % 7;
               const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-              const isToday = dateStr === '2026-08-22';
+              const isToday = dateStr === todayIso;
 
               let tag = '';
               if (att) {
@@ -2450,8 +2699,20 @@
 
   function renderEmployeeLeaveView() {
     const emp = getActiveEmployee();
-    const allocs = store.data.leave_allocations[emp.name] || {};
     const applications = store.data.leave_applications.filter(l => l.employee === emp.name);
+
+    // Remaining balances (backend-computed when connected, derived locally otherwise)
+    let balMap = store.data.leave_balances && store.data.leave_balances[emp.name];
+    if (!balMap) {
+      balMap = {};
+      const allocs = store.data.leave_allocations[emp.name] || {};
+      for (const [type, allocated] of Object.entries(allocs)) {
+        const consumed = store.data.leave_applications
+          .filter(l => l.employee === emp.name && l.status === 'Approved' && l.leave_type === type)
+          .reduce((s, l) => s + (Number(l.total_leave_days) || 0), 0);
+        balMap[type] = { allocated, consumed, remaining: Math.max(0, allocated - consumed) };
+      }
+    }
 
     const filtered = activeLeaveFilterTab === 'All'
       ? applications
@@ -2470,20 +2731,24 @@
 
       <!-- LEAVE ALLOCATION BALANCE CARDS -->
       <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-        ${Object.entries(allocs).map(([lt, bal]) => `
+        ${Object.entries(balMap).map(([lt, bal]) => {
+          const allocated = Number(bal.allocated) || 0;
+          const pct = allocated > 0 ? Math.round((Number(bal.remaining) / allocated) * 100) : 0;
+          return `
           <div class="stat-card primary">
             <div class="stat-card-header">
               <span class="stat-card-title">${escapeHtml(lt)}</span>
               <span class="stat-card-icon" style="background: var(--primary-pale); color: var(--primary);">${ICONS.sun}</span>
             </div>
-            <div class="stat-card-value">${bal} Days</div>
+            <div class="stat-card-value">${bal.remaining} Days</div>
             <div class="stat-card-footer">
+              <span style="font-size: 11px; color: var(--text-muted);">${bal.consumed} of ${allocated} consumed</span>
               <div style="width: 100%; height: 5px; background: var(--bg-muted); border-radius: 3px; overflow: hidden; margin-top: 6px;">
-                <div style="width: 75%; height: 100%; background: var(--primary);"></div>
+                <div style="width: ${pct}%; height: 100%; background: var(--primary);"></div>
               </div>
             </div>
           </div>
-        `).join('')}
+        `;}).join('')}
       </div>
 
       <!-- FILTER TABS & APPLICATIONS TABLE -->
@@ -2617,7 +2882,9 @@
   // -------------------------------------------------------------------------
   function renderEmployeePayslipView() {
     const emp = getActiveEmployee();
-    const slips = store.data.salary_slips.filter(s => s.employee === emp.name);
+    const slips = store.data.salary_slips
+      .filter(s => s.employee === emp.name)
+      .sort((a, b) => ((a.start_date || '') < (b.start_date || '') ? 1 : -1));
     const activeSlip = slips[0]; // Latest
 
     return `
@@ -2730,7 +2997,7 @@
                     <td>${formatCurrency(s.gross_pay)}</td>
                     <td style="color: var(--danger);">${formatCurrency(s.total_deduction)}</td>
                     <td><strong>${formatCurrency(s.net_pay)}</strong></td>
-                    <td><span class="badge badge-success">Disbursed</span></td>
+                    <td><span class="badge ${s.status === 'Issued' || s.docstatus ? 'badge-success' : 'badge-warning'}">${escapeHtml(s.status || 'Issued')}</span></td>
                     <td style="text-align: right;">
                       <button class="btn btn-sm btn-secondary" onclick="window.downloadPayslipPDF('${s.name}')">Download</button>
                     </td>
@@ -2748,8 +3015,12 @@
   // HR PAYROLL OVERVIEW & WIZARD
   // -------------------------------------------------------------------------
   function renderHRPayrollOverview() {
-    const entries = store.data.payroll_entries;
+    const entries = [...store.data.payroll_entries].sort((a, b) => (a.start_date < b.start_date ? 1 : -1));
     const slips = store.data.salary_slips;
+    const latestEntry = entries[0];
+    const avgNet = slips.length
+      ? Math.round(slips.reduce((s, x) => s + (Number(x.net_pay) || 0), 0) / slips.length)
+      : 0;
 
     return `
       <div class="page-header">
@@ -2766,17 +3037,17 @@
       <div class="stats-grid">
         <div class="stat-card primary">
           <span class="stat-card-title">Total Processed Payroll</span>
-          <div class="stat-card-value">${formatCurrency(585000)}</div>
-          <div class="stat-card-footer"><span>Last Cycle Disbursed</span></div>
+          <div class="stat-card-value">${formatCurrency(latestEntry ? latestEntry.total_amount : 0)}</div>
+          <div class="stat-card-footer"><span>${latestEntry ? `Last Cycle (${formatDate(latestEntry.end_date)}) Disbursed` : 'No payroll run yet'}</span></div>
         </div>
         <div class="stat-card success">
           <span class="stat-card-title">Salaries Generated</span>
           <div class="stat-card-value">${slips.length}</div>
-          <div class="stat-card-footer"><span>Active Employee Records</span></div>
+          <div class="stat-card-footer"><span>Across ${new Set(slips.map(s => s.employee)).size} Employees</span></div>
         </div>
         <div class="stat-card info">
           <span class="stat-card-title">Average Net CTC</span>
-          <div class="stat-card-value">${formatCurrency(117000)}</div>
+          <div class="stat-card-value">${formatCurrency(avgNet)}</div>
           <div class="stat-card-footer"><span>Per Employee / Month</span></div>
         </div>
       </div>
@@ -2817,9 +3088,37 @@
 
   // 3-Step Wizard for Run Payroll
   let wizardStep = 1;
-  let wizardConfig = { month: 'August', year: '2026', dept: 'All' };
+  const currentWizardDate = new Date();
+  let wizardConfig = {
+    month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][currentWizardDate.getMonth()],
+    year: String(currentWizardDate.getFullYear()),
+    dept: 'All'
+  };
+  let lastPayrollResult = null;
+
+  // Mirror of the backend payroll formula for the wizard preview
+  function payPreview(emp) {
+    const base = Number(emp.base_salary) || 100000;
+    const gross = base;
+    const basic = Math.round(base * 0.5);
+    const deductions = Math.round(basic * 0.12) + 200 + Math.round(gross * 0.10);
+    return { gross, deductions, net: gross - deductions };
+  }
 
   function renderRunPayrollWizard() {
+    const MONTHS_ALL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const yr = new Date().getFullYear();
+    const years = [yr + 1, yr, yr - 1].filter((v, i, a) => a.indexOf(v) === i);
+    const previewEmps = (wizardConfig.dept === 'All'
+      ? store.data.employees.filter(e => e.status === 'Active')
+      : store.data.employees.filter(e => e.status === 'Active' && e.department === wizardConfig.dept));
+    const totals = previewEmps.reduce((acc, e) => {
+      const p = payPreview(e);
+      acc.gross += p.gross; acc.ded += p.deductions; acc.net += p.net;
+      return acc;
+    }, { gross: 0, ded: 0, net: 0 });
+    const slipsCount = lastPayrollResult ? lastPayrollResult.slips_created : previewEmps.length;
+
     return `
       <div class="page-header">
         <div class="page-title-group">
@@ -2855,24 +3154,21 @@
               <div class="form-group">
                 <label class="form-label">Month</label>
                 <select class="form-control" id="wiz-month">
-                  <option selected>August</option>
-                  <option>September</option>
-                  <option>October</option>
+                  ${MONTHS_ALL.map(m => `<option ${wizardConfig.month === m ? 'selected' : ''}>${m}</option>`).join('')}
                 </select>
               </div>
               <div class="form-group">
                 <label class="form-label">Year</label>
                 <select class="form-control" id="wiz-year">
-                  <option selected>2026</option>
-                  <option>2025</option>
+                  ${years.map(y => `<option ${String(wizardConfig.year) === String(y) ? 'selected' : ''}>${y}</option>`).join('')}
                 </select>
               </div>
             </div>
             <div class="form-group" style="margin-top: 14px;">
               <label class="form-label">Department Scope</label>
               <select class="form-control" id="wiz-dept">
-                <option selected>All Departments</option>
-                ${store.data.departments.map(d => `<option>${escapeHtml(d)}</option>`).join('')}
+                <option value="All Departments" ${wizardConfig.dept === 'All' ? 'selected' : ''}>All Departments</option>
+                ${store.data.departments.map(d => `<option ${wizardConfig.dept === d ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('')}
               </select>
             </div>
           </div>
@@ -2880,7 +3176,7 @@
             <button class="btn btn-primary" onclick="window.setWizardStep(2)">Proceed to Preview →</button>
           </div>
         ` : wizardStep === 2 ? `
-          <div class="card-header"><span class="card-title">Step 2: Employee Payroll Calculation Preview</span></div>
+          <div class="card-header"><span class="card-title">Step 2: Employee Payroll Calculation Preview — ${escapeHtml(wizardConfig.month)} ${escapeHtml(String(wizardConfig.year))} (${escapeHtml(wizardConfig.dept === 'All' ? 'All Departments' : wizardConfig.dept)})</span></div>
           <div class="card-body" style="padding: 0;">
             <div class="table-container" style="border: none;">
               <table class="data-table">
@@ -2888,20 +3184,33 @@
                   <tr>
                     <th>Employee</th>
                     <th>Gross Pay</th>
-                    <th>PF & TDS</th>
+                    <th>PF, PT & TDS</th>
                     <th>Net Disbursable</th>
                   </tr>
                 </thead>
                 <tbody>
-                  ${store.data.employees.map(e => `
+                  ${previewEmps.length === 0 ? `
+                    <tr><td colspan="4" style="text-align: center; padding: 24px; color: var(--text-muted);">No active employees in this scope.</td></tr>
+                  ` : previewEmps.map(e => {
+                    const p = payPreview(e);
+                    return `
                     <tr>
-                      <td><strong>${escapeHtml(e.employee_name)}</strong> <small>(${e.department})</small></td>
-                      <td>₹1,25,000</td>
-                      <td style="color: var(--danger);">₹12,500</td>
-                      <td><strong style="color: var(--success);">₹1,12,500</strong></td>
+                      <td><strong>${escapeHtml(e.employee_name)}</strong> <small>(${escapeHtml(e.department || '—')})</small></td>
+                      <td>${formatCurrency(p.gross)}</td>
+                      <td style="color: var(--danger);">${formatCurrency(p.deductions)}</td>
+                      <td><strong style="color: var(--success);">${formatCurrency(p.net)}</strong></td>
                     </tr>
-                  `).join('')}
+                  `;}).join('')}
                 </tbody>
+                ${previewEmps.length > 0 ? `
+                <tfoot style="background: var(--bg-subtle);">
+                  <tr>
+                    <td><strong>Total (${previewEmps.length} employees)</strong></td>
+                    <td><strong>${formatCurrency(totals.gross)}</strong></td>
+                    <td><strong style="color: var(--danger);">${formatCurrency(totals.ded)}</strong></td>
+                    <td><strong style="color: var(--success);">${formatCurrency(totals.net)}</strong></td>
+                  </tr>
+                </tfoot>` : ''}
               </table>
             </div>
           </div>
@@ -2914,7 +3223,7 @@
             <div style="font-size: 40px; color: var(--success); font-weight: 700;">&#10003;</div>
             <h2 style="font-size: 20px; font-weight: 700; margin-top: 12px;">Payroll Cycle Successfully Published!</h2>
             <p style="color: var(--text-muted); margin-top: 6px; font-size: 13px;">
-              5 salary slips have been generated and notifications dispatched to all employee self-service portals.
+              ${slipsCount} salary slip(s) for <strong>${escapeHtml(wizardConfig.month)} ${escapeHtml(String(wizardConfig.year))}</strong>${wizardConfig.dept !== 'All' ? ` (${escapeHtml(wizardConfig.dept)})` : ''} have been generated${lastPayrollResult ? ` and ${formatCurrency(lastPayrollResult.total_net)} net is queued for disbursement` : ''}. Notifications were dispatched to all employee self-service portals.
             </p>
             <div style="margin-top: 24px;">
               <button class="btn btn-primary" onclick="window.location.hash='#payroll-slips'">View Salary Slips</button>
@@ -3102,16 +3411,20 @@
       </div>
 
       <!-- CURRENT ASSIGNED SHIFT CARD -->
-      <div class="card" style="margin-bottom: 20px;">
-        <div class="card-header"><span class="card-title">Currently Active Assigned Shift</span></div>
-        <div class="card-body" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h2 style="font-size: 18px; font-weight: 700; color: var(--primary);">${escapeHtml(emp.shift || 'General Shift')}</h2>
-            <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Standard timings: 09:30 AM to 06:30 PM (Monday through Friday)</p>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Currently Active Assigned Shift</span></div>
+          <div class="card-body" style="display: flex; align-items: center; justify-content: space-between;">
+          ${(() => {
+            const def = store.data.shift_types.find(s => s.name === emp.shift) || { start_time: '09:30:00', end_time: '18:30:00', description: 'Standard Office Shift' };
+            return `
+            <div>
+              <h2 style="font-size: 18px; font-weight: 700; color: var(--primary);">${escapeHtml(emp.shift || 'General Shift')}</h2>
+              <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Standard timings: ${fmtTime12(def.start_time)} to ${fmtTime12(def.end_time)} — ${escapeHtml(def.description || '')}</p>
+            </div>
+            <span class="badge badge-success">Assigned & Active</span>
+          `; })()}
           </div>
-          <span class="badge badge-success">Assigned & Active</span>
         </div>
-      </div>
 
       <!-- SHIFT CHANGE REQUESTS TABLE -->
       <div class="card">
@@ -3393,6 +3706,7 @@
       <div class="status-legend-bar">
         <span style="font-weight: 700; color: var(--text-primary); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px;">Status Indicators:</span>
         <span class="legend-item"><span class="card-status-dot dot-green"></span> <strong>Green dot:</strong> Employee is present in the office.</span>
+        <span class="legend-item"><span class="card-status-dot dot-blue"></span> <strong>Blue dot:</strong> Employee already checked out today.</span>
         <span class="legend-item"><span class="card-status-icon icon-plane">${ICONS.plane}</span> <strong>On-Leave Icon:</strong> Employee is on leave.</span>
         <span class="legend-item"><span class="card-status-dot dot-yellow"></span> <strong>Yellow dot:</strong> Employee is absent. (Employee has not applied time off and is absent.)</span>
         <span style="margin-left: auto; color: var(--text-muted); font-size: 12px; font-weight: 600;">${list.length} Employees</span>
@@ -3676,10 +3990,10 @@
                 <label class="form-label">Company Email <span class="required">*</span></label>
                 <input type="email" class="form-control" name="company_email" required placeholder="e.g. rahul@dayflow.local">
               </div>
-              <div class="form-group">
-                <label class="form-label">Date of Joining <span class="required">*</span></label>
-                <input type="date" class="form-control" name="date_of_joining" required value="2026-09-01">
-              </div>
+                <div class="form-group">
+                  <label class="form-label">Date of Joining <span class="required">*</span></label>
+                  <input type="date" class="form-control" name="date_of_joining" required value="${dateOffset(0)}">
+                </div>
             </div>
 
             <div class="form-row" style="margin-top: 12px;">
@@ -3718,76 +4032,24 @@
     const todayDisplay = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
     const employees = store.data.employees;
 
-    // Calculate real-time stats for each employee for today
+    // Calculate real-time stats for each employee for today (live map from backend;
+    // durations recomputed fresh on every render/tick from punch records)
     const employeeLiveStatuses = employees.map(emp => {
-      // Find today's checkin punches
-      const punches = store.data.checkins.filter(c => 
-        c.employee === emp.name && 
-        (c.time.startsWith(todayStr) || c.time.startsWith('2026-08-22'))
-      ).sort((a, b) => new Date(a.time) - new Date(b.time)); // chronological
+      const live = getLiveAttendance(emp.name);
+      const punches = todaysPunchList(emp.name);
 
-      // Check if on leave
-      const leave = store.data.leave_applications.find(l => 
-        l.employee === emp.name && 
-        l.status === 'Approved' && 
-        ((l.from_date <= todayStr && l.to_date >= todayStr) || (l.from_date <= '2026-08-22' && l.to_date >= '2026-08-22'))
-      );
-
-      let status = 'Absent';
-      let firstIn = null;
-      let lastOut = null;
-      let totalMinutes = 0;
-      let isCurrentlyIn = false;
-
-      if (leave) {
-        status = 'On Leave';
-      } else if (punches.length > 0) {
-        const inPunches = punches.filter(p => p.log_type === 'IN');
-        const outPunches = punches.filter(p => p.log_type === 'OUT');
-        const latestPunch = punches[punches.length - 1];
-
-        if (inPunches.length > 0) {
-          firstIn = inPunches[0].time.split(' ')[1].substring(0, 5);
-        }
-        if (outPunches.length > 0) {
-          lastOut = outPunches[outPunches.length - 1].time.split(' ')[1].substring(0, 5);
-        }
-
-        if (latestPunch.log_type === 'IN') {
-          status = 'Present';
-          isCurrentlyIn = true;
-        } else {
-          status = 'Checked Out';
-        }
-
-        // Calculate working duration
-        let currentInTime = null;
-        for (const p of punches) {
-          if (p.log_type === 'IN') {
-            currentInTime = new Date(p.time).getTime();
-          } else if (p.log_type === 'OUT' && currentInTime) {
-            totalMinutes += Math.max(0, Math.round((new Date(p.time).getTime() - currentInTime) / 60000));
-            currentInTime = null;
-          }
-        }
-        if (currentInTime) {
-          totalMinutes += Math.max(0, Math.round((Date.now() - currentInTime) / 60000));
-        }
-      }
-
-      const hrs = Math.floor(totalMinutes / 60);
-      const mins = totalMinutes % 60;
-      const durationStr = totalMinutes > 0 ? `${hrs}h ${mins}m` : (status === 'Present' ? '< 1m' : '—');
+      const totalMinutes = liveWorkingMinutes(emp.name);
+      const durationStr = punches.length > 0 ? fmtDuration(totalMinutes) : '—';
 
       return {
         emp,
-        status,
-        isCurrentlyIn,
-        firstIn,
-        lastOut,
+        status: live.status,
+        isCurrentlyIn: live.currently_in,
+        firstIn: live.last_in || live.first_in, // latest check-in (current session start)
+        lastOut: live.last_out,
         durationStr,
         punches,
-        leave
+        leave: live.leave_type ? { leave_type: live.leave_type } : null
       };
     });
 
@@ -3818,7 +4080,7 @@
           <p>Live synchronized attendance bar connected to central database for today, <strong>${todayDisplay}</strong>.</p>
         </div>
         <div class="page-actions">
-          <button class="btn btn-secondary btn-sm" onclick="store.initServerSync(); renderApp();">
+          <button class="btn btn-secondary btn-sm" onclick="window.liveSyncNow()">
             <span>&#x21bb;</span> Live Sync Now
           </button>
         </div>
@@ -3960,7 +4222,7 @@
                       <strong style="color: var(--primary); font-family: var(--font-mono);">${item.lastOut}</strong>
                     ` : (item.isCurrentlyIn ? '<span class="badge badge-success" style="font-size: 10px;">In Progress</span>' : '<span style="color: var(--text-light);">—</span>')}
                   </td>
-                  <td style="text-align: center;">
+                  <td style="text-align: center;" data-duration-for="${item.emp.name}">
                     <strong style="font-size: 13px; color: var(--text-primary);">${item.durationStr}</strong>
                   </td>
                   <td>
@@ -3989,6 +4251,16 @@
     renderApp();
   };
 
+  window.liveSyncNow = async function () {
+    const ok = await store.reload();
+    if (ok) {
+      showToast('success', 'Attendance synced with the central database.');
+    } else {
+      showToast('danger', 'Cannot reach the HRMS server right now.');
+    }
+    renderApp();
+  };
+
   window.setHRAttendanceSearch = function (s) {
     hrAttendanceSearch = s;
     renderApp();
@@ -3998,9 +4270,13 @@
     const emp = store.data.employees.find(e => e.name === empId);
     if (!emp) return;
 
-    const punches = store.data.checkins.filter(c => c.employee === empId);
+    const t = new Date().toISOString().split('T')[0];
 
-    openModal(() => `
+    openModal(() => {
+      const fresh = store.data.checkins
+        .filter(c => c.employee === empId && String(c.time).startsWith(t))
+        .sort((a, b) => (a.time < b.time ? 1 : -1));
+      return `
       <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
         <div class="modal-dialog">
           <div class="modal-header">
@@ -4025,9 +4301,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  ${punches.length === 0 ? `
+                  ${fresh.length === 0 ? `
                     <tr><td colspan="3" style="text-align: center; padding: 20px; color: var(--text-muted);">No punch records found.</td></tr>
-                  ` : punches.map(p => `
+                  ` : fresh.map(p => `
                     <tr>
                       <td>
                         <span class="badge ${p.log_type === 'IN' ? 'badge-success' : 'badge-danger'}">
@@ -4047,7 +4323,8 @@
           </div>
         </div>
       </div>
-    `);
+    `;
+    }, 'punch-log');
   };
 
 
@@ -4260,6 +4537,85 @@
   // HR REPORTS & ANALYTICS VIEW (6 Reports)
   // -------------------------------------------------------------------------
   function renderReportsView() {
+    const nowD = new Date();
+    const curYear = nowD.getFullYear();
+    const monthPrefix = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const curPrefix = monthPrefix(nowD);
+    const prevD = new Date(curYear, nowD.getMonth() - 1, 1);
+    const prevPrefix = monthPrefix(prevD);
+
+    // 1. Headcount by department
+    const deptCounts = {};
+    for (const e of store.data.employees) {
+      deptCounts[e.department || 'Unassigned'] = (deptCounts[e.department || 'Unassigned'] || 0) + 1;
+    }
+    const totalHeadcount = store.data.employees.length || 1;
+
+    // 2. Recruitment funnel
+    const applicants = store.data.job_applicants;
+    const appliedCount = applicants.length;
+    const screenedCount = applicants.filter(a => a.status !== 'Open').length;
+    const interviewedCount = new Set(store.data.interviews.map(i => i.applicant)).size;
+    const hiredCount = applicants.filter(a => a.status === 'Accepted').length;
+    const pctOf = (n) => appliedCount ? Math.round((n / appliedCount) * 100) : 0;
+
+    // 3. Leave utilization
+    const leaveTypesSet = new Set();
+    for (const allocs of Object.values(store.data.leave_allocations || {})) {
+      Object.keys(allocs).forEach(t => leaveTypesSet.add(t));
+    }
+    const leaveRows = [...leaveTypesSet].map(type => {
+      let allocated = 0, consumed = 0;
+      const balAll = store.data.leave_balances || {};
+      for (const [, empBals] of Object.entries(balAll)) {
+        if (empBals[type]) { allocated += empBals[type].allocated; consumed += empBals[type].consumed; }
+      }
+      if (!Object.keys(balAll).length) {
+        for (const allocs of Object.values(store.data.leave_allocations || {})) allocated += allocs[type] || 0;
+        consumed = store.data.leave_applications
+          .filter(l => l.status === 'Approved' && l.leave_type === type)
+          .reduce((s, l) => s + (Number(l.total_leave_days) || 0), 0);
+      }
+      return { type, allocated, consumed, remaining: Math.max(0, allocated - consumed) };
+    }).filter(r => r.allocated > 0);
+
+    // 4. Payroll disbursement history (aggregated from salary slips by month)
+    const slipMonths = {};
+    for (const s of store.data.salary_slips) {
+      const key = String(s.start_date || '').substring(0, 7);
+      if (!key) continue;
+      slipMonths[key] = slipMonths[key] || { gross: 0, ded: 0, net: 0, count: 0 };
+      slipMonths[key].gross += Number(s.gross_pay) || 0;
+      slipMonths[key].ded += Number(s.total_deduction) || 0;
+      slipMonths[key].net += Number(s.net_pay) || 0;
+      slipMonths[key].count += 1;
+    }
+    const payrollHistory = Object.entries(slipMonths)
+      .sort((a, b) => (a[0] < b[0] ? 1 : -1))
+      .slice(0, 6);
+
+    // 5. Monthly attendance summary (current + previous month)
+    const monthStats = (prefix) => {
+      const recs = store.data.attendance.filter(a => String(a.attendance_date || '').startsWith(prefix));
+      const n = recs.length || 1;
+      const present = recs.filter(r => r.status === 'Present').length;
+      const wfh = recs.filter(r => r.status === 'Work From Home').length;
+      const late = recs.filter(r => r.late_entry).length;
+      return { label: prefix, presentPct: Math.round(present / n * 100), wfhPct: Math.round(wfh / n * 100), latePct: Math.round(late / n * 100) };
+    };
+    const curStats = monthStats(curPrefix);
+    const prevStats = monthStats(prevPrefix);
+    const fmtMonthLabel = (prefix) => {
+      const [y, m] = prefix.split('-');
+      return `${new Date(Number(y), Number(m) - 1, 1).toLocaleDateString('en-US', { month: 'long' })} ${y}`;
+    };
+
+    // 6. Turnover & retention
+    const joinedThisYear = store.data.employees.filter(e => String(e.date_of_joining || '').startsWith(String(curYear))).length;
+    const leftCount = store.data.employees.filter(e => e.status === 'Left').length;
+    const retention = totalHeadcount ? Math.round((1 - leftCount / totalHeadcount) * 100) : 100;
+    const maxJoinLeave = Math.max(joinedThisYear, leftCount, 1);
+
     return `
       <div class="page-header">
         <div class="page-title-group">
@@ -4271,28 +4627,15 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
         <!-- REPORT 1: HEADCOUNT BY DEPARTMENT -->
         <div class="card">
-          <div class="card-header"><span class="card-title">1. Headcount by Department</span></div>
+          <div class="card-header"><span class="card-title">1. Headcount by Department (${totalHeadcount} Total)</span></div>
           <div class="card-body">
-            <div class="report-bar-row">
-              <span class="report-bar-label">Engineering</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 40%;"></div></div>
-              <span class="report-bar-value">2 (40%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Human Resources</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%;"></div></div>
-              <span class="report-bar-value">1 (20%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Product</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%;"></div></div>
-              <span class="report-bar-value">1 (20%)</span>
-            </div>
-            <div class="report-bar-row">
-              <span class="report-bar-label">Design</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%;"></div></div>
-              <span class="report-bar-value">1 (20%)</span>
-            </div>
+            ${Object.entries(deptCounts).sort((a, b) => b[1] - a[1]).map(([dept, count]) => `
+              <div class="report-bar-row">
+                <span class="report-bar-label">${escapeHtml(dept)}</span>
+                <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(count / totalHeadcount * 100)}%;"></div></div>
+                <span class="report-bar-value">${count} (${Math.round(count / totalHeadcount * 100)}%)</span>
+              </div>
+            `).join('')}
           </div>
         </div>
 
@@ -4303,22 +4646,22 @@
             <div class="report-bar-row">
               <span class="report-bar-label">Applied</span>
               <div class="report-bar-track"><div class="report-bar-fill" style="width: 100%; background: #64748b;"></div></div>
-              <span class="report-bar-value">5 (100%)</span>
+              <span class="report-bar-value">${appliedCount} (100%)</span>
             </div>
             <div class="report-bar-row">
               <span class="report-bar-label">Screened</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 80%; background: #3b82f6;"></div></div>
-              <span class="report-bar-value">4 (80%)</span>
+              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(screenedCount)}%; background: #3b82f6;"></div></div>
+              <span class="report-bar-value">${screenedCount} (${pctOf(screenedCount)}%)</span>
             </div>
             <div class="report-bar-row">
               <span class="report-bar-label">Interviewed</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 40%; background: #8b5cf6;"></div></div>
-              <span class="report-bar-value">2 (40%)</span>
+              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(interviewedCount)}%; background: #8b5cf6;"></div></div>
+              <span class="report-bar-value">${interviewedCount} (${pctOf(interviewedCount)}%)</span>
             </div>
             <div class="report-bar-row">
               <span class="report-bar-label">Hired & Accepted</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 20%; background: #10b981;"></div></div>
-              <span class="report-bar-value">1 (20%)</span>
+              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${pctOf(hiredCount)}%; background: #10b981;"></div></div>
+              <span class="report-bar-value">${hiredCount} (${pctOf(hiredCount)}%)</span>
             </div>
           </div>
         </div>
@@ -4333,9 +4676,9 @@
                   <tr><th>Leave Type</th><th>Allocated</th><th>Consumed</th><th>Available</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Casual Leave</td><td>54 Days</td><td>8 Days</td><td><strong>46 Days</strong></td></tr>
-                  <tr><td>Sick Leave</td><td>48 Days</td><td>3 Days</td><td><strong>45 Days</strong></td></tr>
-                  <tr><td>Earned Leave</td><td>66 Days</td><td>6 Days</td><td><strong>60 Days</strong></td></tr>
+                  ${leaveRows.length === 0 ? `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">No leave allocations configured.</td></tr>` : leaveRows.map(r => `
+                    <tr><td>${escapeHtml(r.type)}</td><td>${r.allocated} Days</td><td>${r.consumed} Days</td><td><strong>${r.remaining} Days</strong></td></tr>
+                  `).join('')}
                 </tbody>
               </table>
             </div>
@@ -4349,11 +4692,12 @@
             <div class="table-container" style="border: none;">
               <table class="data-table">
                 <thead>
-                  <tr><th>Month</th><th>Gross Pay</th><th>Total Deductions</th><th>Net Disbursed</th></tr>
+                  <tr><th>Month</th><th>Slips</th><th>Gross Pay</th><th>Total Deductions</th><th>Net Disbursed</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>July 2026</td><td>₹5,85,000</td><td>₹58,500</td><td><strong>₹5,26,500</strong></td></tr>
-                  <tr><td>June 2026</td><td>₹5,85,000</td><td>₹58,500</td><td><strong>₹5,26,500</strong></td></tr>
+                  ${payrollHistory.length === 0 ? `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);">No payroll processed yet.</td></tr>` : payrollHistory.map(([key, v]) => `
+                    <tr><td>${escapeHtml(fmtMonthLabel(key))}</td><td>${v.count}</td><td>${formatCurrency(v.gross)}</td><td style="color: var(--danger);">${formatCurrency(v.ded)}</td><td><strong>${formatCurrency(v.net)}</strong></td></tr>
+                  `).join('')}
                 </tbody>
               </table>
             </div>
@@ -4370,8 +4714,8 @@
                   <tr><th>Month</th><th>Present %</th><th>WFH %</th><th>Late Rate</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>August 2026</td><td>92.4%</td><td>5.2%</td><td>2.1%</td></tr>
-                  <tr><td>July 2026</td><td>94.8%</td><td>3.8%</td><td>1.4%</td></tr>
+                  <tr><td>${escapeHtml(fmtMonthLabel(curStats.label))}</td><td>${curStats.presentPct}%</td><td>${curStats.wfhPct}%</td><td>${curStats.latePct}%</td></tr>
+                  <tr><td>${escapeHtml(fmtMonthLabel(prevStats.label))}</td><td>${prevStats.presentPct}%</td><td>${prevStats.wfhPct}%</td><td>${prevStats.latePct}%</td></tr>
                 </tbody>
               </table>
             </div>
@@ -4380,20 +4724,20 @@
 
         <!-- REPORT 6: EMPLOYEE TURNOVER & RETENTION -->
         <div class="card">
-          <div class="card-header"><span class="card-title">6. Annual Turnover & Growth</span></div>
+          <div class="card-header"><span class="card-title">6. Annual Turnover & Growth (${curYear})</span></div>
           <div class="card-body">
             <div class="report-bar-row">
               <span class="report-bar-label">Joined This Year</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 100%; background: var(--success);"></div></div>
-              <span class="report-bar-value">+3 Hires</span>
+              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(joinedThisYear / maxJoinLeave * 100)}%; background: var(--success);"></div></div>
+              <span class="report-bar-value">+${joinedThisYear} Hire${joinedThisYear === 1 ? '' : 's'}</span>
             </div>
             <div class="report-bar-row">
               <span class="report-bar-label">Departures / Attrition</span>
-              <div class="report-bar-track"><div class="report-bar-fill" style="width: 0%; background: var(--danger);"></div></div>
-              <span class="report-bar-value">0 (0%)</span>
+              <div class="report-bar-track"><div class="report-bar-fill" style="width: ${Math.round(leftCount / maxJoinLeave * 100)}%; background: var(--danger);"></div></div>
+              <span class="report-bar-value">${leftCount} (${totalHeadcount ? Math.round(leftCount / totalHeadcount * 100) : 0}%)</span>
             </div>
             <div style="margin-top: 14px; font-size: 11.5px; color: var(--text-muted);">
-              Retention rate: <strong>100%</strong> across technical and operations units.
+              Retention rate: <strong>${retention}%</strong> across technical and operations units.
             </div>
           </div>
         </div>
@@ -4571,8 +4915,8 @@
                     name="identifier" 
                     id="auth-identifier-input" 
                     required 
-                    placeholder="${isHR ? 'OIADSH20220001 or hr@dayflow.local' : 'OINIVE20230002 or nisha@dayflow.local'}"
-                    value="${isHR ? 'OIADSH20220001' : 'OINIVE20230002'}"
+                    placeholder="${isHR ? 'DTADSH20220001 or hr@dayflow.local' : 'DTNIVE20230002 or nisha@dayflow.local'}"
+                    value="${isHR ? 'DTADSH20220001' : 'DTNIVE20230002'}"
                   />
                 </div>
               </div>
@@ -4617,7 +4961,7 @@
                 ${isHR ? `
                   <div class="glass-demo-row">
                     <div>
-                      <div><strong>Login ID:</strong> <code>OIADSH20220001</code></div>
+                      <div><strong>Login ID:</strong> <code>DTADSH20220001</code></div>
                       <div><strong>Email:</strong> <code>hr@dayflow.local</code></div>
                       <div><strong>Password:</strong> <code>Dayflow@123</code></div>
                     </div>
@@ -4626,7 +4970,7 @@
                 ` : `
                   <div class="glass-demo-row">
                     <div>
-                      <div><strong>Login ID:</strong> <code>OINIVE20230002</code> (Nisha)</div>
+                      <div><strong>Login ID:</strong> <code>DTNIVE20230002</code> (Nisha)</div>
                       <div><strong>Email:</strong> <code>nisha@dayflow.local</code></div>
                       <div><strong>Password:</strong> <code>Dayflow@123</code></div>
                     </div>
@@ -4782,11 +5126,11 @@
     const pwdEl = document.getElementById('auth-password-input');
     if (preset === 'hr') {
       authRole = 'hr';
-      if (idEl) idEl.value = 'OIADSH20220001';
+      if (idEl) idEl.value = 'DTADSH20220001';
       if (pwdEl) pwdEl.value = 'Dayflow@123';
     } else {
       authRole = 'employee';
-      if (idEl) idEl.value = 'OINIVE20230002';
+      if (idEl) idEl.value = 'DTNIVE20230002';
       if (pwdEl) pwdEl.value = 'Dayflow@123';
     }
   };
@@ -4803,14 +5147,14 @@
     }
   };
 
-  window.handleAuthSubmit = function (e) {
+  window.handleAuthSubmit = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const mode = fd.get('auth_mode') || 'signin';
 
     if (mode === 'signup') {
       // HR Company Registration
-      const companyName = fd.get('company_name') || 'Odoo India';
+      const companyName = (fd.get('company_name') || 'Odoo India').trim();
       const fullName = (fd.get('name') || 'Admin').trim();
       const email = (fd.get('email') || 'admin@odoo.local').trim();
       const phone = fd.get('phone') || '+91 98000 00000';
@@ -4822,50 +5166,73 @@
         return;
       }
 
-      const nameParts = fullName.split(/\s+/);
-      const firstName = nameParts[0] || 'Admin';
-      const lastName = nameParts.slice(1).join(' ') || 'User';
-      const joinYear = new Date().getFullYear();
-      const serial = store.data.employees.length + 1;
-      const generatedLoginId = generateLoginId(companyName, firstName, lastName, joinYear, serial);
-      const empId = `EMP-${String(serial).padStart(3, '0')}`;
+      let result = null;
+      try {
+        result = await API.post('/api/auth/signup', {
+          company_name: companyName,
+          name: fullName,
+          email,
+          phone,
+          password
+        });
+        await store.reload();
+      } catch (err) {
+        if (!err.isNetwork) {
+          showToast('danger', err.message);
+          return;
+        }
+        // Offline fallback: create the admin record locally
+        const nameParts = fullName.split(/\s+/);
+        const firstName = nameParts[0] || 'Admin';
+        const lastName = nameParts.slice(1).join(' ') || 'User';
+        const joinYear = new Date().getFullYear();
+        let serial = store.data.employees.length + 1;
+        while (store.data.employees.some(x => x.name === `EMP-${String(serial).padStart(3, '0')}`)) serial += 1;
+        const empId = `EMP-${String(serial).padStart(3, '0')}`;
+        const loginId = generateLoginId(companyName, firstName, lastName, joinYear, serial);
 
-      // Create Admin Employee Record
-      const newAdmin = {
-        name: empId,
-        login_id: generatedLoginId,
-        password: password || 'Dayflow@123',
-        employee_name: fullName,
-        first_name: firstName,
-        last_name: lastName,
-        gender: 'Other',
-        date_of_birth: '1990-01-01',
-        date_of_joining: `${joinYear}-01-01`,
-        status: 'Active',
-        department: 'Human Resources',
-        designation: 'HR Admin / Director',
-        company: companyName,
-        company_email: email,
-        personal_email: email,
-        cell_phone: phone,
-        reports_to: '',
-        leave_approver: empId,
-        expense_approver: empId,
-        shift: 'General Shift',
-        current_address: 'HQ Campus',
-        permanent_address: 'HQ Campus',
-        emergency_phone_number: phone,
-        person_to_be_contacted: 'Management',
-        relation: 'Self',
-        bank_name: 'HDFC Bank',
-        bank_ac_no: '501009999999',
-        image: companyLogoPreview || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80'
-      };
+        const newAdmin = {
+          name: empId,
+          login_id: loginId,
+          password: password || 'Dayflow@123',
+          employee_name: fullName,
+          first_name: firstName,
+          last_name: lastName,
+          gender: 'Other',
+          date_of_birth: '1990-01-01',
+          date_of_joining: `${joinYear}-01-01`,
+          status: 'Active',
+          user_role: 'HR',
+          base_salary: 100000,
+          department: 'Human Resources',
+          designation: 'HR Admin / Director',
+          company: companyName,
+          company_email: email,
+          personal_email: email,
+          cell_phone: phone,
+          reports_to: '',
+          leave_approver: empId,
+          expense_approver: empId,
+          shift: 'General Shift',
+          current_address: 'HQ Campus',
+          permanent_address: 'HQ Campus',
+          emergency_phone_number: phone,
+          person_to_be_contacted: 'Management',
+          relation: 'Self',
+          bank_name: 'HDFC Bank',
+          bank_ac_no: '501009999999',
+          image: companyLogoPreview || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80'
+        };
 
-      store.data.company_name = companyName;
-      store.data.employees.unshift(newAdmin);
-      store.data.leave_allocations[empId] = { 'Casual Leave': 15, 'Sick Leave': 12, 'Earned Leave': 18 };
-      store.save();
+        store.data.company_name = companyName;
+        store.data.employees.unshift(newAdmin);
+        store.data.leave_allocations[empId] = { 'Casual Leave': 15, 'Sick Leave': 12, 'Earned Leave': 18 };
+        store.save();
+        result = { employee: newAdmin, role: 'HR / Admin', login_id: loginId };
+      }
+
+      const generatedLoginId = result.login_id || result.employee.login_id;
+      const empId = result.employee.name;
 
       saveSession({
         authenticated: true,
@@ -4913,27 +5280,46 @@
       return;
     }
 
-    // SIGN IN PROCESS
+    // SIGN IN PROCESS — verified against the backend
     const identifier = (fd.get('identifier') || '').trim();
     const password = fd.get('password') || '';
-    const scope = fd.get('role_scope') || 'HR / Admin';
 
-    // Find employee by login_id, company_email, personal_email, or name ID
-    const qLower = identifier.toLowerCase();
-    const matchedEmp = store.data.employees.find(e => 
-      (e.login_id && e.login_id.toLowerCase() === qLower) ||
-      (e.company_email && e.company_email.toLowerCase() === qLower) ||
-      (e.personal_email && e.personal_email.toLowerCase() === qLower) ||
-      (e.name && e.name.toLowerCase() === qLower)
-    );
-
-    if (!matchedEmp) {
-      showToast('danger', `No account found matching "${identifier}". Please check your Login ID or Email.`);
-      return;
+    let matchedEmp = null;
+    let assignedRole = null;
+    try {
+      const r = await API.post('/api/login', { identifier, password });
+      matchedEmp = r.employee;
+      assignedRole = r.role;
+    } catch (err) {
+      if (!err.isNetwork) {
+        showToast('danger', err.message);
+        return;
+      }
+      // Offline fallback: match locally; password only known for seed data
+      const qLower = identifier.toLowerCase();
+      matchedEmp = store.data.employees.find(e =>
+        (e.login_id && e.login_id.toLowerCase() === qLower) ||
+        (e.company_email && e.company_email.toLowerCase() === qLower) ||
+        (e.personal_email && e.personal_email.toLowerCase() === qLower) ||
+        (e.name && e.name.toLowerCase() === qLower)
+      );
+      if (!matchedEmp) {
+        showToast('danger', `No account found matching "${identifier}". Please check your Login ID or Email.`);
+        return;
+      }
+      if (typeof matchedEmp.password === 'string') {
+        if (matchedEmp.password !== password) {
+          showToast('danger', 'Incorrect password. Please try again.');
+          return;
+        }
+      } else {
+        showToast('danger', 'Sign-in requires the HRMS server to be running (npm run dev).');
+        return;
+      }
+      assignedRole = (matchedEmp.user_role === 'HR' ||
+        (matchedEmp.department || '').toLowerCase().includes('human resources'))
+        ? 'HR / Admin' : 'Employee';
     }
-
-    const isHrAccount = matchedEmp.name === 'EMP-001' || (matchedEmp.designation || '').toLowerCase().includes('hr') || (matchedEmp.department || '').toLowerCase().includes('hr');
-    const assignedRole = isHrAccount ? 'HR / Admin' : 'Employee';
 
     saveSession({
       authenticated: true,
@@ -4960,11 +5346,11 @@
           <form onsubmit="window.submitForgotPassword(event)">
             <div class="modal-body">
               <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
-                Enter your Login ID (e.g. <code>OIADSH20220001</code>) or Work Email to reset your password.
+                Enter your Login ID (e.g. <code>DTADSH20220001</code>) or Work Email to reset your password.
               </p>
               <div class="form-group">
                 <label class="form-label">Login ID / Work Email <span class="required">*</span></label>
-                <input type="text" class="form-control" name="recovery_id" required placeholder="e.g. OINIVE20230002 or hr@dayflow.local" />
+                <input type="text" class="form-control" name="recovery_id" required placeholder="e.g. DTNIVE20230002 or hr@dayflow.local" />
               </div>
               <div class="form-group" style="margin-top: 14px;">
                 <label class="form-label">New Password <span class="required">*</span></label>
@@ -4981,23 +5367,36 @@
     `);
   };
 
-  window.submitForgotPassword = function (e) {
+  window.submitForgotPassword = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const idQ = (fd.get('recovery_id') || '').trim().toLowerCase();
+    const idQ = (fd.get('recovery_id') || '').trim();
     const newPwd = fd.get('new_password');
 
-    const emp = store.data.employees.find(e => 
-      (e.login_id && e.login_id.toLowerCase() === idQ) ||
-      (e.company_email && e.company_email.toLowerCase() === idQ) ||
-      (e.name && e.name.toLowerCase() === idQ)
-    );
+    try {
+      await API.post('/api/auth/forgot-password', { identifier: idQ, new_password: newPwd });
+      closeModal();
+      showToast('success', 'Password updated successfully. Please sign in with your new password.');
+      renderApp();
+      return;
+    } catch (err) {
+      if (!err.isNetwork) {
+        showToast('danger', err.message);
+        return;
+      }
+    }
 
+    // Offline fallback
+    const qLower = idQ.toLowerCase();
+    const emp = store.data.employees.find(e =>
+      (e.login_id && e.login_id.toLowerCase() === qLower) ||
+      (e.company_email && e.company_email.toLowerCase() === qLower) ||
+      (e.name && e.name.toLowerCase() === qLower)
+    );
     if (!emp) {
       showToast('danger', 'No account found with the provided identifier.');
       return;
     }
-
     emp.password = newPwd;
     store.save();
     closeModal();
@@ -5046,32 +5445,40 @@
     const emp = getActiveEmployee();
     if (!emp) return;
 
-    const now = new Date();
-    const timeStr = now.toISOString().replace('T', ' ').substring(0, 19);
-    const newRecord = {
-      name: `CHK-${Date.now()}`,
-      employee: emp.name,
-      employee_name: emp.employee_name,
-      log_type: action,
-      time: timeStr,
-      latitude: 12.9716,
-      longitude: 77.5946
-    };
-
-    store.data.checkins.unshift(newRecord);
-    store.save();
-
-    // Also send direct punch event to API
-    if (typeof fetch !== 'undefined') {
-      fetch('/api/punch', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newRecord)
-      }).catch(e => console.debug('Punch API deferred:', e));
+    try {
+      await API.post('/api/punch', { employee: emp.name, log_type: action });
+      await store.reload();
+      const timeFormatted = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+      showToast('success', `[${emp.employee_name}] Checked ${action === 'IN' ? 'IN' : 'OUT'} at ${timeFormatted}. Time synced to HR.`);
+    } catch (err) {
+      if (err.isNetwork) {
+        // Offline fallback: validate IN/OUT alternation and record locally
+        const t = new Date().toISOString().split('T')[0];
+        const punches = store.data.checkins
+          .filter(c => c.employee === emp.name && String(c.time).startsWith(t))
+          .sort((a, b) => (a.time < b.time ? -1 : 1));
+        const last = punches[punches.length - 1];
+        if (last && last.log_type === action) {
+          showToast('danger', action === 'IN'
+            ? 'Already checked in today. Please check out first.'
+            : 'You are not currently checked in.');
+          return;
+        }
+        store.data.checkins.unshift({
+          name: `CHK-${Date.now()}`,
+          employee: emp.name,
+          employee_name: emp.employee_name,
+          log_type: action,
+          time: new Date().toISOString().replace('T', ' ').substring(0, 19),
+          latitude: 12.9716,
+          longitude: 77.5946
+        });
+        store.save();
+        showToast('success', `Checked ${action} recorded locally (offline mode).`);
+      } else {
+        showToast('danger', err.message);
+      }
     }
-
-    const timeFormatted = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-    showToast('success', `[${emp.employee_name}] Checked ${action === 'IN' ? 'IN' : 'OUT'} at ${timeFormatted}. Time synced to HR.`);
     renderApp();
   };
 
@@ -5096,25 +5503,61 @@
   };
 
   window.setWizardStep = function (step) {
+    if (step >= 2) {
+      // Capture the Step-1 configuration before moving on
+      const m = document.getElementById('wiz-month');
+      const y = document.getElementById('wiz-year');
+      const d = document.getElementById('wiz-dept');
+      if (m) wizardConfig.month = m.value;
+      if (y) wizardConfig.year = y.value;
+      if (d) wizardConfig.dept = d.value === 'All Departments' ? 'All' : d.value;
+    }
     wizardStep = step;
     renderApp();
   };
 
-  window.finalizePayroll = function () {
-    store.data.payroll_entries.unshift({
-      name: `PAY-2026-08`,
-      posting_date: '2026-08-31',
-      start_date: '2026-08-01',
-      end_date: '2026-08-31',
-      payroll_frequency: 'Monthly',
-      company: 'Dayflow Technologies',
-      number_of_employees: 5,
-      status: 'Submitted',
-      total_amount: 585000
-    });
-    store.save();
-    showToast('success', 'August 2026 Payroll Entry generated and published!');
-    wizardStep = 3;
+  window.finalizePayroll = async function () {
+    const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    try {
+      const r = await API.post('/api/payroll/run', {
+        month: wizardConfig.month,
+        year: Number(wizardConfig.year),
+        department: wizardConfig.dept
+      });
+      await store.reload();
+      lastPayrollResult = r;
+      showToast('success', `${r.month} ${r.year} payroll published — ${r.slips_created} salary slip(s) generated.`);
+      wizardStep = 3;
+    } catch (err) {
+      if (err.isNetwork) {
+        // Offline fallback: create the payroll entry locally
+        const year = Number(wizardConfig.year);
+        const monthIdx = MONTH_NAMES.indexOf(wizardConfig.month);
+        const start = `${year}-${String(monthIdx + 1).padStart(2, '0')}-01`;
+        const lastDay = new Date(year, monthIdx + 1, 0).getDate();
+        const end = `${year}-${String(monthIdx + 1).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`;
+        if (!store.data.payroll_entries.some(p => p.start_date === start && p.end_date === end)) {
+          const emps = store.data.employees.filter(e => e.status === 'Active');
+          store.data.payroll_entries.unshift({
+            name: `PAY-${year}-${String(monthIdx + 1).padStart(2, '0')}`,
+            posting_date: new Date().toISOString().split('T')[0],
+            start_date: start,
+            end_date: end,
+            payroll_frequency: 'Monthly',
+            company: store.data.company_name || 'Dayflow Technologies',
+            number_of_employees: emps.length,
+            status: 'Submitted',
+            total_amount: Math.round(emps.reduce((s, e) => s + (Number(e.base_salary) || 100000), 0) * 0.82)
+          });
+          store.save();
+        }
+        lastPayrollResult = null;
+        wizardStep = 3;
+      } else {
+        showToast('danger', err.message);
+        return;
+      }
+    }
     renderApp();
   };
 
@@ -5153,126 +5596,174 @@
     renderApp();
   };
 
-  window.quickApproveLeave = function (id) {
-    const item = store.data.leave_applications.find(l => l.name === id);
-    if (item) {
-      item.status = 'Approved';
-      store.save();
-      showToast('success', `Approved leave request for ${item.employee_name}`);
-      renderApp();
-    }
+  window.quickApproveLeave = async function (id) {
+    await runAction(
+      () => API.post(`/api/leaves/${encodeURIComponent(id)}/approve`),
+      () => {
+        const item = store.data.leave_applications.find(l => l.name === id);
+        if (!item || item.status !== 'Open') return false;
+        item.status = 'Approved';
+        store.data.attendance.forEach(a => {
+          if (a.employee === item.employee &&
+              a.attendance_date >= item.from_date && a.attendance_date <= item.to_date &&
+              a.status !== 'Present') a.status = 'On Leave';
+        });
+        return true;
+      },
+      'Leave approved — balance deducted and attendance updated.'
+    );
   };
 
-  window.quickRejectLeave = function (id) {
-    const item = store.data.leave_applications.find(l => l.name === id);
-    if (item) {
-      item.status = 'Rejected';
-      store.save();
-      showToast('danger', `Rejected leave request for ${item.employee_name}`);
-      renderApp();
-    }
+  window.quickRejectLeave = async function (id) {
+    await runAction(
+      () => API.post(`/api/leaves/${encodeURIComponent(id)}/reject`),
+      () => {
+        const item = store.data.leave_applications.find(l => l.name === id);
+        if (!item || item.status !== 'Open') return false;
+        item.status = 'Rejected';
+        return true;
+      },
+      'Leave request rejected and employee notified.'
+    );
   };
 
-  window.quickApproveExpense = function (id) {
-    const item = store.data.expense_claims.find(e => e.name === id);
-    if (item) {
-      item.approval_status = 'Approved';
-      item.total_sanctioned_amount = item.total_claimed_amount;
-      store.save();
-      showToast('success', `Approved expense claim ${id}`);
-      renderApp();
-    }
+  window.quickApproveExpense = async function (id) {
+    await runAction(
+      () => API.post(`/api/expenses/${encodeURIComponent(id)}/approve`),
+      () => {
+        const item = store.data.expense_claims.find(e => e.name === id);
+        if (!item || item.approval_status !== 'Draft') return false;
+        item.approval_status = 'Approved';
+        item.total_sanctioned_amount = item.total_claimed_amount;
+        return true;
+      },
+      `Expense claim ${id} approved and employee notified.`
+    );
   };
 
-  window.quickRejectExpense = function (id) {
-    const item = store.data.expense_claims.find(e => e.name === id);
-    if (item) {
-      item.approval_status = 'Rejected';
-      store.save();
-      showToast('danger', `Rejected expense claim ${id}`);
-      renderApp();
-    }
+  window.quickRejectExpense = async function (id) {
+    await runAction(
+      () => API.post(`/api/expenses/${encodeURIComponent(id)}/reject`),
+      () => {
+        const item = store.data.expense_claims.find(e => e.name === id);
+        if (!item || item.approval_status !== 'Draft') return false;
+        item.approval_status = 'Rejected';
+        return true;
+      },
+      `Expense claim ${id} rejected.`
+    );
   };
 
-  window.quickApproveShift = function (id) {
-    const item = store.data.shift_requests.find(s => s.name === id);
-    if (item) {
-      item.status = 'Approved';
-      // Update employee shift
-      const emp = store.data.employees.find(e => e.name === item.employee);
-      if (emp) emp.shift = item.shift_type;
-      store.save();
-      showToast('success', `Approved shift request for ${item.employee_name}`);
-      renderApp();
-    }
+  window.quickApproveShift = async function (id) {
+    await runAction(
+      () => API.post(`/api/shift-requests/${encodeURIComponent(id)}/approve`),
+      () => {
+        const item = store.data.shift_requests.find(s => s.name === id);
+        if (!item || item.status !== 'Draft') return false;
+        item.status = 'Approved';
+        const emp = store.data.employees.find(e => e.name === item.employee);
+        if (emp) emp.shift = item.shift_type;
+        return true;
+      },
+      'Shift request approved — employee shift updated.'
+    );
   };
 
-  window.quickRejectShift = function (id) {
-    const item = store.data.shift_requests.find(s => s.name === id);
-    if (item) {
-      item.status = 'Rejected';
-      store.save();
-      showToast('danger', `Rejected shift request for ${item.employee_name}`);
-      renderApp();
-    }
+  window.quickRejectShift = async function (id) {
+    await runAction(
+      () => API.post(`/api/shift-requests/${encodeURIComponent(id)}/reject`),
+      () => {
+        const item = store.data.shift_requests.find(s => s.name === id);
+        if (!item || item.status !== 'Draft') return false;
+        item.status = 'Rejected';
+        return true;
+      },
+      'Shift request rejected.'
+    );
   };
 
-  window.markAllNotificationsRead = function () {
-    const emp = getActiveEmployee();
-    store.data.notifications.forEach(n => {
-      if (n.user === emp.name || session.role === 'HR / Admin') n.read = 1;
-    });
-    store.save();
-    showToast('success', 'All notifications marked as read.');
+  window.markAllNotificationsRead = async function () {
+    await runAction(
+      () => API.post('/api/notifications/read-all', { user: session.employeeId, role: session.role }),
+      () => {
+        const emp = getActiveEmployee();
+        store.data.notifications.forEach(n => {
+          if (!emp || n.user === emp.name || session.role === 'HR / Admin') n.read = 1;
+        });
+        return true;
+      },
+      'All notifications marked as read.'
+    );
+  };
+
+  window.resetDataStore = async function () {
+    await store.reset();
+    showToast('success', 'Database reset to fresh demo state.');
     renderApp();
   };
 
-  window.resetDataStore = function () {
-    store.reset();
-    showToast('success', 'Database reset to default pre-seeded state.');
-    renderApp();
-  };
-
-  window.handleCreateEmployee = function (e) {
+  window.handleCreateEmployee = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const firstName = fd.get('first_name');
     const lastName = fd.get('last_name');
     const fullName = `${firstName} ${lastName}`.trim();
-    const count = store.data.employees.length + 1;
-    const newId = `EMP-${String(count).padStart(3, '0')}`;
-    const dateOfJoining = fd.get('date_of_joining') || '2026-09-01';
-    const compName = store.data.company_name || 'Odoo India';
 
-    // Auto-generate Login ID via formula: [CompanyPrefix][FN2][LN2][Year][Serial]
-    const generatedLoginId = generateLoginId(compName, firstName, lastName, dateOfJoining, count);
-    const autoPassword = `Welcome@${new Date(dateOfJoining).getFullYear() || 2026}`;
-
-    const newEmp = {
-      name: newId,
-      login_id: generatedLoginId,
-      password: autoPassword,
-      employee_name: fullName,
+    const payload = {
       first_name: firstName,
       last_name: lastName,
       gender: fd.get('gender') || 'Male',
       date_of_birth: fd.get('date_of_birth') || '1996-01-01',
-      date_of_joining: dateOfJoining,
-      status: 'Active',
+      date_of_joining: fd.get('date_of_joining') || new Date().toISOString().split('T')[0],
       department: fd.get('department'),
       designation: fd.get('designation'),
-      company: compName,
       company_email: fd.get('company_email'),
       cell_phone: fd.get('cell_phone') || '+91 98000 00000',
-      reports_to: 'EMP-001',
-      leave_approver: 'EMP-001',
       shift: fd.get('shift') || 'General Shift'
     };
 
-    store.data.employees.push(newEmp);
-    store.data.leave_allocations[newId] = { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 15 };
-    store.save();
+    let newEmp = null;
+    let generatedLoginId = '';
+    let autoPassword = '';
+    try {
+      const r = await API.post('/api/employees', payload);
+      await store.reload();
+      newEmp = r.employee;
+      generatedLoginId = r.login_id || newEmp.login_id;
+      autoPassword = r.password || newEmp.password;
+    } catch (err) {
+      if (!err.isNetwork) {
+        showToast('danger', err.message);
+        return;
+      }
+      // Offline fallback: create locally with generated credentials
+      let count = store.data.employees.length + 1;
+      let newId = `EMP-${String(count).padStart(3, '0')}`;
+      while (store.data.employees.some(x => x.name === newId)) {
+        count += 1;
+        newId = `EMP-${String(count).padStart(3, '0')}`;
+      }
+      const compName = store.data.company_name || 'Odoo India';
+      generatedLoginId = generateLoginId(compName, firstName, lastName, payload.date_of_joining, count);
+      autoPassword = `Welcome@${new Date(payload.date_of_joining).getFullYear() || new Date().getFullYear()}`;
+      newEmp = {
+        name: newId,
+        login_id: generatedLoginId,
+        password: autoPassword,
+        employee_name: fullName,
+        user_role: 'Employee',
+        base_salary: 100000,
+        status: 'Active',
+        reports_to: 'EMP-001',
+        leave_approver: 'EMP-001',
+        ...payload
+      };
+      store.data.employees.push(newEmp);
+      store.data.leave_allocations[newId] = { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 15, 'Compensatory Off': 0 };
+      store.save();
+    }
 
+    const newId = newEmp.name;
     showToast('success', `Employee ${fullName} created! Login ID: ${generatedLoginId}`);
     window.location.hash = `#employee/${newId}`;
 
@@ -5346,11 +5837,11 @@
               <div class="form-row" style="margin-top: 14px;">
                 <div class="form-group">
                   <label class="form-label">From Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="from_date" required value="2026-08-25">
+                  <input type="date" class="form-control" name="from_date" required min="${dateOffset(0)}" value="${dateOffset(3)}">
                 </div>
                 <div class="form-group">
                   <label class="form-label">To Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="to_date" required value="2026-08-26">
+                  <input type="date" class="form-control" name="to_date" required min="${dateOffset(0)}" value="${dateOffset(4)}">
                 </div>
               </div>
               <div class="form-group" style="margin-top: 14px;">
@@ -5368,33 +5859,44 @@
     `);
   };
 
-  window.submitApplyLeave = function (e) {
+  window.submitApplyLeave = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const emp = getActiveEmployee();
     const from = fd.get('from_date');
     const to = fd.get('to_date');
-    const d1 = new Date(from);
-    const d2 = new Date(to);
-    const days = Math.max(1, Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1);
-
-    store.data.leave_applications.unshift({
-      name: `LEAVE-${Date.now()}`,
+    const payload = {
       employee: emp.name,
-      employee_name: emp.employee_name,
       leave_type: fd.get('leave_type'),
       from_date: from,
       to_date: to,
-      total_leave_days: days,
-      status: 'Open',
-      description: fd.get('description'),
-      posting_date: new Date().toISOString().split('T')[0],
-      leave_approver: 'EMP-001'
-    });
-    store.save();
-    closeModal();
-    showToast('success', `Leave application for ${days} days submitted to HR for approval.`);
-    renderApp();
+      description: fd.get('description')
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/leaves', payload),
+      () => {
+        const d1 = new Date(from);
+        const d2 = new Date(to);
+        const days = Math.max(1, Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1);
+        store.data.leave_applications.unshift({
+          name: `LEAVE-${Date.now()}`,
+          employee: emp.name,
+          employee_name: emp.employee_name,
+          leave_type: payload.leave_type,
+          from_date: from,
+          to_date: to,
+          total_leave_days: days,
+          status: 'Open',
+          description: payload.description,
+          posting_date: new Date().toISOString().split('T')[0],
+          leave_approver: emp.leave_approver || 'EMP-001'
+        });
+        return true;
+      },
+      'Leave application submitted to HR for approval.'
+    );
+    if (ok) closeModal();
   };
 
   window.openNewExpenseModal = function () {
@@ -5426,7 +5928,7 @@
               </div>
               <div class="form-group" style="margin-top: 14px;">
                 <label class="form-label">Expense Date <span class="required">*</span></label>
-                <input type="date" class="form-control" name="date" required value="2026-08-22">
+                <input type="date" class="form-control" name="date" required value="${dateOffset(0)}">
               </div>
               <div class="form-group" style="margin-top: 14px;">
                 <label class="form-label">Description & Justification</label>
@@ -5443,32 +5945,46 @@
     `);
   };
 
-  window.submitExpenseClaim = function (e) {
+  window.submitExpenseClaim = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const emp = getActiveEmployee();
     const amt = parseFloat(fd.get('amount') || 0);
-
-    store.data.expense_claims.unshift({
-      name: `EXP-${Date.now()}`,
+    const payload = {
       employee: emp.name,
-      employee_name: emp.employee_name,
       expense_type: fd.get('expense_type'),
-      total_claimed_amount: amt,
-      total_sanctioned_amount: 0,
-      status: 'Draft',
-      approval_status: 'Draft',
-      posting_date: fd.get('date'),
-      description: fd.get('description'),
-      expense_approver: 'EMP-001'
-    });
-    store.save();
-    closeModal();
-    showToast('success', `Expense claim of ${formatCurrency(amt)} submitted for HR review.`);
-    renderApp();
+      amount: amt,
+      date: fd.get('date'),
+      description: fd.get('description')
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/expenses', payload),
+      () => {
+        store.data.expense_claims.unshift({
+          name: `EXP-${Date.now()}`,
+          employee: emp.name,
+          employee_name: emp.employee_name,
+          expense_type: payload.expense_type,
+          total_claimed_amount: amt,
+          total_sanctioned_amount: 0,
+          status: 'Draft',
+          approval_status: 'Draft',
+          posting_date: payload.date,
+          description: payload.description,
+          expense_approver: emp.expense_approver || 'EMP-001'
+        });
+        return true;
+      },
+      `Expense claim of ${formatCurrency(amt)} submitted for HR review.`
+    );
+    if (ok) closeModal();
   };
 
   window.openRequestShiftModal = function () {
+    const n = new Date();
+    const nextFrom = new Date(n.getFullYear(), n.getMonth() + 1, 1).toISOString().split('T')[0];
+    const nextTo = new Date(n.getFullYear(), n.getMonth() + 2, 0).toISOString().split('T')[0];
     openModal(() => `
       <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
         <div class="modal-dialog">
@@ -5487,11 +6003,11 @@
               <div class="form-row" style="margin-top: 14px;">
                 <div class="form-group">
                   <label class="form-label">From Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="from_date" required value="2026-09-01">
+                  <input type="date" class="form-control" name="from_date" required value="${nextFrom}">
                 </div>
                 <div class="form-group">
                   <label class="form-label">To Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="to_date" required value="2026-09-30">
+                  <input type="date" class="form-control" name="to_date" required value="${nextTo}">
                 </div>
               </div>
               <div class="form-group" style="margin-top: 14px;">
@@ -5509,25 +6025,36 @@
     `);
   };
 
-  window.submitShiftRequest = function (e) {
+  window.submitShiftRequest = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const emp = getActiveEmployee();
-
-    store.data.shift_requests.unshift({
-      name: `SR-${Date.now()}`,
+    const payload = {
       employee: emp.name,
-      employee_name: emp.employee_name,
       shift_type: fd.get('shift_type'),
       from_date: fd.get('from_date'),
       to_date: fd.get('to_date'),
-      status: 'Draft',
       reason: fd.get('reason')
-    });
-    store.save();
-    closeModal();
-    showToast('success', 'Shift schedule request submitted to HR.');
-    renderApp();
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/shift-requests', payload),
+      () => {
+        store.data.shift_requests.unshift({
+          name: `SR-${Date.now()}`,
+          employee: emp.name,
+          employee_name: emp.employee_name,
+          shift_type: payload.shift_type,
+          from_date: payload.from_date,
+          to_date: payload.to_date,
+          status: 'Draft',
+          reason: payload.reason
+        });
+        return true;
+      },
+      'Shift schedule request submitted to HR.'
+    );
+    if (ok) closeModal();
   };
 
   window.openCreateJobOpeningModal = function () {
@@ -5571,22 +6098,33 @@
     `);
   };
 
-  window.submitCreateJobOpening = function (e) {
+  window.submitCreateJobOpening = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    store.data.job_openings.unshift({
-      name: `JOB-${Date.now()}`,
+    const payload = {
       job_title: fd.get('job_title'),
       department: fd.get('department'),
       vacancies: parseInt(fd.get('vacancies') || '1', 10),
-      status: 'Open',
-      posted_date: new Date().toISOString().split('T')[0],
       description: fd.get('description')
-    });
-    store.save();
-    closeModal();
-    showToast('success', 'Job opening published to career board.');
-    renderApp();
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/job-openings', payload),
+      () => {
+        store.data.job_openings.unshift({
+          name: `JOB-${Date.now()}`,
+          job_title: payload.job_title,
+          department: payload.department,
+          vacancies: payload.vacancies,
+          status: 'Open',
+          posted_date: new Date().toISOString().split('T')[0],
+          description: payload.description
+        });
+        return true;
+      },
+      'Job opening published to career board.'
+    );
+    if (ok) closeModal();
   };
 
   window.openAddApplicantModal = function () {
@@ -5640,29 +6178,39 @@
     `);
   };
 
-  window.submitAddApplicant = function (e) {
+  window.submitAddApplicant = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const jobKey = fd.get('job_opening');
-    const jobObj = store.data.job_openings.find(j => j.name === jobKey);
-
-    store.data.job_applicants.unshift({
-      name: `APP-${Date.now()}`,
+    const payload = {
       applicant_name: fd.get('applicant_name'),
       email: fd.get('email'),
-      phone: '+91 98000 11111',
-      job_title: jobObj?.job_title || 'Software Engineer',
-      job_opening: jobKey,
-      status: 'Open',
-      application_date: new Date().toISOString().split('T')[0],
-      source: fd.get('source') || 'Direct',
-      rating: parseInt(fd.get('rating') || '4', 10),
-      notes: 'Initial profile candidate created in pipeline.'
-    });
-    store.save();
-    closeModal();
-    showToast('success', 'Candidate added to Open column.');
-    renderApp();
+      job_opening: fd.get('job_opening'),
+      source: fd.get('source'),
+      rating: parseInt(fd.get('rating') || '4', 10)
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/applicants', payload),
+      () => {
+        const jobObj = store.data.job_openings.find(j => j.name === payload.job_opening);
+        store.data.job_applicants.unshift({
+          name: `APP-${Date.now()}`,
+          applicant_name: payload.applicant_name,
+          email: payload.email,
+          phone: '+91 98000 11111',
+          job_title: jobObj?.job_title || 'Software Engineer',
+          job_opening: payload.job_opening,
+          status: 'Open',
+          application_date: new Date().toISOString().split('T')[0],
+          source: payload.source || 'Direct',
+          rating: payload.rating,
+          notes: 'Initial profile candidate created in pipeline.'
+        });
+        return true;
+      },
+      'Candidate added to Open column.'
+    );
+    if (ok) closeModal();
   };
 
   window.openApplicantDetailsModal = function (appId) {
@@ -5704,15 +6252,18 @@
     `);
   };
 
-  window.updateApplicantStage = function (appId, newStage) {
-    const app = store.data.job_applicants.find(a => a.name === appId);
-    if (app) {
-      app.status = newStage;
-      store.save();
-      showToast('success', `Moved ${app.applicant_name} to ${newStage}`);
-      closeModal();
-      renderApp();
-    }
+  window.updateApplicantStage = async function (appId, newStage) {
+    const ok = await runAction(
+      () => API.put(`/api/applicants/${encodeURIComponent(appId)}`, { status: newStage }),
+      () => {
+        const app = store.data.job_applicants.find(a => a.name === appId);
+        if (!app) return false;
+        app.status = newStage;
+        return true;
+      },
+      `Candidate moved to ${newStage}.`
+    );
+    if (ok) closeModal();
   };
 
   window.openScheduleInterviewModal = function () {
@@ -5734,7 +6285,7 @@
               <div class="form-row" style="margin-top: 14px;">
                 <div class="form-group">
                   <label class="form-label">Date <span class="required">*</span></label>
-                  <input type="date" class="form-control" name="scheduled_date" required value="2026-08-26">
+                  <input type="date" class="form-control" name="scheduled_date" required value="${dateOffset(3)}">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Time Window</label>
@@ -5758,29 +6309,40 @@
     `);
   };
 
-  window.submitScheduleInterview = function (e) {
+  window.submitScheduleInterview = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const appKey = fd.get('applicant');
-    const appObj = store.data.job_applicants.find(a => a.name === appKey);
-
-    store.data.interviews.unshift({
-      name: `INT-${Date.now()}`,
-      applicant: appKey,
-      applicant_name: appObj?.applicant_name || 'Candidate',
-      job_title: appObj?.job_title || 'Role',
+    const payload = {
+      applicant: fd.get('applicant'),
       scheduled_date: fd.get('scheduled_date'),
-      from_time: '15:00',
-      to_time: '16:00',
-      interviewer: fd.get('interviewer'),
-      status: 'Scheduled',
-      rating: 0,
-      notes: 'Technical evaluation round.'
-    });
-    store.save();
-    closeModal();
-    showToast('success', 'Interview scheduled and calendar invite dispatched.');
-    renderApp();
+      time_window: fd.get('time_window'),
+      interviewer: fd.get('interviewer')
+    };
+
+    const ok = await runAction(
+      () => API.post('/api/interviews', payload),
+      () => {
+        const appObj = store.data.job_applicants.find(a => a.name === payload.applicant);
+        const m = String(payload.time_window || '').match(/(\d{1,2}:\d{2})\s*(?:-|–|to)\s*(\d{1,2}:\d{2})/);
+        store.data.interviews.unshift({
+          name: `INT-${Date.now()}`,
+          applicant: payload.applicant,
+          applicant_name: appObj?.applicant_name || 'Candidate',
+          job_opening: appObj?.job_opening,
+          job_title: appObj?.job_title || 'Role',
+          scheduled_date: payload.scheduled_date,
+          from_time: m ? m[1] : '15:00',
+          to_time: m ? m[2] : '16:00',
+          interviewer: payload.interviewer,
+          status: 'Scheduled',
+          rating: 0,
+          notes: 'Technical evaluation round.'
+        });
+        return true;
+      },
+      'Interview scheduled and calendar invite dispatched.'
+    );
+    if (ok) closeModal();
   };
 
   window.openOnboardingChecklistModal = function (onbId) {
@@ -5812,15 +6374,19 @@
     `);
   };
 
-  window.toggleOnboardingActivity = function (onbId, index) {
-    const onb = store.data.onboarding_records.find(o => o.name === onbId);
-    if (onb && onb.activities && onb.activities[index]) {
-      onb.activities[index].completed = onb.activities[index].completed ? 0 : 1;
-      const allDone = onb.activities.every(a => a.completed);
-      onb.boarding_status = allDone ? 'Completed' : 'In Progress';
-      store.save();
+  window.toggleOnboardingActivity = async function (onbId, index) {
+    const ok = await runAction(
+      () => API.put(`/api/onboarding/${encodeURIComponent(onbId)}`, { activity_index: index }),
+      () => {
+        const onb = store.data.onboarding_records.find(o => o.name === onbId);
+        if (!onb || !onb.activities || !onb.activities[index]) return false;
+        onb.activities[index].completed = onb.activities[index].completed ? 0 : 1;
+        onb.boarding_status = onb.activities.every(a => a.completed) ? 'Completed' : 'In Progress';
+        return true;
+      }
+    );
+    if (ok) {
       renderModal();
-      renderApp();
     }
   };
 
@@ -5853,22 +6419,26 @@
     `);
   };
 
-  window.submitPostAnnouncement = function (e) {
+  window.submitPostAnnouncement = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const emp = getActiveEmployee();
 
-    store.data.announcements.unshift({
-      name: `ANN-${Date.now()}`,
-      subject: fd.get('subject'),
-      description: fd.get('description'),
-      posted_by: `${emp.employee_name} (HR)`,
-      creation: new Date().toISOString().replace('T', ' ').substring(0, 19)
-    });
-    store.save();
-    closeModal();
-    showToast('success', 'Announcement published to entire organization feed.');
-    renderApp();
+    const ok = await runAction(
+      () => API.post('/api/announcements', { subject: fd.get('subject'), description: fd.get('description'), posted_by: emp.name }),
+      () => {
+        store.data.announcements.unshift({
+          name: `ANN-${Date.now()}`,
+          subject: fd.get('subject'),
+          description: fd.get('description'),
+          posted_by: `${emp.employee_name} (HR)`,
+          creation: new Date().toISOString().replace('T', ' ').substring(0, 19)
+        });
+        return true;
+      },
+      'Announcement published to entire organization feed.'
+    );
+    if (ok) closeModal();
   };
 
   window.openEditProfileModal = function () {
@@ -5917,19 +6487,34 @@
     `);
   };
 
-  window.submitEditProfile = function (e) {
+  window.submitEditProfile = async function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const emp = getActiveEmployee();
-    emp.personal_email = fd.get('personal_email');
-    emp.cell_phone = fd.get('cell_phone');
-    emp.current_address = fd.get('current_address');
-    emp.person_to_be_contacted = fd.get('person_to_be_contacted');
-    emp.emergency_phone_number = fd.get('emergency_phone_number');
-    store.save();
-    closeModal();
-    showToast('success', 'Profile contact details updated successfully.');
-    renderApp();
+    const payload = {
+      employee: emp.name,
+      personal_email: fd.get('personal_email'),
+      cell_phone: fd.get('cell_phone'),
+      current_address: fd.get('current_address'),
+      person_to_be_contacted: fd.get('person_to_be_contacted'),
+      emergency_phone_number: fd.get('emergency_phone_number')
+    };
+
+    const ok = await runAction(
+      () => API.put('/api/profile', payload),
+      () => {
+        Object.assign(emp, {
+          personal_email: payload.personal_email,
+          cell_phone: payload.cell_phone,
+          current_address: payload.current_address,
+          person_to_be_contacted: payload.person_to_be_contacted,
+          emergency_phone_number: payload.emergency_phone_number
+        });
+        return true;
+      },
+      'Profile contact details updated successfully.'
+    );
+    if (ok) closeModal();
   };
 
   window.openEditEmployeeModal = function (empId) {
@@ -5997,22 +6582,29 @@
     `);
   };
 
-  window.submitEditEmployee = function (e, empId) {
+  window.submitEditEmployee = async function (e, empId) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const emp = store.data.employees.find(e => e.name === empId);
-    if (emp) {
-      emp.employee_name = fd.get('employee_name');
-      emp.status = fd.get('status');
-      emp.department = fd.get('department');
-      emp.designation = fd.get('designation');
-      emp.cell_phone = fd.get('cell_phone');
-      emp.shift = fd.get('shift');
-      store.save();
-      closeModal();
-      showToast('success', `Employee ${emp.name} updated successfully.`);
-      renderApp();
-    }
+    const payload = {
+      employee_name: fd.get('employee_name'),
+      status: fd.get('status'),
+      department: fd.get('department'),
+      designation: fd.get('designation'),
+      cell_phone: fd.get('cell_phone'),
+      shift: fd.get('shift')
+    };
+
+    const ok = await runAction(
+      () => API.put(`/api/employees/${encodeURIComponent(empId)}`, payload),
+      () => {
+        const emp = store.data.employees.find(x => x.name === empId);
+        if (!emp) return false;
+        Object.assign(emp, payload);
+        return true;
+      },
+      `Employee ${empId} updated successfully.`
+    );
+    if (ok) closeModal();
   };
 
   // =========================================================================
