@@ -3830,18 +3830,89 @@
   // -------------------------------------------------------------------------
   // HR ADD EMPLOYEE VIEW (#employee-new)
   // -------------------------------------------------------------------------
+  let newEmployeePhotoPreview = '';
+
+  window.handleNewEmployeePhotoUpload = function (e) {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('danger', 'Photo size exceeds 5MB limit.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        newEmployeePhotoPreview = ev.target.result;
+        const previewImg = document.getElementById('new-emp-photo-preview-img');
+        const placeholder = document.getElementById('new-emp-photo-placeholder');
+        const removeBtn = document.getElementById('new-emp-photo-remove-btn');
+        const hiddenInput = document.getElementById('new-emp-photo-val');
+        if (previewImg) {
+          previewImg.src = newEmployeePhotoPreview;
+          previewImg.style.display = 'block';
+        }
+        if (placeholder) placeholder.style.display = 'none';
+        if (removeBtn) removeBtn.style.display = 'inline-flex';
+        if (hiddenInput) hiddenInput.value = newEmployeePhotoPreview;
+        showToast('success', 'Profile photo selected.');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  window.removeNewEmployeePhoto = function () {
+    newEmployeePhotoPreview = '';
+    const fileInput = document.getElementById('new-emp-photo-file-input');
+    const previewImg = document.getElementById('new-emp-photo-preview-img');
+    const placeholder = document.getElementById('new-emp-photo-placeholder');
+    const removeBtn = document.getElementById('new-emp-photo-remove-btn');
+    const hiddenInput = document.getElementById('new-emp-photo-val');
+    if (fileInput) fileInput.value = '';
+    if (previewImg) {
+      previewImg.src = '';
+      previewImg.style.display = 'none';
+    }
+    if (placeholder) placeholder.style.display = 'flex';
+    if (removeBtn) removeBtn.style.display = 'none';
+    if (hiddenInput) hiddenInput.value = '';
+  };
+
   function renderAddEmployeeView() {
     return `
       <div class="page-header">
         <div class="page-title-group">
           <h1>Onboard New Employee</h1>
-          <p>Register official profile, assign initial department & designation, and grant portal credentials.</p>
+          <p>Register official profile, upload employee photo, assign department & designation, and grant portal credentials.</p>
         </div>
       </div>
 
       <div class="card" style="max-width: 800px; margin: 0 auto;">
         <form id="new-employee-form" onsubmit="window.handleCreateEmployee(event)">
           <div class="card-body">
+            <!-- PROFILE PHOTO UPLOAD SECTION -->
+            <div style="display: flex; align-items: center; gap: 20px; padding: 18px; background: var(--bg-subtle); border-radius: var(--radius-lg); border: 1px dashed var(--border-strong); margin-bottom: 22px;">
+              <div style="position: relative; width: 76px; height: 76px; border-radius: var(--radius-full); overflow: hidden; background: #e2e8f0; border: 2px solid #ffffff; box-shadow: var(--shadow-sm); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                <img id="new-emp-photo-preview-img" src="${newEmployeePhotoPreview || ''}" style="${newEmployeePhotoPreview ? 'display:block;' : 'display:none;'} width: 100%; height: 100%; object-fit: cover;" alt="Employee Photo Preview" />
+                <div id="new-emp-photo-placeholder" style="${newEmployeePhotoPreview ? 'display:none;' : 'display:flex;'} width: 100%; height: 100%; align-items: center; justify-content: center; color: var(--text-light); font-size: 26px;">
+                  ${ICONS.user}
+                </div>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 600; font-size: 13.5px; color: var(--text-primary); margin-bottom: 3px;">Employee Photo (Optional)</div>
+                <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 10px;">Upload a clear professional headshot (JPG, PNG, WebP up to 5MB).</div>
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                  <label class="btn btn-sm btn-secondary" for="new-emp-photo-file-input" style="cursor: pointer;">
+                    ${ICONS.upload}
+                    <span>Upload Photo</span>
+                  </label>
+                  <input type="file" id="new-emp-photo-file-input" style="display: none;" accept="image/*" onchange="window.handleNewEmployeePhotoUpload(event)" />
+                  <button type="button" id="new-emp-photo-remove-btn" class="btn btn-sm btn-ghost" style="${newEmployeePhotoPreview ? 'display:inline-flex;' : 'display:none;'} color: var(--danger);" onclick="window.removeNewEmployeePhoto()">
+                    ${ICONS.x} Remove
+                  </button>
+                  <input type="hidden" name="image" id="new-emp-photo-val" value="${escapeHtml(newEmployeePhotoPreview || '')}" />
+                </div>
+              </div>
+            </div>
+
             <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 14px;">1. Personal Details</h3>
             <div class="form-row">
               <div class="form-group">
@@ -4410,13 +4481,28 @@
   // -------------------------------------------------------------------------
   function renderNotificationsView() {
     const emp = getActiveEmployee();
-    const list = store.data.notifications.filter(n => n.user === emp.name || session.role === 'HR / Admin');
+    const list = (store.data.notifications || [])
+      .filter(n => n.user === emp.name)
+      .sort((a, b) => (b.id || 0) - (a.id || 0) || (b.creation > a.creation ? 1 : -1));
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case 'attendance': return ICONS.calendar || ICONS.clock;
+        case 'leave': return ICONS.sun;
+        case 'expense': return ICONS.receipt;
+        case 'payroll': return ICONS.card;
+        case 'shift': return ICONS.repeat;
+        case 'announcement': return ICONS.speaker;
+        case 'system': return ICONS.info;
+        default: return ICONS.bell;
+      }
+    }
 
     return `
       <div class="page-header">
         <div class="page-title-group">
           <h1>Notifications Center</h1>
-          <p>Recent activity triggers, leave decision notices, and payroll publication alerts.</p>
+          <p>Recent activity triggers, leave decision notices, attendance punches, and payroll publication alerts.</p>
         </div>
         <div class="page-actions">
           <button class="btn btn-secondary" onclick="window.markAllNotificationsRead()">Mark All as Read</button>
@@ -4433,7 +4519,7 @@
                 ` : list.map(n => `
                   <tr style="${!n.read ? 'background: var(--primary-pale);' : ''}">
                     <td style="width: 36px; text-align: center;">
-                      <span style="font-size: 16px;">${n.type === 'leave' ? ICONS.sun : n.type === 'expense' ? ICONS.receipt : ICONS.card}</span>
+                      <span style="font-size: 16px;">${getNotificationIcon(n.type)}</span>
                     </td>
                     <td>
                       <div style="font-weight: ${!n.read ? '600' : 'normal'}; color: var(--text-primary);">${escapeHtml(n.text)}</div>
@@ -5124,14 +5210,25 @@
             : 'You are not currently checked in.');
           return;
         }
+        const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 19);
         store.data.checkins.unshift({
           name: `CHK-${Date.now()}`,
           employee: emp.name,
           employee_name: emp.employee_name,
           log_type: action,
-          time: new Date().toISOString().replace('T', ' ').substring(0, 19),
+          time: nowStr,
           latitude: 12.9716,
           longitude: 77.5946
+        });
+        const timeDisplay = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+        const hrEmp = store.data.employees.find(e => e.user_role === 'HR') || { name: 'EMP-001' };
+        store.data.notifications.unshift({
+          id: Date.now(),
+          user: hrEmp.name,
+          text: `${emp.employee_name} (${emp.name}) checked ${action === 'IN' ? 'IN' : 'OUT'} at ${timeDisplay}.`,
+          type: 'attendance',
+          creation: nowStr.substring(0, 16),
+          read: 0
         });
         store.save();
         showToast('success', `Checked ${action} recorded locally (offline mode).`);
@@ -5343,12 +5440,13 @@
   };
 
   window.markAllNotificationsRead = async function () {
+    const emp = getActiveEmployee();
+    if (!emp) return;
     await runAction(
-      () => API.post('/api/notifications/read-all', { user: session.employeeId, role: session.role }),
+      () => API.post('/api/notifications/read-all', { user: emp.name, role: session.role }),
       () => {
-        const emp = getActiveEmployee();
         store.data.notifications.forEach(n => {
-          if (!emp || n.user === emp.name || session.role === 'HR / Admin') n.read = 1;
+          if (n.user === emp.name) n.read = 1;
         });
         return true;
       },
@@ -5368,6 +5466,7 @@
     const firstName = fd.get('first_name');
     const lastName = fd.get('last_name');
     const fullName = `${firstName} ${lastName}`.trim();
+    const image = fd.get('image') || newEmployeePhotoPreview || '';
 
     const payload = {
       first_name: firstName,
@@ -5379,7 +5478,8 @@
       designation: fd.get('designation'),
       company_email: fd.get('company_email'),
       cell_phone: fd.get('cell_phone') || '+91 98000 00000',
-      shift: fd.get('shift') || 'General Shift'
+      shift: fd.get('shift') || 'General Shift',
+      image: image
     };
 
     let newEmp = null;
@@ -5423,6 +5523,7 @@
       store.save();
     }
 
+    newEmployeePhotoPreview = '';
     const newId = newEmp.name;
     showToast('success', `Employee ${fullName} created! Login ID: ${generatedLoginId}`);
     window.location.hash = `#employee/${newId}`;
@@ -5844,9 +5945,51 @@
     if (ok) closeModal();
   };
 
+  let editEmployeePhotoPreview = '';
+
+  window.handleEditEmployeePhotoUpload = function (e) {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        editEmployeePhotoPreview = ev.target.result;
+        const previewImg = document.getElementById('edit-emp-photo-preview-img');
+        const placeholder = document.getElementById('edit-emp-photo-placeholder');
+        const removeBtn = document.getElementById('edit-emp-photo-remove-btn');
+        const hiddenInput = document.getElementById('edit-emp-photo-val');
+        if (previewImg) {
+          previewImg.src = editEmployeePhotoPreview;
+          previewImg.style.display = 'block';
+        }
+        if (placeholder) placeholder.style.display = 'none';
+        if (removeBtn) removeBtn.style.display = 'inline-flex';
+        if (hiddenInput) hiddenInput.value = editEmployeePhotoPreview;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  window.removeEditEmployeePhoto = function () {
+    editEmployeePhotoPreview = '';
+    const fileInput = document.getElementById('edit-emp-photo-file-input');
+    const previewImg = document.getElementById('edit-emp-photo-preview-img');
+    const placeholder = document.getElementById('edit-emp-photo-placeholder');
+    const removeBtn = document.getElementById('edit-emp-photo-remove-btn');
+    const hiddenInput = document.getElementById('edit-emp-photo-val');
+    if (fileInput) fileInput.value = '';
+    if (previewImg) {
+      previewImg.src = '';
+      previewImg.style.display = 'none';
+    }
+    if (placeholder) placeholder.style.display = 'flex';
+    if (removeBtn) removeBtn.style.display = 'none';
+    if (hiddenInput) hiddenInput.value = '';
+  };
+
   window.openEditEmployeeModal = function (empId) {
     const emp = store.data.employees.find(e => e.name === empId);
     if (!emp) return;
+    editEmployeePhotoPreview = emp.image || '';
 
     openModal(() => `
       <div class="modal-overlay" onclick="if(event.target===this) window.closeModal()">
@@ -5857,6 +6000,30 @@
           </div>
           <form onsubmit="window.submitEditEmployee(event, '${emp.name}')">
             <div class="modal-body">
+              <!-- PHOTO UPLOAD IN EDIT MODAL -->
+              <div style="display: flex; align-items: center; gap: 16px; padding: 14px; background: var(--bg-subtle); border-radius: var(--radius-md); border: 1px dashed var(--border-strong); margin-bottom: 16px;">
+                <div style="position: relative; width: 60px; height: 60px; border-radius: var(--radius-full); overflow: hidden; background: #e2e8f0; border: 2px solid #ffffff; box-shadow: var(--shadow-sm); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                  <img id="edit-emp-photo-preview-img" src="${editEmployeePhotoPreview || ''}" style="${editEmployeePhotoPreview ? 'display:block;' : 'display:none;'} width: 100%; height: 100%; object-fit: cover;" alt="Photo" />
+                  <div id="edit-emp-photo-placeholder" style="${editEmployeePhotoPreview ? 'display:none;' : 'display:flex;'} width: 100%; height: 100%; align-items: center; justify-content: center; color: var(--text-light); font-size: 20px;">
+                    ${ICONS.user}
+                  </div>
+                </div>
+                <div style="flex: 1;">
+                  <div style="font-weight: 600; font-size: 12.5px; margin-bottom: 2px;">Profile Photo</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+                    <label class="btn btn-sm btn-secondary" for="edit-emp-photo-file-input" style="cursor: pointer;">
+                      ${ICONS.upload}
+                      <span>Change Photo</span>
+                    </label>
+                    <input type="file" id="edit-emp-photo-file-input" style="display: none;" accept="image/*" onchange="window.handleEditEmployeePhotoUpload(event)" />
+                    <button type="button" id="edit-emp-photo-remove-btn" class="btn btn-sm btn-ghost" style="${editEmployeePhotoPreview ? 'display:inline-flex;' : 'display:none;'} color: var(--danger);" onclick="window.removeEditEmployeePhoto()">
+                      ${ICONS.x} Remove
+                    </button>
+                    <input type="hidden" name="image" id="edit-emp-photo-val" value="${escapeHtml(editEmployeePhotoPreview || '')}" />
+                  </div>
+                </div>
+              </div>
+
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Full Name <span class="required">*</span></label>
@@ -5918,7 +6085,8 @@
       department: fd.get('department'),
       designation: fd.get('designation'),
       cell_phone: fd.get('cell_phone'),
-      shift: fd.get('shift')
+      shift: fd.get('shift'),
+      image: fd.get('image') || editEmployeePhotoPreview || ''
     };
 
     const ok = await runAction(

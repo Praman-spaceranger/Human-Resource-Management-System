@@ -846,7 +846,8 @@ route('POST', '/api/employees', async (req, res, body) => {
     shift: body.shift || 'General Shift',
     current_address: body.current_address || '', permanent_address: body.permanent_address || '',
     emergency_phone_number: body.emergency_phone_number || '', person_to_be_contacted: '', relation: '',
-    bank_name: body.bank_name || '', bank_ac_no: body.bank_ac_no || ''
+    bank_name: body.bank_name || '', bank_ac_no: body.bank_ac_no || '',
+    image: body.image || ''
   }
   db.employees.push(emp)
   db.leave_allocations[empId] = { 'Casual Leave': 12, 'Sick Leave': 10, 'Earned Leave': 15, 'Compensatory Off': 0 }
@@ -873,7 +874,7 @@ route('PUT', '/api/employees/:id', async (req, res, body, params) => {
 route('PUT', '/api/profile', async (req, res, body) => {
   const emp = db.employees.find(e => e.name === body.employee)
   if (!emp) return json(res, 404, { error: 'Employee not found.' })
-  for (const key of ['personal_email', 'cell_phone', 'current_address', 'person_to_be_contacted', 'emergency_phone_number']) {
+  for (const key of ['personal_email', 'cell_phone', 'current_address', 'person_to_be_contacted', 'emergency_phone_number', 'image']) {
     if (body[key] !== undefined) emp[key] = body[key]
   }
   await persist()
@@ -908,6 +909,15 @@ route('POST', '/api/punch', async (req, res, body) => {
   }
   db.checkins.unshift(punch)
   syncAttendanceFromPunches(emp.name, today)
+
+  // Trigger real-time attendance notification for HR
+  const timeDisplay = nowStr.split(' ')[1].substring(0, 5)
+  if (logType === 'IN') {
+    notifyHR(`${emp.employee_name} (${emp.name}) checked IN at ${timeDisplay}.`, 'attendance')
+  } else {
+    notifyHR(`${emp.employee_name} (${emp.name}) checked OUT at ${timeDisplay}.`, 'attendance')
+  }
+
   await persist()
   json(res, 201, { success: true, punch, live: getLiveAttendance()[emp.name] })
 })
@@ -1239,6 +1249,7 @@ route('POST', '/api/payroll/run', async (req, res, body) => {
     total_amount: totalNet, total_gross: totalGross
   }
   db.payroll_entries.unshift(entry)
+  notifyHR(`Payroll for ${monthName} ${year} published (${created.length} salary slips generated).`, 'payroll')
   await persist()
   json(res, 201, {
     success: true, entry,
@@ -1252,10 +1263,9 @@ route('POST', '/api/payroll/run', async (req, res, body) => {
 
 route('POST', '/api/notifications/read-all', async (req, res, body) => {
   const user = body.user
-  const asHR = body.role === 'HR / Admin'
   let count = 0
   for (const n of db.notifications) {
-    if (asHR || n.user === user) {
+    if (n.user === user) {
       if (!n.read) count++
       n.read = 1
     }

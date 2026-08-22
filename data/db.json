@@ -1,5 +1,5 @@
 {
-  "rev": 32,
+  "rev": 53,
   "company_name": "Dayflow Technologies",
   "employees": [
     {
@@ -32,7 +32,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100019999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-002",
@@ -64,7 +64,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100029999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-003",
@@ -96,7 +96,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100039999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-004",
@@ -128,7 +128,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100049999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-005",
@@ -160,7 +160,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100059999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-006",
@@ -192,7 +192,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100069999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-007",
@@ -224,7 +224,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100079999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-008",
@@ -256,7 +256,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100089999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80"
     },
     {
       "name": "EMP-009",
@@ -288,7 +288,7 @@
       "relation": "Family",
       "bank_name": "HDFC Bank",
       "bank_ac_no": "50100099999",
-      "image": "https://images.unsplash.com/photo-1565769142?w=240&auto=format&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=240&auto=format&fit=crop&q=80"
     }
   ],
   "departments": [
@@ -725,11 +725,11 @@
       "employee_name": "Aditi Sharma",
       "attendance_date": "2026-08-22",
       "status": "Present",
-      "working_hours": 5.6,
+      "working_hours": 6.5,
       "late_entry": 0,
       "early_exit": 1,
       "in_time": "09:15",
-      "out_time": "14:50"
+      "out_time": "15:46"
     },
     {
       "name": "ATT-202608-017",
@@ -887,11 +887,11 @@
       "employee_name": "Nisha Verma",
       "attendance_date": "2026-08-22",
       "status": "Present",
-      "working_hours": 5.3,
+      "working_hours": 6.1,
       "late_entry": 1,
       "early_exit": 1,
       "in_time": "09:32",
-      "out_time": "14:57"
+      "out_time": "15:50"
     },
     {
       "name": "ATT-202608-033",
@@ -1978,6 +1978,132 @@
     }
   ],
   "checkins": [
+    {
+      "name": "CHK-9493-3187",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:50:13",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-2337",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:50:12",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-0233",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:50:10",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-8427",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:50:08",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-3361",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:49:43",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-2388",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:46:32",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-0877",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:46:20",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-0394",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:46:10",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-7373",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:45:57",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-5205",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:45:55",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-4956",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:45:54",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-3843",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:45:53",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-3194",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 15:43:33",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-9493-4212",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 15:43:24",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
     {
       "name": "CHK-9493-8472",
       "employee": "EMP-002",
@@ -3705,12 +3831,100 @@
   ],
   "notifications": [
     {
+      "id": 30,
+      "user": "EMP-007",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 0
+    },
+    {
+      "id": 29,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 1
+    },
+    {
+      "id": 28,
+      "user": "EMP-007",
+      "text": "Nisha Verma (EMP-002) checked OUT at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 0
+    },
+    {
+      "id": 27,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked OUT at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 1
+    },
+    {
+      "id": 26,
+      "user": "EMP-007",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 0
+    },
+    {
+      "id": 25,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 1
+    },
+    {
+      "id": 24,
+      "user": "EMP-007",
+      "text": "Nisha Verma (EMP-002) checked OUT at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 0
+    },
+    {
+      "id": 23,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked OUT at 15:50.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:50",
+      "read": 1
+    },
+    {
+      "id": 22,
+      "user": "EMP-007",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:49.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:49",
+      "read": 0
+    },
+    {
+      "id": 21,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:49.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:49",
+      "read": 1
+    },
+    {
+      "id": 20,
+      "user": "EMP-001",
+      "text": "Nisha Verma (EMP-002) checked IN at 15:46.",
+      "type": "attendance",
+      "creation": "2026-08-22 15:46",
+      "read": 1
+    },
+    {
       "id": 18,
       "user": "EMP-002",
       "text": "Your Sick Leave (2026-09-03 to 2026-09-04) was approved.",
       "type": "leave",
       "creation": "2026-08-22 14:46",
-      "read": 0
+      "read": 1
     },
     {
       "id": 17,
@@ -3718,7 +3932,7 @@
       "text": "Nisha Verma submitted a Sick Leave request for 2 day(s) (2026-09-03 to 2026-09-04).",
       "type": "leave",
       "creation": "2026-08-22 14:42",
-      "read": 0
+      "read": 1
     },
     {
       "id": 16,
@@ -3726,7 +3940,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-009) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 15,
@@ -3734,7 +3948,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-008) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 14,
@@ -3742,7 +3956,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-007) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 13,
@@ -3750,7 +3964,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-006) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 12,
@@ -3758,7 +3972,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-005) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 11,
@@ -3766,7 +3980,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-004) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 10,
@@ -3774,7 +3988,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-003) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 9,
@@ -3782,7 +3996,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-002) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 8,
@@ -3790,7 +4004,7 @@
       "text": "Your August 2026 salary slip (SLIP-2026-08-001) has been published.",
       "type": "payroll",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 7,
@@ -3798,7 +4012,7 @@
       "text": "Your Casual Leave (2026-09-15 to 2026-09-15) was approved.",
       "type": "leave",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 6,
@@ -3806,7 +4020,7 @@
       "text": "Arjun Kapoor submitted a Casual Leave request for 1 day(s) (2026-09-15 to 2026-09-15).",
       "type": "leave",
       "creation": "2026-08-22 14:38",
-      "read": 0
+      "read": 1
     },
     {
       "id": 1,
@@ -3814,7 +4028,7 @@
       "text": "Nisha Verma submitted a Casual Leave request awaiting your approval.",
       "type": "leave",
       "creation": "2026-08-20 10:15",
-      "read": 0
+      "read": 1
     },
     {
       "id": 2,
@@ -3822,7 +4036,7 @@
       "text": "Pooja Nair submitted a Casual Leave request awaiting your approval.",
       "type": "leave",
       "creation": "2026-08-21 09:30",
-      "read": 0
+      "read": 1
     },
     {
       "id": 3,
@@ -3830,7 +4044,7 @@
       "text": "Nisha Verma submitted an expense claim of ₹1,200 for review.",
       "type": "expense",
       "creation": "2026-08-21 14:00",
-      "read": 0
+      "read": 1
     },
     {
       "id": 4,
