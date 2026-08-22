@@ -1,0 +1,1284 @@
+{
+  "employees": [
+    {
+      "name": "EMP-001",
+      "login_id": "OIADSH20220001",
+      "password": "Dayflow@123",
+      "employee_name": "Aditi Sharma",
+      "first_name": "Aditi",
+      "last_name": "Sharma",
+      "gender": "Female",
+      "date_of_birth": "1992-04-15",
+      "date_of_joining": "2022-01-10",
+      "status": "Active",
+      "department": "Human Resources",
+      "designation": "HR Manager",
+      "company": "Dayflow Technologies",
+      "company_email": "hr@dayflow.local",
+      "personal_email": "aditi.sharma92@gmail.com",
+      "cell_phone": "+91 98765 43210",
+      "reports_to": "",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "Flat 402, Green Glen Layout, Bellandur, Bengaluru, Karnataka 560103",
+      "permanent_address": "House 12, Sector 14, Gurugram, Haryana 122001",
+      "emergency_phone_number": "+91 98765 00001",
+      "person_to_be_contacted": "Rajesh Sharma",
+      "relation": "Father",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100234567890",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-002",
+      "login_id": "OINIVE20230002",
+      "password": "Dayflow@123",
+      "employee_name": "Nisha Verma",
+      "first_name": "Nisha",
+      "last_name": "Verma",
+      "gender": "Female",
+      "date_of_birth": "1995-08-22",
+      "date_of_joining": "2023-03-01",
+      "status": "Active",
+      "department": "Engineering",
+      "designation": "Senior Frontend Engineer",
+      "company": "Dayflow Technologies",
+      "company_email": "nisha@dayflow.local",
+      "personal_email": "nisha.verma@example.com",
+      "cell_phone": "+91 98111 22334",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "42, 4th Cross, Indiranagar, Bengaluru, Karnataka 560038",
+      "permanent_address": "15 Civil Lines, Jaipur, Rajasthan 302006",
+      "emergency_phone_number": "+91 98111 99887",
+      "person_to_be_contacted": "Suresh Verma",
+      "relation": "Father",
+      "bank_name": "ICICI Bank",
+      "bank_ac_no": "002305001234",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-003",
+      "login_id": "OIKAME20230003",
+      "password": "Dayflow@123",
+      "employee_name": "Kabir Mehta",
+      "first_name": "Kabir",
+      "last_name": "Mehta",
+      "gender": "Male",
+      "date_of_birth": "1994-11-12",
+      "date_of_joining": "2023-06-15",
+      "status": "Active",
+      "department": "Engineering",
+      "designation": "Backend Developer",
+      "company": "Dayflow Technologies",
+      "company_email": "kabir@dayflow.local",
+      "personal_email": "kabir.mehta@example.com",
+      "cell_phone": "+91 97234 56789",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "Morning Shift",
+      "current_address": "108, Koramangala 5th Block, Bengaluru, Karnataka 560095",
+      "permanent_address": "77 Nariman Point, Mumbai, Maharashtra 400021",
+      "emergency_phone_number": "+91 97234 11223",
+      "person_to_be_contacted": "Ananya Mehta",
+      "relation": "Spouse",
+      "bank_name": "State Bank of India",
+      "bank_ac_no": "30987654321",
+      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-004",
+      "login_id": "OIRODE20230004",
+      "password": "Dayflow@123",
+      "employee_name": "Rohan Deshmukh",
+      "first_name": "Rohan",
+      "last_name": "Deshmukh",
+      "gender": "Male",
+      "date_of_birth": "1996-02-18",
+      "date_of_joining": "2023-09-01",
+      "status": "Active",
+      "department": "Product",
+      "designation": "Product Manager",
+      "company": "Dayflow Technologies",
+      "company_email": "rohan@dayflow.local",
+      "personal_email": "rohan.deshmukh@example.com",
+      "cell_phone": "+91 96321 09876",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "B-201, Ferns Residency, HSR Layout, Bengaluru, Karnataka 560102",
+      "permanent_address": "22 Deccan Gymkhana, Pune, Maharashtra 411004",
+      "emergency_phone_number": "+91 96321 55443",
+      "person_to_be_contacted": "Meera Deshmukh",
+      "relation": "Mother",
+      "bank_name": "Axis Bank",
+      "bank_ac_no": "918010045678901",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-005",
+      "login_id": "OIPONA20240005",
+      "password": "Dayflow@123",
+      "employee_name": "Pooja Nair",
+      "first_name": "Pooja",
+      "last_name": "Nair",
+      "gender": "Female",
+      "date_of_birth": "1998-07-30",
+      "date_of_joining": "2024-01-15",
+      "status": "Active",
+      "department": "Design",
+      "designation": "UI/UX Designer",
+      "company": "Dayflow Technologies",
+      "company_email": "pooja@dayflow.local",
+      "personal_email": "pooja.nair@example.com",
+      "cell_phone": "+91 95432 10987",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "14/2, 1st Main, Domlur, Bengaluru, Karnataka 560071",
+      "permanent_address": "Kalyan Nagar, Kochi, Kerala 682025",
+      "emergency_phone_number": "+91 95432 66778",
+      "person_to_be_contacted": "Gopal Nair",
+      "relation": "Father",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100987654321",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-006",
+      "employee_name": "Vikram Malhotra",
+      "first_name": "Vikram",
+      "last_name": "Malhotra",
+      "gender": "Male",
+      "date_of_birth": "1993-03-24",
+      "date_of_joining": "2022-11-01",
+      "status": "Active",
+      "department": "Engineering",
+      "designation": "DevOps Specialist",
+      "company": "Dayflow Technologies",
+      "company_email": "vikram@dayflow.local",
+      "personal_email": "vikram.malhotra@example.com",
+      "cell_phone": "+91 98222 33445",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "Morning Shift",
+      "current_address": "Flat 304, Palm Meadows, Whitefield, Bengaluru, Karnataka 560066",
+      "permanent_address": "Sector 29, Chandigarh 160030",
+      "emergency_phone_number": "+91 98222 99881",
+      "person_to_be_contacted": "Sunil Malhotra",
+      "relation": "Brother",
+      "bank_name": "Kotak Mahindra Bank",
+      "bank_ac_no": "481200987654",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "first_name": "Priya",
+      "last_name": "Sengupta",
+      "gender": "Female",
+      "date_of_birth": "1996-09-10",
+      "date_of_joining": "2023-04-15",
+      "status": "Active",
+      "department": "Human Resources",
+      "designation": "HR Executive",
+      "company": "Dayflow Technologies",
+      "company_email": "priya@dayflow.local",
+      "personal_email": "priya.sengupta@example.com",
+      "cell_phone": "+91 97333 44556",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "77, 8th Main, Malleshwaram, Bengaluru, Karnataka 560003",
+      "permanent_address": "Salt Lake City, Kolkata, West Bengal 700091",
+      "emergency_phone_number": "+91 97333 11229",
+      "person_to_be_contacted": "Debabrata Sengupta",
+      "relation": "Father",
+      "bank_name": "Axis Bank",
+      "bank_ac_no": "919010078654321",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-008",
+      "employee_name": "Arjun Kapoor",
+      "first_name": "Arjun",
+      "last_name": "Kapoor",
+      "gender": "Male",
+      "date_of_birth": "1995-12-05",
+      "date_of_joining": "2023-10-01",
+      "status": "Active",
+      "department": "Engineering",
+      "designation": "Full Stack Engineer",
+      "company": "Dayflow Technologies",
+      "company_email": "arjun@dayflow.local",
+      "personal_email": "arjun.kapoor@example.com",
+      "cell_phone": "+91 98444 55667",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "302, Prestige Park, Electronic City, Bengaluru, Karnataka 560100",
+      "permanent_address": "Model Town, Ludhiana, Punjab 141002",
+      "emergency_phone_number": "+91 98444 00112",
+      "person_to_be_contacted": "Harsh Kapoor",
+      "relation": "Father",
+      "bank_name": "HDFC Bank",
+      "bank_ac_no": "50100445566778",
+      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&auto=format&fit=crop&q=80"
+    },
+    {
+      "name": "EMP-009",
+      "employee_name": "Sunita Rao",
+      "first_name": "Sunita",
+      "last_name": "Rao",
+      "gender": "Female",
+      "date_of_birth": "1993-06-18",
+      "date_of_joining": "2023-01-20",
+      "status": "Active",
+      "department": "Finance",
+      "designation": "Financial Analyst",
+      "company": "Dayflow Technologies",
+      "company_email": "sunita@dayflow.local",
+      "personal_email": "sunita.rao@example.com",
+      "cell_phone": "+91 98555 66778",
+      "reports_to": "EMP-001",
+      "leave_approver": "EMP-001",
+      "expense_approver": "EMP-001",
+      "shift": "General Shift",
+      "current_address": "55, Outer Ring Road, Marathahalli, Bengaluru, Karnataka 560037",
+      "permanent_address": "Banjara Hills, Hyderabad, Telangana 500034",
+      "emergency_phone_number": "+91 98555 12340",
+      "person_to_be_contacted": "Nagesh Rao",
+      "relation": "Father",
+      "bank_name": "ICICI Bank",
+      "bank_ac_no": "002305009988",
+      "image": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=240&auto=format&fit=crop&q=80"
+    }
+  ],
+  "departments": [
+    "Human Resources",
+    "Engineering",
+    "Product",
+    "Design",
+    "Marketing",
+    "Sales",
+    "Finance"
+  ],
+  "designations": [
+    "HR Manager",
+    "HR Executive",
+    "Senior Frontend Engineer",
+    "Backend Developer",
+    "Full Stack Engineer",
+    "Product Manager",
+    "UI/UX Designer",
+    "DevOps Specialist",
+    "Financial Analyst"
+  ],
+  "shift_types": [
+    {
+      "name": "General Shift",
+      "start_time": "09:30:00",
+      "end_time": "18:30:00",
+      "description": "Standard Office Shift"
+    },
+    {
+      "name": "Morning Shift",
+      "start_time": "08:00:00",
+      "end_time": "16:30:00",
+      "description": "Early Technical Support"
+    },
+    {
+      "name": "Evening Shift",
+      "start_time": "14:00:00",
+      "end_time": "22:30:00",
+      "description": "Afternoon / US Overlap"
+    },
+    {
+      "name": "Night Shift",
+      "start_time": "22:00:00",
+      "end_time": "06:30:00",
+      "description": "Night Infrastructure Rotation"
+    }
+  ],
+  "shift_requests": [
+    {
+      "name": "SR-2026-001",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "shift_type": "Morning Shift",
+      "from_date": "2026-09-01",
+      "to_date": "2026-09-30",
+      "status": "Draft",
+      "reason": "Adjusting schedule for morning collaborative sprint sessions with EU team."
+    },
+    {
+      "name": "SR-2026-002",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "shift_type": "General Shift",
+      "from_date": "2026-08-01",
+      "to_date": "2026-08-31",
+      "status": "Approved",
+      "reason": "Returning to core product delivery schedule."
+    }
+  ],
+  "leave_allocations": {
+    "EMP-001": {
+      "Casual Leave": 12,
+      "Sick Leave": 10,
+      "Earned Leave": 15,
+      "Compensatory Off": 2
+    },
+    "EMP-002": {
+      "Casual Leave": 12,
+      "Sick Leave": 10,
+      "Earned Leave": 15,
+      "Compensatory Off": 1
+    },
+    "EMP-003": {
+      "Casual Leave": 10,
+      "Sick Leave": 10,
+      "Earned Leave": 12,
+      "Compensatory Off": 0
+    },
+    "EMP-004": {
+      "Casual Leave": 12,
+      "Sick Leave": 10,
+      "Earned Leave": 14,
+      "Compensatory Off": 1
+    },
+    "EMP-005": {
+      "Casual Leave": 8,
+      "Sick Leave": 8,
+      "Earned Leave": 10,
+      "Compensatory Off": 0
+    },
+    "EMP-006": {
+      "Casual Leave": 10,
+      "Sick Leave": 10,
+      "Earned Leave": 12,
+      "Compensatory Off": 1
+    },
+    "EMP-007": {
+      "Casual Leave": 12,
+      "Sick Leave": 10,
+      "Earned Leave": 15,
+      "Compensatory Off": 0
+    },
+    "EMP-008": {
+      "Casual Leave": 10,
+      "Sick Leave": 8,
+      "Earned Leave": 12,
+      "Compensatory Off": 0
+    },
+    "EMP-009": {
+      "Casual Leave": 12,
+      "Sick Leave": 10,
+      "Earned Leave": 14,
+      "Compensatory Off": 1
+    }
+  },
+  "leave_applications": [
+    {
+      "name": "LEAVE-2026-001",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "leave_type": "Casual Leave",
+      "from_date": "2026-08-25",
+      "to_date": "2026-08-26",
+      "total_leave_days": 2,
+      "status": "Open",
+      "description": "Attending family celebration and personal errands.",
+      "posting_date": "2026-08-20",
+      "leave_approver": "EMP-001"
+    },
+    {
+      "name": "LEAVE-2026-002",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "leave_type": "Casual Leave",
+      "from_date": "2026-08-01",
+      "to_date": "2026-08-31",
+      "total_leave_days": 20,
+      "status": "Approved",
+      "description": "Annual paid leave and family travels.",
+      "posting_date": "2026-08-01",
+      "leave_approver": "EMP-001"
+    },
+    {
+      "name": "LEAVE-2026-003",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "leave_type": "Earned Leave",
+      "from_date": "2026-07-10",
+      "to_date": "2026-07-14",
+      "total_leave_days": 5,
+      "status": "Approved",
+      "description": "Annual vacation.",
+      "posting_date": "2026-07-01",
+      "leave_approver": "EMP-001"
+    },
+    {
+      "name": "LEAVE-2026-004",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "leave_type": "Casual Leave",
+      "from_date": "2026-08-28",
+      "to_date": "2026-08-28",
+      "total_leave_days": 1,
+      "status": "Open",
+      "description": "Relocating apartment.",
+      "posting_date": "2026-08-21",
+      "leave_approver": "EMP-001"
+    },
+    {
+      "name": "LEAVE-2026-005",
+      "employee": "EMP-007",
+      "employee_name": "Priya Sengupta",
+      "leave_type": "Sick Leave",
+      "from_date": "2026-08-15",
+      "to_date": "2026-08-25",
+      "total_leave_days": 10,
+      "status": "Approved",
+      "description": "Medical recovery leave.",
+      "posting_date": "2026-08-15",
+      "leave_approver": "EMP-001"
+    }
+  ],
+  "attendance": [
+    {
+      "name": "ATT-2026-08-01",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-01",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-02",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-02",
+      "status": "Present",
+      "working_hours": 8.2,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-03",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-03",
+      "status": "Present",
+      "working_hours": 8.8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-04",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-04",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-05",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-05",
+      "status": "Present",
+      "working_hours": 9,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-08",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-08",
+      "status": "Present",
+      "working_hours": 8.3,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-09",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-09",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-10",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-10",
+      "status": "Present",
+      "working_hours": 8.1,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-11",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-11",
+      "status": "Work From Home",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-12",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-12",
+      "status": "Present",
+      "working_hours": 8.6,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-15",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-15",
+      "status": "On Leave",
+      "working_hours": 0,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-16",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-16",
+      "status": "Present",
+      "working_hours": 8.4,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-17",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-17",
+      "status": "Present",
+      "working_hours": 8,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-18",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-18",
+      "status": "Present",
+      "working_hours": 8.5,
+      "late_entry": 0,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-19",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-19",
+      "status": "Half Day",
+      "working_hours": 4.5,
+      "late_entry": 1,
+      "early_exit": 0
+    },
+    {
+      "name": "ATT-2026-08-22",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "attendance_date": "2026-08-22",
+      "status": "Present",
+      "working_hours": 4,
+      "late_entry": 0,
+      "early_exit": 0
+    }
+  ],
+  "checkins": [
+    {
+      "name": "CHK-1787386184940",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 08:09:44",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787386184932",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "IN",
+      "time": "2026-08-22 08:09:44",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787386113175",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 08:08:33",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787386113167",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "log_type": "OUT",
+      "time": "2026-08-22 08:08:33",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385690577",
+      "employee": "EMP-001",
+      "log_type": "IN",
+      "time": "2026-08-22 08:01:30",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385689322",
+      "employee": "EMP-001",
+      "log_type": "OUT",
+      "time": "2026-08-22 08:01:29",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385627377",
+      "employee": "EMP-002",
+      "log_type": "IN",
+      "time": "2026-08-22 08:00:27",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385599208",
+      "employee": "EMP-002",
+      "log_type": "OUT",
+      "time": "2026-08-22 07:59:59",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385548947",
+      "employee": "EMP-002",
+      "log_type": "IN",
+      "time": "2026-08-22 07:59:08",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385547963",
+      "employee": "EMP-002",
+      "log_type": "OUT",
+      "time": "2026-08-22 07:59:07",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385162970",
+      "employee": "EMP-001",
+      "log_type": "IN",
+      "time": "2026-08-22 07:52:42",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-1787385161631",
+      "employee": "EMP-001",
+      "log_type": "OUT",
+      "time": "2026-08-22 07:52:41",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-001",
+      "employee": "EMP-002",
+      "log_type": "IN",
+      "time": "2026-08-22 09:32:15",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-002",
+      "employee": "EMP-001",
+      "log_type": "IN",
+      "time": "2026-08-22 09:15:00",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-004",
+      "employee": "EMP-004",
+      "log_type": "IN",
+      "time": "2026-08-22 09:40:11",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-005",
+      "employee": "EMP-006",
+      "log_type": "IN",
+      "time": "2026-08-22 08:50:00",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "name": "CHK-006",
+      "employee": "EMP-009",
+      "log_type": "IN",
+      "time": "2026-08-22 09:05:30",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    }
+  ],
+  "expense_claims": [
+    {
+      "name": "EXP-2026-001",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "expense_type": "Travel",
+      "total_claimed_amount": 3450,
+      "total_sanctioned_amount": 3450,
+      "status": "Unpaid",
+      "approval_status": "Approved",
+      "posting_date": "2026-08-15",
+      "description": "Client on-site architecture workshop cab & transit fares.",
+      "expense_approver": "EMP-001"
+    },
+    {
+      "name": "EXP-2026-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "expense_type": "Food and Beverage",
+      "total_claimed_amount": 1200,
+      "total_sanctioned_amount": 0,
+      "status": "Draft",
+      "approval_status": "Draft",
+      "posting_date": "2026-08-21",
+      "description": "Team sprint milestone celebratory dinner.",
+      "expense_approver": "EMP-001"
+    },
+    {
+      "name": "EXP-2026-003",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "expense_type": "Calls & Internet",
+      "total_claimed_amount": 1499,
+      "total_sanctioned_amount": 1499,
+      "status": "Paid",
+      "approval_status": "Approved",
+      "posting_date": "2026-08-02",
+      "description": "Monthly broadband reimbursement.",
+      "expense_approver": "EMP-001"
+    }
+  ],
+  "job_openings": [
+    {
+      "name": "JOB-2026-001",
+      "job_title": "Staff Full Stack Engineer",
+      "department": "Engineering",
+      "designation": "Senior Frontend Engineer",
+      "vacancies": 2,
+      "status": "Open",
+      "posted_date": "2026-08-01",
+      "description": "Looking for a senior engineer with deep React, TypeScript, and distributed systems background."
+    },
+    {
+      "name": "JOB-2026-002",
+      "job_title": "Senior Product Designer",
+      "department": "Design",
+      "designation": "UI/UX Designer",
+      "vacancies": 1,
+      "status": "Open",
+      "posted_date": "2026-08-05",
+      "description": "Drive the next-generation enterprise UX design systems across web and mobile platforms."
+    },
+    {
+      "name": "JOB-2026-003",
+      "job_title": "Technical Talent Recruiter",
+      "department": "Human Resources",
+      "designation": "HR Executive",
+      "vacancies": 1,
+      "status": "Closed",
+      "posted_date": "2026-07-15",
+      "description": "Scale our engineering and AI talent acquisition across APAC."
+    }
+  ],
+  "job_applicants": [
+    {
+      "name": "APP-2026-001",
+      "applicant_name": "Varun Grover",
+      "email": "varun.grover@devmail.io",
+      "phone": "+91 98877 66554",
+      "job_title": "Staff Full Stack Engineer",
+      "job_opening": "JOB-2026-001",
+      "status": "Accepted",
+      "application_date": "2026-08-04",
+      "source": "LinkedIn",
+      "rating": 5,
+      "notes": "Outstanding system design track record. Cleared executive panel."
+    },
+    {
+      "name": "APP-2026-002",
+      "applicant_name": "Sneha Kulkarni",
+      "email": "sneha.k@designer.co",
+      "phone": "+91 97766 55443",
+      "job_title": "Senior Product Designer",
+      "job_opening": "JOB-2026-002",
+      "status": "Replied",
+      "application_date": "2026-08-10",
+      "source": "Dribbble",
+      "rating": 4,
+      "notes": "Portfolio review passed with honors. Scheduling technical design round."
+    },
+    {
+      "name": "APP-2026-003",
+      "applicant_name": "Ankit Rao",
+      "email": "ankit.rao95@gmail.com",
+      "phone": "+91 96655 44332",
+      "job_title": "Staff Full Stack Engineer",
+      "job_opening": "JOB-2026-001",
+      "status": "Open",
+      "application_date": "2026-08-18",
+      "source": "Referral",
+      "rating": 3,
+      "notes": "Resume screened. Ready for initial phone screening."
+    },
+    {
+      "name": "APP-2026-004",
+      "applicant_name": "Tanya Sen",
+      "email": "tanya.sen@outlook.com",
+      "phone": "+91 95544 33221",
+      "job_title": "Staff Full Stack Engineer",
+      "job_opening": "JOB-2026-001",
+      "status": "Hold",
+      "application_date": "2026-08-12",
+      "source": "Website",
+      "rating": 3,
+      "notes": "Strong candidate, kept on warm hold for Q4 pipeline."
+    },
+    {
+      "name": "APP-2026-005",
+      "applicant_name": "Deepak Chopra",
+      "email": "deepak.c@tech.in",
+      "phone": "+91 94433 22110",
+      "job_title": "Staff Full Stack Engineer",
+      "job_opening": "JOB-2026-001",
+      "status": "Rejected",
+      "application_date": "2026-08-08",
+      "source": "Naukri",
+      "rating": 2,
+      "notes": "Experience level not meeting staff seniority requirement."
+    }
+  ],
+  "interviews": [
+    {
+      "name": "INT-2026-001",
+      "applicant": "APP-2026-002",
+      "applicant_name": "Sneha Kulkarni",
+      "job_opening": "JOB-2026-002",
+      "job_title": "Senior Product Designer",
+      "scheduled_date": "2026-08-25",
+      "from_time": "14:00",
+      "to_time": "15:00",
+      "interviewer": "EMP-005 (Pooja Nair)",
+      "status": "Scheduled",
+      "rating": 0,
+      "notes": "Design System & Component architecture walkthrough."
+    },
+    {
+      "name": "INT-2026-002",
+      "applicant": "APP-2026-001",
+      "applicant_name": "Varun Grover",
+      "job_opening": "JOB-2026-001",
+      "job_title": "Staff Full Stack Engineer",
+      "scheduled_date": "2026-08-14",
+      "from_time": "16:00",
+      "to_time": "17:30",
+      "interviewer": "EMP-001 (Aditi Sharma)",
+      "status": "Cleared",
+      "rating": 5,
+      "notes": "Exceptional cultural and technical alignment."
+    }
+  ],
+  "onboarding_records": [
+    {
+      "name": "ONB-2026-001",
+      "employee": "EMP-005",
+      "employee_name": "Pooja Nair",
+      "department": "Design",
+      "designation": "UI/UX Designer",
+      "boarding_status": "In Progress",
+      "activities": [
+        {
+          "name": "Submit Signed Offer Letter",
+          "completed": 1
+        },
+        {
+          "name": "Submit Tax & PAN Documents",
+          "completed": 1
+        },
+        {
+          "name": "Bank Account & Direct Deposit Setup",
+          "completed": 1
+        },
+        {
+          "name": "IT Laptop & Security Keys Allocation",
+          "completed": 1
+        },
+        {
+          "name": "Figma & Design Tokens Workspace Access",
+          "completed": 1
+        },
+        {
+          "name": "HR Benefits & Health Insurance Orientation",
+          "completed": 0
+        },
+        {
+          "name": "30-Day Check-in with Department Lead",
+          "completed": 0
+        }
+      ]
+    },
+    {
+      "name": "ONB-2026-002",
+      "employee": "EMP-004",
+      "employee_name": "Rohan Deshmukh",
+      "department": "Product",
+      "designation": "Product Manager",
+      "boarding_status": "Completed",
+      "activities": [
+        {
+          "name": "Submit Signed Offer Letter",
+          "completed": 1
+        },
+        {
+          "name": "Submit Tax & PAN Documents",
+          "completed": 1
+        },
+        {
+          "name": "Bank Account & Direct Deposit Setup",
+          "completed": 1
+        },
+        {
+          "name": "IT Equipment Allocation",
+          "completed": 1
+        },
+        {
+          "name": "Product Roadmap Alignment",
+          "completed": 1
+        },
+        {
+          "name": "HR Orientation",
+          "completed": 1
+        }
+      ]
+    }
+  ],
+  "payroll_entries": [
+    {
+      "name": "PAY-2026-07",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "payroll_frequency": "Monthly",
+      "company": "Dayflow Technologies",
+      "number_of_employees": 5,
+      "status": "Submitted",
+      "total_amount": 585000
+    },
+    {
+      "name": "PAY-2026-06",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "payroll_frequency": "Monthly",
+      "company": "Dayflow Technologies",
+      "number_of_employees": 5,
+      "status": "Submitted",
+      "total_amount": 585000
+    }
+  ],
+  "salary_slips": [
+    {
+      "name": "SLIP-2026-07-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 125000,
+      "total_deduction": 12500,
+      "net_pay": 112500,
+      "currency": "INR",
+      "docstatus": 1,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 62500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 25000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 27500
+        },
+        {
+          "salary_component": "Performance Bonus",
+          "amount": 10000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7500
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 4800
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-06-002",
+      "employee": "EMP-002",
+      "employee_name": "Nisha Verma",
+      "posting_date": "2026-06-30",
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "gross_pay": 125000,
+      "total_deduction": 12500,
+      "net_pay": 112500,
+      "currency": "INR",
+      "docstatus": 1,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 62500
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 25000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 27500
+        },
+        {
+          "salary_component": "Performance Bonus",
+          "amount": 10000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 7500
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 4800
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-001",
+      "employee": "EMP-001",
+      "employee_name": "Aditi Sharma",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 160000,
+      "total_deduction": 18000,
+      "net_pay": 142000,
+      "currency": "INR",
+      "docstatus": 1,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 80000
+        },
+        {
+          "salary_component": "House Rent Allowance (HRA)",
+          "amount": 32000
+        },
+        {
+          "salary_component": "Executive Special Allowance",
+          "amount": 48000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "Provident Fund (PF)",
+          "amount": 9600
+        },
+        {
+          "salary_component": "Professional Tax (PT)",
+          "amount": 200
+        },
+        {
+          "salary_component": "Income Tax (TDS)",
+          "amount": 8200
+        }
+      ]
+    },
+    {
+      "name": "SLIP-2026-07-003",
+      "employee": "EMP-003",
+      "employee_name": "Kabir Mehta",
+      "posting_date": "2026-07-31",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "gross_pay": 110000,
+      "total_deduction": 11000,
+      "net_pay": 99000,
+      "currency": "INR",
+      "docstatus": 1,
+      "earnings": [
+        {
+          "salary_component": "Basic Salary",
+          "amount": 55000
+        },
+        {
+          "salary_component": "HRA",
+          "amount": 22000
+        },
+        {
+          "salary_component": "Special Allowance",
+          "amount": 33000
+        }
+      ],
+      "deductions": [
+        {
+          "salary_component": "PF",
+          "amount": 6600
+        },
+        {
+          "salary_component": "TDS",
+          "amount": 4400
+        }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "name": "ANN-001",
+      "subject": "Dayflow Q3 All-Hands & Innovation Day",
+      "description": "Join us this Thursday at 4 PM IST for our quarterly product roadmap reveal, team spotlights, and open Q&A with leadership. Refreshments provided at all regional hubs!",
+      "posted_by": "Aditi Sharma (HR)",
+      "creation": "2026-08-20 11:30:00"
+    },
+    {
+      "name": "ANN-002",
+      "subject": "Annual Wellness & Healthcare Policy Updates",
+      "description": "We have upgraded all employee and dependent medical insurance coverage. Digital health cards and mental wellness consultation benefits are now active on your portals.",
+      "posted_by": "Aditi Sharma (HR)",
+      "creation": "2026-08-10 09:15:00"
+    }
+  ],
+  "holidays": [
+    {
+      "name": "HOL-001",
+      "holiday_date": "2026-08-15",
+      "description": "Independence Day"
+    },
+    {
+      "name": "HOL-002",
+      "holiday_date": "2026-10-02",
+      "description": "Mahatma Gandhi Jayanti"
+    },
+    {
+      "name": "HOL-003",
+      "holiday_date": "2026-10-20",
+      "description": "Dussehra / Vijayadashami"
+    },
+    {
+      "name": "HOL-004",
+      "holiday_date": "2026-11-08",
+      "description": "Diwali (Deepavali)"
+    },
+    {
+      "name": "HOL-005",
+      "holiday_date": "2026-12-25",
+      "description": "Christmas Day"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "user": "EMP-001",
+      "text": "Nisha Verma submitted a Casual Leave request for Aug 25-26.",
+      "type": "leave",
+      "creation": "2026-08-20 10:15",
+      "read": 0
+    },
+    {
+      "id": 2,
+      "user": "EMP-001",
+      "text": "Pooja Nair submitted a Casual Leave request for Aug 28.",
+      "type": "leave",
+      "creation": "2026-08-21 09:30",
+      "read": 0
+    },
+    {
+      "id": 3,
+      "user": "EMP-001",
+      "text": "Nisha Verma submitted an expense claim of ₹1,200 for review.",
+      "type": "expense",
+      "creation": "2026-08-21 14:00",
+      "read": 0
+    },
+    {
+      "id": 4,
+      "user": "EMP-002",
+      "text": "July 2026 Salary Slip has been published and is ready for download.",
+      "type": "payroll",
+      "creation": "2026-07-31 18:00",
+      "read": 1
+    },
+    {
+      "id": 5,
+      "user": "EMP-002",
+      "text": "Your expense claim EXP-2026-001 of ₹3,450 was approved by HR.",
+      "type": "expense",
+      "creation": "2026-08-16 11:20",
+      "read": 1
+    }
+  ]
+}
